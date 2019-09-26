@@ -9,8 +9,8 @@ Télécharger db.sql sur le drive et le mettre dans /var/www/html.
 Lancer mysql. Dans le prompt:
 
     CREATE USER 'php'@'localhost' IDENTIFIED BY 'jesuistresencolere';
-    GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
     CREATE DATABASE anticipation;
+    GRANT ALL PRIVILEGES ON *.* TO 'php'@'localhost';
 
 Dans le terminal, importer db.sql:
 
