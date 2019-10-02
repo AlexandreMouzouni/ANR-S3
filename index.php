@@ -27,12 +27,12 @@
 		$anneeMax = explode('-', $anneeMinMax['dateMax']);
 		$anneeMax = $anneeMax[2];
 		echo "<p> Date de publications de la première oeuvre = ". $anneeMin ."</p>";
-		echo "<p> Date de publications de la première oeuvre = ". $anneeMax ."</p>";
+		echo "<p> Date de publications de la dernière oeuvre = ". $anneeMax ."</p>";
 
 		$tableauDonnee= array();
 		for($annee= $anneeMin; $annee< $anneeMax; $annee+=10){
 			$nbPublication= $model->getNbPublicationsPeriodes($annee, $annee+10);
-			echo "<p>".$nbPublication." </p>";
+			echo "<p> Entre ". $annee."et". $annee+10." il y a eu <b> ".$nbPublication."</b> </p>";
 			$tableauDonnee[]= $nbPublication;
 		}
 
