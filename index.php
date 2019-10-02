@@ -32,7 +32,7 @@
 		$tableauDonnee= array();
 		for($annee= $anneeMin; $annee< $anneeMax; $annee+=10){
 			$nbPublication= $model->getNbPublicationsPeriodes($annee, $annee+10);
-			echo "<p> Entre ". $annee."et". $annee+10." il y a eu <b> ".$nbPublication."</b> </p>";
+			echo "<p> Entre ". $annee." et ". $annee+10." il y a eu <b> ".$nbPublication."</b> </p>";
 			$tableauDonnee[]= $nbPublication;
 		}
 
