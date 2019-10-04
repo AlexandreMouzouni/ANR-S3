@@ -29,11 +29,11 @@
 		echo "<p> Date de publications de la première oeuvre = ". $anneeMin ."</p>";
 		echo "<p> Date de publications de la dernière oeuvre = ". $anneeMax ."</p>";
 
-		$tableauDonnee= array();
+		$tableauDonnee= array(); $i=0;
 		for($annee= $anneeMin; $annee< $anneeMax; $annee+=10){
 			$nbPublication= $model->getNbPublicationsPeriodes($annee, $annee+10);
-			echo "<p> Entre ". $annee." et ". ($annee+10) ." il y a eu <b> ".$nbPublication."</b> </p>";
-			$tableauDonnee[]= $nbPublication;
+			echo "<p> Entre <b>". $annee."</b> et <b>". ($annee+10) ."</b> il y a eu <b> ".$nbPublication."</b> publications.</p>";
+			$tableauDonnee[i]= $nbPublication;
 		}
 
 	
