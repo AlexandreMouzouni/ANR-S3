@@ -20,7 +20,7 @@
 	//	<p>
 
 		$nbouvre= $model->getNbOeuvre();
-		echo "<p> Il y a ". $nbouvre ." dans la base de donnee </p>";
+		echo "<p> Il y a ". $nbouvre ." dans la base de donnee et hugz est la </p>";
 
 		$anneeMinMax = $model->getNbAnnee();
 		$anneeMin = $anneeMinMax['dateMin'];
