@@ -1,4 +1,3 @@
-<<<<<<<< HEAD
 <?php
 	require_once 'Model.php'; 
 	$model = Model::get_model();
@@ -17,7 +16,7 @@
 
 	<?php 
 	//	 echo json_encode($sampleArray);
-	//	SELECT * FROM `oeuvres` WHERE anneePE BETWEEN 1870 and 1980
+
 
 		$nbouvre= $model->getNbOeuvre();
 		echo "<p> Il y a ". $nbouvre ." dans la base de donnee </p>";
