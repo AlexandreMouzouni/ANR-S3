@@ -26,8 +26,8 @@
 		$anneeMin = $anneeMinMax['dateMin'];
 		$anneeMax = explode('-', $anneeMinMax['dateMax']);
 		$anneeMax = $anneeMax[2];
-		echo "<p> Date de publications de la première oeuvre = ". $anneeMin ."</p>";
-		echo "<p> Date de publications de la dernière oeuvre = ". $anneeMax ."</p>";
+		echo "<p> Date de publications de la première oeuvre = <b>". $anneeMin ."</b></p>";
+		echo "<p> Date de publications de la dernière oeuvre = <b>". $anneeMax ."</b></p>";
 
 		$tableauDonnee= array();
 		for($annee= $anneeMin; $annee< $anneeMax; $annee+=10){
