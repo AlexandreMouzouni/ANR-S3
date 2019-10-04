@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<<<<<<<< HEAD
 <?php
 	require_once 'Model.php'; 
 	$model = Model::get_model();
@@ -13,12 +13,11 @@
 	<title>Dataviz</title>
 </head>
 <body>
-	<h1>Dtaviz</h1>
+	<h1>Dataviz</h1>
 
 	<?php 
 	//	 echo json_encode($sampleArray);
 	//	SELECT * FROM `oeuvres` WHERE anneePE BETWEEN 1870 and 1980
-	//	<p>
 
 		$nbouvre= $model->getNbOeuvre();
 		echo "<p> Il y a ". $nbouvre ." dans la base de donnee </p>";
