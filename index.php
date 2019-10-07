@@ -8,7 +8,6 @@
 <head>
 	<meta charset="utf-8">
 	<script src="https://d3js.org/d3.v5.js"></script>
-	<script src="graph.js"></script>
 	<title>Dataviz</title>
 </head>
 <body>
@@ -29,17 +28,23 @@
 		echo "<p> Date de publications de la dernière oeuvre = ". $anneeMax ."</p>";
 
 		$tableauDonnee= array(); $i=0;
+		$anneeMin = intval($anneeMin); // Transformer les valeurs en nombres
+		$anneeMax = intval($anneeMax);
 		for($annee= $anneeMin; $annee< $anneeMax; $annee+=10){
 			$nbPublication= $model->getNbPublicationsPeriodes($annee, $annee+10);
+			$nbPublication = intval($nbPublication); // Transformer en int
 			echo "<p> Entre <b>". $annee."</b> et <b>". ($annee+10) ."</b> il y a eu <b> ".$nbPublication."</b> publications.</p>";
-			$tableauDonnee[strval($annee+5)]= $nbPublication;
+			// Tableau imbriqué
+			var_dump($annee);
+			$tableauDonnee[] = ["annee" => $annee, "nombre" => $nbPublication];
 		}
 
-		echo "<br><p> Tableau de donnee: </p>";
-		print_r($tableauDonnee);
-	 ?>
-	<div id="graph" style="height: 750;"></div>
-
-
+		echo "<br><p> Tableau de donnee: </p>";?>
+		<script type="module">
+import graphe from "./graphe.js";
+var data = <?php echo json_encode($tableauDonnee) . ";"; ?>
+graphe(data);
+		</script>
+	<svg id="graph" style="height: 1000px; width: 1000px;"></svg>
 </body>
 </html>
