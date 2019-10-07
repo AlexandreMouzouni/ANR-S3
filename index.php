@@ -35,7 +35,6 @@
 			$nbPublication = intval($nbPublication); // Transformer en int
 			echo "<p> Entre <b>". $annee."</b> et <b>". ($annee+10) ."</b> il y a eu <b> ".$nbPublication."</b> publications.</p>";
 			// Tableau imbriqué
-			var_dump($annee);
 			$tableauDonnee[] = ["annee" => $annee, "nombre" => $nbPublication];
 		}
 
