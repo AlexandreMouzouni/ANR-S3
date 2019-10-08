@@ -28,32 +28,51 @@ const xScale = d3.scaleBand()
     .domain(data.map((d) => d.annee))
     .padding(0);
 
-console.log(xScale(1854))
-console.log(xScale(1864))
-console.log(xScale(1874))
-console.log(xScale(1884))
-
 var sequentialScale = d3.scaleSequential()
-    .domain([0, 10])
-    .interpolator(d3.interpolateRainbow);
+    .domain([0, data.length])
+    .interpolator(d3.interpolateInferno);
 
 chart.append('g')
     .attr('transform', `translate(0, ${height})`)
     .call(d3.axisBottom(xScale));
 
+chart.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin)
+    .attr("x",0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Nombre de livres");
+
+chart.append("text")
+ .attr("transform",
+       "translate(" + (width/2) + " ," +
+                      (height + margin) + ")")
+ .style("text-anchor", "middle")
+ .text("Date");
+
+
 chart.selectAll()
     .data(data)
     .enter()
     .append('rect')
-    .attr('x', (d) => xScale(d.annee))
+    .attr('x', (d) => xScale(d.annee)) // Valeurs par défault
+    .attr('y', height)
+    .attr('width', xScale.bandwidth())
+
+
+// Pour faire une transition des val par default vers les val transitionée
+
+chart.selectAll('rect')
+    .transition()
+    .duration(2000)
     .attr('y', (d) => yScale(d.nombre))
     .attr('height', (d) => height - yScale(d.nombre))
-    .attr('width', xScale.bandwidth())
-    .style("stroke", "red")
     .style('fill', (d,i) => sequentialScale(i))
 
 console.log(data.length)
 
+// Valeurs de base
 chart.selectAll()
    .data(data)
    .enter()
@@ -61,14 +80,23 @@ chart.selectAll()
    .text(function(d) {
         return d.nombre;
    })
+   .attr('class', 'bar')
    .attr("x", function(d, i) {
         return xScale(d.annee) + (xScale.bandwidth() / 2);  // +5
    })
-   .attr("y", function(d) {
-        return yScale(d.nombre);              // +15
-   })
+   .attr('y', height)
    .attr("font-family", "sans-serif")
    .attr("font-size", "11px")
    .attr("fill", (d,i) => sequentialScale(i))
-   .attr("text-anchor", "middle");
+   .attr("text-anchor", "middle")
+   .style('opacity', '0');
+
+// Transition
+chart.selectAll('text').filter('.bar')
+   .transition()
+   .duration(2000)
+   .attr("y", function(d) {
+        return yScale(d.nombre) - height/40              // +15
+   })
+   .style("opacity", "1");
 }
