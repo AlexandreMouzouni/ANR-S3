@@ -38,6 +38,9 @@
 			$tableauDonnee[] = ["annee" => $annee, "nombre" => $nbPublication];
 		}
 
+		$nbDateNull= $model->getNbDateNull();
+		echo "<br><p> Nombre de donnee non pris en compte dans l'echantillonage = $nbDateNull  </p>"
+
 		echo "<br><p> Tableau de donnee: </p>";?>
 		<script type="module">
 import graphe from "./graphe.js";
