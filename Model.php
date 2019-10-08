@@ -23,7 +23,7 @@
 			return le nombre de oeuvress
 		*/
 		public function getNbOeuvre(){
-			sql= 'SELECT COUNT(*) AS nbOeuvre FROM oeuvres WHERE anneePE=""';
+			sql= 'SELECT COUNT(*) AS nbOeuvre FROM oeuvres';
 			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
 			$res= $req->fetch();
 			$nbOeuvre= $res['nbOeuvre'];
@@ -33,7 +33,7 @@
 
 		public function getNbDateNull(){
 			$
-			$sql= 'SELECT COUNT(*) AS nbDateNull FROM oeuvres';
+			$sql= 'SELECT COUNT(*) AS nbDateNull FROM oeuvres WHERE anneePE=""';
 			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
 			$res= $req->fetch();
 			$nbOeuvre= $res['nbDateNull'];
