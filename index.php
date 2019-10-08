@@ -39,7 +39,7 @@
 		}
 
 		$nbDateNull= $model->getNbDateNull();
-		echo "<br><p> Nombre de donnee non pris en compte dans l'echantillonage = $nbDateNull  </p>"
+		echo "<br><p> Nombre de donnee non pris en compte dans l'echantillonage = $nbDateNull  </p>";
 
 		echo "<br><p> Tableau de donnee: </p>";?>
 		<script type="module">
