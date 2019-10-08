@@ -32,7 +32,7 @@
 		}
 
 		public function getNbDateNull(){
-			$sql= 'SELECT COUNT(*) AS nbDateNull FROM oeuvres WHERE anneePE=""';
+			$sql= 'SELECT COUNT(*) AS nbDateNull FROM oeuvres WHERE anneePE is null';
 			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
 			$res= $req->fetch();
 			$nbOeuvre= $res['nbDateNull'];
