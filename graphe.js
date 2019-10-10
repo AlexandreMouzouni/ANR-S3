@@ -65,7 +65,9 @@ chart.selectAll()
 
 chart.selectAll('rect')
     .transition()
-    .duration(2000)
+    .duration(1000)
+    .delay( (d,i) => ( i * 100 )) // Chaque nombre va attendre 40ms le précédent avant de faire sa propre transition
+    .ease(d3.easeCubic)
     .attr('y', (d) => yScale(d.nombre))
     .attr('height', (d) => height - yScale(d.nombre))
     .style('fill', (d,i) => sequentialScale(i))
@@ -77,9 +79,7 @@ chart.selectAll()
    .data(data)
    .enter()
    .append('text')
-   .text(function(d) {
-        return d.nombre;
-   })
+   .text('0')
    .attr('class', 'bar')
    .attr("x", function(d, i) {
         return xScale(d.annee) + (xScale.bandwidth() / 2);  // +5
@@ -91,12 +91,22 @@ chart.selectAll()
    .attr("text-anchor", "middle")
    .style('opacity', '0');
 
+
 // Transition
 chart.selectAll('text').filter('.bar')
-   .transition()
-   .duration(2000)
-   .attr("y", function(d) {
-        return yScale(d.nombre) - height/40              // +15
-   })
-   .style("opacity", "1");
+    .transition()
+    .duration(1000)
+    .ease(d3.easeCubic)
+    .tween("text", function(d) {
+        var i = d3.interpolate(this.textContent, d.nombre) // Fonction qui interpole le nombre
+
+        return function(t) {
+            this.textContent = Math.round(i(t)); // Arrondir au plus proche nombre entier
+        };
+    })
+    .attr("y", function(d) {
+         return yScale(d.nombre) - height/40              // +15
+     })
+    .style("opacity", "1")
+    .delay( (d,i) => ( i * 100 )) // Chaque nombre va attendre 40ms le précédent avant de faire sa propre transition
 }
