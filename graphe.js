@@ -65,7 +65,7 @@ chart.selectAll()
 
 chart.selectAll('rect')
     .transition()
-    .duration(1000)
+    .duration(2000)
     .delay( (d,i) => ( i * 100 )) // Chaque nombre va attendre 40ms le précédent avant de faire sa propre transition
     .ease(d3.easeCubic)
     .attr('y', (d) => yScale(d.nombre))
@@ -86,7 +86,7 @@ chart.selectAll()
    })
    .attr('y', height)
    .attr("font-family", "sans-serif")
-   .attr("font-size", "11px")
+   .attr("font-size", "30px")
    .attr("fill", (d,i) => sequentialScale(i))
    .attr("text-anchor", "middle")
    .style('opacity', '0');
@@ -95,7 +95,7 @@ chart.selectAll()
 // Transition
 chart.selectAll('text').filter('.bar')
     .transition()
-    .duration(1000)
+    .duration(2000)
     .ease(d3.easeCubic)
     .tween("text", function(d) {
         var i = d3.interpolate(this.textContent, d.nombre) // Fonction qui interpole le nombre
