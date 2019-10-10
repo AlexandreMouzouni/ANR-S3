@@ -26,7 +26,7 @@ chart.append('g')
 const xScale = d3.scaleBand()
     .range([0, width])
     .domain(data.map((d) => d.annee))
-    .padding(0);
+    .padding(0.1);
 
 var sequentialScale = d3.scaleSequential()
     .domain([0, data.length])
