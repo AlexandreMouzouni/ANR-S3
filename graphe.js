@@ -59,6 +59,38 @@ chart.selectAll()
     .attr('x', (d) => xScale(d.annee)) // Valeurs par défault
     .attr('y', height)
     .attr('width', xScale.bandwidth())
+    .on("mouseover",function()
+    {
+      tooltip.style("display",null)
+    })
+    .on("mouseout",function()
+    {
+      tooltip.style("display","none")
+    })
+    .on("mousemove",function(d)
+    {
+      var xPos=d3.mouse(this)[0]+20;
+      var yPos=d3.mouse(this)[1];
+      tooltip.attr("transform","translate(" + xPos + "," + yPos + ")");
+      tooltip.select("text").text("Date : " +d.annee);
+
+
+    });
+
+    var tooltip = chart.append('g')
+            .attr("class",tooltip)
+            .style("display","none")
+
+          tooltip.append("text")
+            .attr("x", 30)
+            .attr("dy", "1.7em")
+            .style("text-anchor", "middle")
+            .attr("font-size", "20px")
+            .attr("font-weight", "bold")
+            .attr("width", 60)
+            .attr("height", 20)
+            .attr("fill", "white")
+            .style("opacity", 0.5);
 
 
 // Pour faire une transition des val par default vers les val transitionée
