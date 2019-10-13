@@ -65,7 +65,7 @@ chart.selectAll()
     })
     .on("mouseout",function()
     {
-      //tooltip.style("display","none")
+      tooltip.style("display","none")
     })
     .on("mousemove",function(d)
     {
