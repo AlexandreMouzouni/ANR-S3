@@ -91,7 +91,11 @@ chart.selectAll()
         .attr("height", 20)
         .attr("fill", "white")
         .style("border", "solid black 2px")
-        .style("opacity", 0.5);
+        .style("opacity", 1)
+        .style("border-radius", "5px")
+        .style("color", "white")
+        .style("padding", "10px")
+        .style("background-color", "black");
 
 
 
