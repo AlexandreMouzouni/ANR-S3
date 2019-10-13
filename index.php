@@ -47,6 +47,8 @@ import graphe from "./graphe.js";
 var data = <?php echo json_encode($tableauDonnee) . ";"; ?>
 graphe(data);
 		</script>
-	<svg id="graph" style="height: 1000px; width: 1000px;"></svg>
+	<div id="graph-div" style="position: relative">
+        <svg id="graph" style="height: 1000px; width: 1000px;"></svg>
+    </div>
 </body>
 </html>
