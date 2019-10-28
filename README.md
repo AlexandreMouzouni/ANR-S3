@@ -1,6 +1,9 @@
 Lien du site: http://vps730707.ovh.net/
 
-# Installation
+__Les tests de lib sont dans le dossier private/ sur le site.__ 
+Ne pas oublier de [mettre a jour le tableur du drive.](https://docs.google.com/spreadsheets/d/1BmaGsoMMQVTREYDd74d80dhl63-IGTdGSH7caSQm5O4/edit?usp=drive_web&ouid=115761483079445534524)
+
+# Installation en localhost (linux)
 
 Installer les paquets:
 
