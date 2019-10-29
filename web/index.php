@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+  echo 'test';
   include_once 'lib/anticipation-inc.php';
   include_once 'lib/divers.php';
   include_once 'lib/connexion.php';
