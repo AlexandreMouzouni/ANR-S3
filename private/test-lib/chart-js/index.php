@@ -15,6 +15,7 @@
 </head>
 <body>
     <canvas id="barChart" width="1000" height="500"></canvas> <!-- chart.js utilise un canvas pour dessiner. -->
+    <canvas id="lineChart" width="1000" height="500"></canvas> <!-- chart.js utilise un canvas pour dessiner. -->
     <script> // Injection du dataset en PHP
         <?php
         $anneeMinMax = $model->getNbAnnee();
