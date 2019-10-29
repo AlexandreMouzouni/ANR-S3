@@ -27,6 +27,12 @@ if ($_SERVER['SERVER_NAME']=='localhost' OR $_SERVER['SERVER_NAME']=='pierrot.ih
   define('BDD_MDP', 'jesusitresencolere');
   define('BDD_DATABASE', 'anticipation');
 }
+else {
+  define('BDD_HOST', 'localhost');
+  define('BDD_LOGIN', 'php');
+  define('BDD_MDP', 'jesusitresencolere');
+  define('BDD_DATABASE', 'anticipation');    
+}
 
 define('bDBG', false);        // Rajoute les informations de débuggage
 $strDBG = '';                // Contient les informations de débuggage
