@@ -21,6 +21,11 @@ if ($_SERVER['SERVER_NAME']=='localhost' OR $_SERVER['SERVER_NAME']=='pierrot.ih
   define('BDD_LOGIN', 'anticipation');
   define('BDD_MDP', 'UfUvBanverd0');
   define('BDD_DATABASE', 'anticipation');
+} else if ($_SERVER['SERVER_NAME'] == 'vps730707.ovh.net') {
+  define('BDD_HOST', 'localhost');
+  define('BDD_LOGIN', 'php');
+  define('BDD_MDP', 'jesusitresencolere');
+  define('BDD_DATABASE', 'anticipation');
 }
 
 define('bDBG', false);        // Rajoute les informations de débuggage
