@@ -24,13 +24,13 @@ if ($_SERVER['SERVER_NAME']=='localhost' OR $_SERVER['SERVER_NAME']=='pierrot.ih
 } else if ($_SERVER['SERVER_NAME'] == 'vps730707.ovh.net') {
   define('BDD_HOST', 'localhost');
   define('BDD_LOGIN', 'php');
-  define('BDD_MDP', 'jesusitresencolere');
+  define('BDD_MDP', 'jesuistresencolere');
   define('BDD_DATABASE', 'anticipation');
 }
 else {
   define('BDD_HOST', 'localhost');
   define('BDD_LOGIN', 'php');
-  define('BDD_MDP', 'jesusitresencolere');
+  define('BDD_MDP', 'jesuistresencolere');
   define('BDD_DATABASE', 'anticipation');    
 }
 
