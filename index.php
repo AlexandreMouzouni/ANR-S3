@@ -12,6 +12,11 @@
 </head>
 <body>
 	<h1>Dataviz</h1>
+	 
+	Liens utiles :
+	<ul>
+	    <li>Accès au site web originel : <a href="web">vps730707.ovh.net/web</a></li>
+	</ul>
 
 	<?php 
 	//	 echo json_encode($sampleArray);
