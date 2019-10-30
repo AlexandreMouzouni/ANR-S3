@@ -20,7 +20,7 @@
       for($annee= $anneeMin; $annee< $anneeMax; $annee+=1){
           $nbPublication= $model->getNbPublicationsPeriodes($annee, $annee+1);
           $nbPublication = intval($nbPublication); // Transformer en int
-          $tableauDonnee[] = ["annee" => strval($annee), // Transformer en string, et mettre en format ISO
+          $tableauDonnee[] = ["annee" => strval($annee),
                               "nombre" => $nbPublication];
       }
       ?>
