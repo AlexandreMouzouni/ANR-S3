@@ -16,6 +16,15 @@
        white-space:nowrap;
        writing-mode:vertical-rl;
      }
+
+    .ct-series-a .ct-area {
+      fill-opacity: .5;
+      fill: #252b5e;
+    }
+
+    .ct-line {
+     stroke-width: 2px;
+    }
     </style>
   </head>
   <body>
@@ -74,6 +83,30 @@
 
     var seq = 0;
 
+    chart.on('draw', function(data) {
+    if(data.type === 'line' || data.type === 'area') {
+      data.element.animate({
+        d: {
+          begin: 0,
+          dur: 1500,
+          from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+          to: data.path.clone().stringify(),
+          easing: Chartist.Svg.Easing.easeOutQuint
+        },
+        opacity: {
+            // The delay when we like to start the animation
+            begin: 0,
+            // Duration of the animation
+            dur: 500,
+            // The value where the animation should start
+            from: 0,
+            // The value where it should end
+            to: 1
+          },
+      });
+    }
+    });
+
     chart.on('draw',
     function(data) {
       if(data.type === 'point') {
@@ -100,5 +133,6 @@
         })
       }});
     </script>
+    <a href='/'> Télécharger le graphe </a>
   </body>
 </html>
