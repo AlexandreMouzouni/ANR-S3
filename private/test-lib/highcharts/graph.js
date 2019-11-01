@@ -11,7 +11,7 @@ Highcharts.chart('container', {
         text: 'test'
     },
     xAxis: [{
-        categories: data.map(d => d.annee), // Pour chaque objet data, appliquer une fonction qui récupère l'année
+        categories: d => d.annee[0], // Pour chaque objet data, appliquer une fonction qui récupère l'année
         /*
         Equivalent a:
         data.map(
