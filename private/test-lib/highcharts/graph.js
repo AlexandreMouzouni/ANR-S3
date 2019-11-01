@@ -1,13 +1,4 @@
-<html>
-<head>
-    <title>Woahouaeou c trop bien D3.js</title>
-    <meta charset="utf-8">
-</head>
-<body>
-  <script src="https://code.highcharts.com/highcharts.src.js"></script>
-  <div id="container" style="max-width: 800px; height: 400px; margin: 1em auto"></div>
-  <script type="module">
-    Highcharts.chart('container', {
+ Highcharts.chart('container', {
       title: {
           text: 'test'
       },
@@ -60,7 +51,3 @@
           }
       }]
   });
-
-  </script>
-</body>
-</html>
