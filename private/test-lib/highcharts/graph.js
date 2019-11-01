@@ -1,51 +1,66 @@
-// La variable data est dans le contexte global.
-// C'est un tableau d'objets data, chacun possédant un attribut .annee et .nombre.
-Highcharts.chart('container', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'test histogramme'
-    },
-    subtitle: {
-        text: 'test'
-    },
-    xAxis: [{
-        categories: d => d.annee[0], // Pour chaque objet data, appliquer une fonction qui récupère l'année
-        /*
-        Equivalent a:
-        data.map(
-            function(data) {
-                return d.annee;
-            }
-        )
-         */
-        title: { text: 'Date' },
-        alignTicks: false
-    }],
-    yAxis: [{
-        min : 0,
-        title: { text: 'Nombre de livres ' }
-    }],
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">Nombre de livres </td>' +
-            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
+<html>
+<head>
+    <title>Woahouaeou c trop bien D3.js</title>
+    <meta charset="utf-8">
+</head>
+<body>
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
+  <div id="container" style="max-width: 800px; height: 400px; margin: 1em auto"></div>
+  <script type="module">
+    Highcharts.chart('container', {
+      title: {
+          text: 'test'
+      },
+      xAxis: {
+          title: { text: 'Date' },
+          categories: data.map(d => d.annee)
+      },
+      yAxis: [{
+          min : 0,
+          title: { text: 'Nombre de livres ' }
+      }],
 
-    plotOptions: {
-        column: {
-            pointPadding:0.1,
-            borderWidth: 0
-        }
-    },
+      tooltip: {
+         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+         pointFormat: '<tr><td style="color:{series.color};padding:0">Nombre de livres </td>' +
+             '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+         footerFormat: '</table>',
+         shared: true,
+         useHTML: true
+     },
+      labels: {
 
-    series: [{
-        name: 'Nombre de livres ',
-        data: data.map(d => d.nombre) // Pour chaque objet data, appliquer une fonction qui récupère la valeur
-    }]
+          items: [{
+              html: 'Nombre  de livres par année',
+              style: {
+                  left: '50px',
+                  top: '18px',
+                  color: ( // theme
+                      Highcharts.defaultOptions.title.style &&
+                      Highcharts.defaultOptions.title.style.color
+                  ) || 'black'
+              }
+          }]
+      },
+      series: [{
+          type: 'column',
+          name: 'Nombre de livres',
+          data: data.map(d => d.nombre)
+      },
 
-});
+      {
+          type: 'pie',
+          name: 'Nombre de livres',
+          data: data.map(d => d.nombre),
+          center: [100 , 80],
+          size: 100,
+          showInLegend: false,
+          dataLabels: {
+              enabled: false
+          }
+      }]
+  });
+
+  </script>
+</body>
+</html>
