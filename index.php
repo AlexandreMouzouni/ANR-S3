@@ -16,7 +16,7 @@
 	Liens utiles :
 	<ul>
 	    <li>Accès au site web originel : <a href="web">vps730707.ovh.net/web</a></li>
-        <li>Accès a notre partie privée : <a href="private/test-lib">vps730707.ovh.net/private/test-lib</a></li>
+        <li>Accès a notre partie privée : <a href="private/test-lib/resultats.html">vps730707.ovh.net/private/test-lib</a></li>
 	</ul>
 
 	<?php
