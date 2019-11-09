@@ -16,7 +16,6 @@
         <h1>Pie Chart</h1>
         <div id="pie-chart"></div>
         
-        <script src="index.js"></script>
     </body>
     <script>
         const data = <?php echo json_encode(dataPhp()) . ";"; ?>
@@ -27,6 +26,5 @@
         };
 
         Plotly.newPlot('pie-chart', data, layout);
-
     </script>
 </html>
