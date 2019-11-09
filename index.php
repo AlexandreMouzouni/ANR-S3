@@ -49,9 +49,9 @@
 
 		echo "<br><p> Tableau de donnee: </p>";?>
 		<script type="module">
-import graphe from "./graphe.js";
+import graph from "./graphjs";
 var data = <?php echo json_encode($tableauDonnee) . ";"; ?>
-graphe(data);
+graph(data);
 		</script>
 	<div id="graph-div" style="position: relative">
         <svg id="graph" style="height: 1000px; width: 1000px;"></svg>

@@ -132,7 +132,7 @@
           }
         })
       }});
+
     </script>
-    <a href='/'> Télécharger le graphe </a>
   </body>
 </html>
