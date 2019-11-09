@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Test Plotly</title>
         <meta charset="utf-8"/>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
-    
+    <?php require 'data.php';?>
     <body>
         <h1>Line Plot</h1>
         <div id="line-plot"></div>
@@ -18,4 +18,15 @@
         
         <script src="index.js"></script>
     </body>
+    <script>
+        const data = <?php echo json_encode(dataPhp()) . ";"; ?>
+
+        var layout = {
+            height: 400,
+            width: 500
+        };
+
+        Plotly.newPlot('pie-chart', data, layout);
+
+    </script>
 </html>
