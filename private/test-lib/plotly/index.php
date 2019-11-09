@@ -15,5 +15,7 @@
 
         <h1>Pie Chart</h1>
         <div id="pie-chart"></div>
+        
+        <script src="index.js"></script>
     </body>
 </html>
