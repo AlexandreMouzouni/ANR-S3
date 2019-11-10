@@ -44,6 +44,8 @@
     ];
 
 alert(barchartdata.join(""));
+alert(data.join(""));
+
 
 
 
