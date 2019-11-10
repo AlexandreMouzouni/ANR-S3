@@ -38,13 +38,10 @@
     var barchartdata = [
     {
         x: data.map(d => d.annee),
-        y: data.map(d => d.nombre)
+        y: data.map(d => d.nombre),
         type: 'bar'
     }
     ];
-
-
-
 
         Plotly.newPlot('bar-chart', barchartdata);
     </script>
