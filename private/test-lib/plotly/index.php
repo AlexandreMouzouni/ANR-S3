@@ -35,7 +35,7 @@
       ?>
       const data = <?php echo json_encode($tableauDonnee) . ";"; ?>
 
-    var bar-chart-data = [
+    var barchartdata = [
     {
         x: data[0],
         y: data[1],
@@ -43,9 +43,10 @@
     }
     ];
 
+alert(barchartdata.join(""));
 
 
 
-        Plotly.newPlot('bar-chart', bar-chart-data);
+        Plotly.newPlot('bar-chart', barchartdata);
     </script>
 </html>
