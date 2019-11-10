@@ -46,6 +46,6 @@
 
 
 
-        Plotly.newPlot('bar-chart', data);
+        Plotly.newPlot('bar-chart-data', data);
     </script>
 </html>
