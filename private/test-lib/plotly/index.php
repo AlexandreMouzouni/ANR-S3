@@ -9,7 +9,7 @@
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body>
-        <h1>Line Chartt</h1>
+        <h1>Line Chart</h1>
         <div id="line-chart"></div>
 
         <h1>Bar Chart</h1>
@@ -46,6 +46,6 @@
 
 
 
-        Plotly.newPlot('bar-chart-data', data);
+        Plotly.newPlot('bar-chart', bar-chart-data);
     </script>
 </html>
