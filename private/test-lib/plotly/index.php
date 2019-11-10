@@ -35,6 +35,14 @@
       ?>
       const data = <?php echo json_encode($tableauDonnee) . ";"; ?>
 
+    var trace1 = {
+        x: data.map(d => d.annee),
+        y: data.map(d => d.nombre),
+        type: 'scatter'
+    };
+    var linechartdata = [trace1];
+    Plotly.newPlot('line-chart', linechartdata);
+
     var barchartdata = [
     {
         x: data.map(d => d.annee),
@@ -42,7 +50,17 @@
         type: 'bar'
     }
     ];
+    Plotly.newPlot('bar-chart', barchartdata);
 
-        Plotly.newPlot('bar-chart', barchartdata);
+    var piechartdata = [{
+        values: data.map(d => d.annee),
+        labels: data.map(d => d.nombre),
+        type: 'pie'
+        }];
+    var layout = {
+        height: 400,
+        width: 500
+    };
+    Plotly.newPlot('pie-chart', piechartdata, layout);
     </script>
 </html>
