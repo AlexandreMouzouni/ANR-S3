@@ -9,10 +9,10 @@
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body>
-        <h1>Line Plot</h1>
-        <div id="line-plot"></div>
+        <h1>Line Chartt</h1>
+        <div id="line-chart"></div>
 
-        <h1>Bar Charts</h1>
+        <h1>Bar Chart</h1>
         <div id="bar-chart"></div>
 
         <h1>Pie Chart</h1>
@@ -35,11 +35,17 @@
       ?>
       const data = <?php echo json_encode($tableauDonnee) . ";"; ?>
 
-        var layout = {
-            height: 400,
-            width: 500
-        };
+    var bar-chart-data = [
+    {
+        x: data[0],
+        y: data[1],
+        type: 'bar'
+    }
+    ];
 
-        Plotly.newPlot('pie-chart', data, layout);
+
+
+
+        Plotly.newPlot('bar-chart', data);
     </script>
 </html>
