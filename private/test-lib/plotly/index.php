@@ -4,7 +4,6 @@
         <meta charset="utf-8"/>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
-    <?php require 'data.php';?>
     <body>
         <h1>Line Plot</h1>
         <div id="line-plot"></div>
