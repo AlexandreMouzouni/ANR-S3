@@ -37,14 +37,11 @@
 
     var barchartdata = [
     {
-        x: data[0],
-        y: data[1],
+        x: data.map(d => d.annee),
+        y: data.map(d => d.nombre)
         type: 'bar'
     }
     ];
-
-alert(barchartdata.join(""));
-alert(data.join(""));
 
 
 
