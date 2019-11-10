@@ -1,7 +1,7 @@
 <?php  
-require_once '../../../Model.php';
-$model = Model::get_model();
-
+	require_once '../../../Model.php';
+	$model = Model::get_model();
+    
 function dataPhp() {
     $anneeMinMax = $model->getNbAnnee();
     $anneeMin = $anneeMinMax['dateMin'];

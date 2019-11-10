@@ -1,3 +1,7 @@
+<?php
+    require 'data.php';
+?>
+
 <html>
     <head>
         <title>Test Plotly</title>
@@ -7,7 +11,7 @@
     <body>
         <h1>Line Plot</h1>
         <div id="line-plot"></div>
-        
+
         <h1>Bar Charts</h1>
         <div id="bar-chart"></div>
 
