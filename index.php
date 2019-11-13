@@ -8,7 +8,7 @@
 <head>
 	<meta charset="utf-8">
 	<script src="https://d3js.org/d3.v5.js"></script>
-	<title>Dataviz</title>
+	<title>Datavis</title>
 </head>
 <body>
 	<h1>Dataviz</h1>
