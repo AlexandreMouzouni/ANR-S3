@@ -49,7 +49,7 @@
 
 		echo "<br><p> Tableau de donnee: </p>";?>
 		<script type="module">
-import graph from "./graphjs";
+import graph from "./graph.js";
 var data = <?php echo json_encode($tableauDonnee) . ";"; ?>
 graph(data);
 		</script>
