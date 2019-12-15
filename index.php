@@ -8,13 +8,14 @@
 <head>
 	<meta charset="utf-8">
 	<script src="https://d3js.org/d3.v5.js"></script>
-	<title>Dataviz</title>
+	<title>Datavis</title>
 </head>
 <body>
 	<h1>Dataviz</h1>
 	 
 	Liens utiles :
 	<ul>
+		<li>Prototype : <a href="web">vps730707.ovh.net/web</a></li>
 	    <li>Accès au site web originel : <a href="web">vps730707.ovh.net/web</a></li>
         <li>Accès a notre partie privée : <a href="private/test-lib/resultats.html">vps730707.ovh.net/private/test-lib</a></li>
 	</ul>
@@ -49,7 +50,7 @@
 
 		echo "<br><p> Tableau de donnee: </p>";?>
 		<script type="module">
-import graph from "./graphjs";
+import graph from "./graphe.js";
 var data = <?php echo json_encode($tableauDonnee) . ";"; ?>
 graph(data);
 		</script>
