@@ -1,14 +1,15 @@
 <?php
+
 require_once "Utils/functions.php"; //Pour avoir la fonction e()
 require_once "Model/Model.php"; //Inclusion du modèle
 require_once "Controller/Controller.php"; //Inclusion de la classe Controller
 
-$controllers = ["search"]; //Liste des contrôleurs -- A RENSEIGNER
-$controller_default = "search"; //Nom du contrôleur par défaut-- A RENSEIGNER
+$controllers = ['search']; //Liste des contrôleurs -- A RENSEIGNER
+$controller_default = 'search'; //Nom du contrôleur par défaut-- A RENSEIGNER
 
 //On teste si le paramètre controller existe et correspond à un contrôleur de la liste $controllers
-if (isset($_GET['c']) and in_array($_GET['c'], $controllers)) {
-    $nom_controller = $_GET['c'];
+if (isset($_GET['controller']) and in_array($_GET['controller'], $controllers)) {
+    $nom_controller = $_GET['controller'];
 } else {
     $nom_controller = $controller_default;
 }
@@ -17,7 +18,7 @@ if (isset($_GET['c']) and in_array($_GET['c'], $controllers)) {
 $nom_classe = 'Controller_' . $nom_controller;
 
 //On détermine le nom du fichier contenant la définition du contrôleur
-$nom_fichier = 'Controller/' .  $nom_classe . '.php';
+$nom_fichier = 'Controllers/' .  $nom_classe . '.php';
 
 //Si le fichier existe
 if (file_exists($nom_fichier)) {
@@ -27,5 +28,3 @@ if (file_exists($nom_fichier)) {
 } else {
     exit("Error 404: not found!");
 }
-
-?>
