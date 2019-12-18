@@ -21,7 +21,7 @@ class Model{
 
 	public function getAllAuteurNbFiche() {
 		$sql = 
-'SELECT auteurFiche as nomAuteur, count(*) as nombreFiches
+'SELECT auteurFiche as x, count(*) as y
 from oeuvres 
 where auteurFiche != ""
 group by auteurFiche
@@ -35,10 +35,10 @@ order by nombreFiches desc;
 
 	public function getAllAnneeNbOeuvres() {
 		$sql = 
-'SELECT anneePE as annee, count(*) as nombreOeuvres
+'SELECT anneePE as x, count(*) as y
 from oeuvres 
 group by anneePE
-order by nombreOeuvres desc;
+order by anneePE asc;
 		';
 		$req = $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
 		$result = $req->fetchAll();

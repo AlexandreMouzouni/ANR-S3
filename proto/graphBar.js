@@ -1,17 +1,17 @@
 export default function graph(data) {
     console.log(data)
-    const nomsAuteurs = data.map(d => d.nomAuteur)
-    const nombreOccurences = data.map(d => d.nombreFiches)
-    console.log(nomsAuteurs)
-    console.log(nombreOccurences)
+    const xaxis = data.map(d => d.x)
+    const yaxis = data.map(d => d.y)
+    console.log(xaxis)
+    console.log(yaxis)
 
     const graphData = [
         {
-            x: nomsAuteurs,
-            y: nombreOccurences,
-            mode: 'lines+markers',
+            x: xaxis,
+            y: yaxis,
+            mode: 'lines',
             type: 'line',
-            text: nomsAuteurs,
+            text: yaxis,
         }
     ]
 

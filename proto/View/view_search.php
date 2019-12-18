@@ -4,10 +4,10 @@
 <p> Pour voir une requete:</p>
 <ul>
     <li>
-    <a href="?c=search&a=results&g=getAllAuteurNbFiche">Nombre de fiches de la bdd par auteur</a>
+    <a href="?c=search&a=results&g=auteurs">Nombre de fiches de la bdd par auteur</a>
     </li>
     <li>
-    <a href="?c=search&a=results&g=getAllAnneeNbOeuvres">Nombre d'oeuvres par année</a>
+    <a href="?c=search&a=results&g=oeuvres">Nombre d'oeuvres par année</a>
     </li>
 </ul>
 
