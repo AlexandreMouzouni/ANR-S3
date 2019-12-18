@@ -25,7 +25,7 @@ class Model{
 from oeuvres 
 where auteurFiche != ""
 group by auteurFiche
-order by nombreFiches desc;
+order by y desc;
 		';
 		$req = $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
 		$result = $req->fetchAll();
