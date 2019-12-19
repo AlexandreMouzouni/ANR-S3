@@ -12,6 +12,7 @@
 </head>
 <body>
 	<h1>Dataviz</h1>
+	<p>wesh soumeya :)</p>
 	 
 	Liens utiles :
 	<ul>
