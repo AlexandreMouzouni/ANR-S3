@@ -7,8 +7,14 @@ class Controller_search extends Controller{
      * Une table pour les bar graph.
      */
     private $table_bar = [
-        'auteurs' => 'getAllAuteurNbFiche',
-        'oeuvres' => 'getAllAnneeNbOeuvres'
+        'auteurFiche' => 
+            ['type_x' => 'auteurFiche',
+            'order' => 'desc'],
+        'oeuvres' => 
+            ['type_x' => 'anneePE'],
+        'auteur' => 
+            ['type_x' => 'auteurNom',
+            'order' => 'desc'],
     ];
 
     public function action_search() {
@@ -29,8 +35,8 @@ class Controller_search extends Controller{
 
         // Choix de la bonne méthode du modèle
         $m = Model::getModel();
-        $nom_methode = $this->table_bar[$type_x];
-        $json_req = $m->$nom_methode();
+        $plist = $this->table_bar[$type_x]; // Liste de propriétés a passer pour changer le comportement
+        $json_req = $m->graphBar($plist);
 
         $this->render('results', [
             // Type de la donnée x
