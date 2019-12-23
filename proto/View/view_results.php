@@ -11,7 +11,9 @@
 	<script type="module">
         import graph from "./graphBar.js";
 		var json_req = <?php echo json_encode($json_req) ?>;
-		graph(json_req)
+		var metadata = {};
+		metadata['title'] = <?php echo json_encode($title) ?>;
+		graph(json_req, metadata)
 	</script>
 	<div id="graph"></div>
 </body>

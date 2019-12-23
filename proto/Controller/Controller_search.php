@@ -9,11 +9,14 @@ class Controller_search extends Controller{
     private $table_bar = [
         'auteurFiche' => 
             ['type_x' => 'auteurFiche',
+             'title' => "Nombres d'auteurs de fiche par année",
             'order' => 'desc'],
         'oeuvres' => 
-            ['type_x' => 'anneePE'],
+            ['type_x' => 'anneePE',
+            'title' => "Nombre d'oeuvres par année"],
         'auteur' => 
             ['type_x' => 'auteurNom',
+            'title' => "Nombre d'oeuvres par auteur",
             'order' => 'desc'],
     ];
 
@@ -39,8 +42,8 @@ class Controller_search extends Controller{
         $json_req = $m->graphBar($plist);
 
         $this->render('results', [
-            // Type de la donnée x
-           'type_x' => $this->table_bar[$type_x],
+            // Titre du graphique
+           'title' => $plist['title'],
            'json_req' => $json_req
         ]);
     }

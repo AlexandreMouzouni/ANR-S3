@@ -1,4 +1,5 @@
-export default function graph(data) {
+// Metadata: titre...
+export default function graph(data, metadata) {
     console.log(data)
     const xaxis = data.map(d => d.x)
     const yaxis = data.map(d => d.y)
@@ -16,7 +17,7 @@ export default function graph(data) {
     ]
 
     const layout = {
-        title: 'Nombre de fiches par auteur de fiche',
+        title: metadata['title'],
         xaxis: {
             tickangle: -45,
         },
