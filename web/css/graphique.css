@@ -1,0 +1,79 @@
+
+
+#titre-graphique {
+color: #d31d17;
+}
+
+#choix {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*
+#graphique-type1 {
+background-image: url("../images/graphique/chart.png");
+}
+}*/
+
+#titre {
+color: #d31d17;
+}
+
+
+div.boite-graphique {
+  text-align: center;
+  text-decoration: inherit;
+  border: 4px solid #d31d17;
+  border-radius: 3px;
+  margin: 10px 10px 10px 10px; /* haut | droit | bas | gauche */
+  /*background-image: url("../images/graphique/chart.png");*/
+  min-width: 25%;
+  min-height: 50%;
+  /*max-width: 25%;
+  max-height: 25%;*/
+  background-color: rgb(255, 255, 255, 0.4);
+
+}
+
+div.boite-graphique:hover {
+  background-color: rgba(209, 205, 212, 0.4);
+  cursor: pointer;
+
+}
+
+#generation-graphique {
+  margin: 10px 10px 10px 10px; /* haut | droit | bas | gauche */
+}
+
+
+div.selected {
+  /*background-color: red;*/
+  background-color: rgba(101, 99, 103, 0.4);
+}
+
+div.selected:hover {
+  background-color: rgba(101, 99, 103, 0.5);
+}
+
+h2#titre{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: #D31D17;
+    font-weight: bold;
+    font-size:30pt;
+}
+
+img#img-graphique {
+  width: 63px; /*  width: 30%;*/
+  height:auto;
+/*  max-width: 80px;
+  max-height: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;*/
+  margin: 0 2% 2% 2%;
+}
+
+div.blocked {
+  cursor: not-allowed;
+}
