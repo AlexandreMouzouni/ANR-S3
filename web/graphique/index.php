@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0057)https://anticipation-dev.huma-num.fr/?bRechercheAvancee=1 -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2273,6 +2272,25 @@
   $('#Patience').modal('hide');
 </script>
 
+<!-- Pondération -->
+<label id="information" title="Activer la pondération permet de générer des graphiques avec des données ajustées en fonction du nombre d'oeuvres au total sur la période et pas seulement celle représentée dans la base de donnée.">
+<input id="ponderation" type="checkbox" name="ponderation" value="true" checked> <span id="underline">Activer la pondération ?</span></label>
+<!-- Fin pondération -->
+
+<!-- Sélection palette -->
+<label class="on-right" id="information"><span title="Choisir le style des graphiques" id="underline">Palettes de couleur du graphique</span>
+<select id="palette" name="palette">
+<?php
+include 'utils.php';
+$obj = loadConfig('./config.json');
+$nomPalettes = array_keys($obj["palette"]);
+foreach ($nomPalettes as $nom):?>
+  <option><?=$nom?></option>
+<?php endforeach;?>
+</select></label>
+<!-- Fin sélection palette -->
+
+
 
 <!-- Début espace graphique -->
 <div id="graphique">
@@ -2290,30 +2308,24 @@
         "Graphique 3" => ["graphique-type3", "chart"],
         "Graphique 4" => ["graphique-type4", "chart"],
         "Graphique 5" => ["graphique-type5", "chart"],
-        "Graphique 6" => ["graphique-type6", "chart"]
+        "Nuage de mots" => ["graphique-type6", "chart"]
       ];
 
       foreach($allCharts as $name => $chart):?>
         <div class="boite-graphique" id="<?=$chart[0]?>">
           <h4 id="titre-graphique"><?=$name?></h4>
-          <img id="img-graphique" src="../images/graphique/<?=$chart[1]?>.png"></img>
+          <img id="img-graphique" src="../images/graphique/<?=$chart[1]?>.svg"></img>
         </div>
       <?php endforeach; ?>
     </div>
-
   </div>
 
-
   <script src="../js/graphique.js"></script>
-
 
   <a name="espace-graphique"></a>
   <div id="generation-graphique">
 
   </div>
-
-
-
 </div>
 
 
@@ -2321,35 +2333,11 @@
 
     <div class="bordure_bottom"></div>
     <br>
-
-
-
-
   </div>
-
-
-
 </div>
 <!--Fin du Contenu Scrollspy -->
-
-
-
-
 </div>
 <!-- FIN CONTENU DE LA FICHE -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 </div>
                 <!-- FIN DIV PRINCIPALE -->
