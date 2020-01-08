@@ -1,5 +1,3 @@
-
-
 #titre-graphique {
 color: #d31d17;
 }
@@ -11,16 +9,22 @@ color: #d31d17;
   justify-content: center;
 }
 
-/*
-#graphique-type1 {
-background-image: url("../images/graphique/chart.png");
+#information:hover {
+  cursor: help;
 }
-}*/
+
+#underline:hover {
+  text-decoration: underline;
+}
 
 #titre {
 color: #d31d17;
 }
 
+
+.on-right {
+  float: right;
+}
 
 div.boite-graphique {
   text-align: center;
@@ -47,9 +51,7 @@ div.boite-graphique:hover {
   margin: 10px 10px 10px 10px; /* haut | droit | bas | gauche */
 }
 
-
 div.selected {
-  /*background-color: red;*/
   background-color: rgba(101, 99, 103, 0.4);
 }
 
@@ -65,8 +67,10 @@ h2#titre{
 }
 
 img#img-graphique {
-  width: 63px; /*  width: 30%;*/
-  height:auto;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  height: auto;
 /*  max-width: 80px;
   max-height: 100px;
   padding-top: 5px;
