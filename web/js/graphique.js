@@ -1,10 +1,49 @@
 var allCharts = ["graphique-type1", "graphique-type2", "graphique-type3", "graphique-type4", "graphique-type5", "graphique-type6"];
+var selectedChart = null;
+
+var requestURL = './config.json';
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+request.onload = function() {
+  window.config = request.response;
+}
+
+var allPalettes = window.config;
 addAllEventListener();
 
+function addFormPalette(txt) {
+  var select = document.getElementById('palette');
+  select.options[select.options.length] = new Option(txt, 'value');
+}
+
+function changeChartPalette() {
+  var currentPalette = getFormPalette();
+  if (selectedChart != null) {
+    generateChosenChart(selectedChart)
+  }
+}
+
+function getFormPalette() {
+  return document.getElementById("palette").value;
+}
+
 function addAllEventListener() {
+  addChartEventListener();
+  addPaletteEventListener();
+}
+
+function addChartEventListener() {
+  // Rajoute les écouteurs sur toutes les boites des graphiques
   for (var i = 0; i < allCharts.length; i++) {
     document.getElementById(allCharts[i]).addEventListener('click', function(e){processChart(e);});
   }
+}
+
+function addPaletteEventListener() {
+  // Rajoute le choix pour les palettes
+  document.getElementById("palette").addEventListener('change', function(e){changeChartPalette();});
 }
 
 function generateChosenChart(char) {
@@ -20,6 +59,11 @@ function generateChosenChart(char) {
   }
 }
 
+function getState(id) {
+  return document.getElementById(id).value == "true";
+}
+
+
 function processChart(e) {
   var charType = e.currentTarget.id;
   updateSelectedChart(charType);
@@ -30,7 +74,7 @@ function processChart(e) {
 }
 
 function selectChart(chart) {
-  //alert(chart);
+  selectedChart = chart;
   document.getElementById(chart).classList.add("selected")
 }
 
@@ -39,7 +83,7 @@ function unselectChart(chart) {
 }
 
 function unselectAllCharts() {
-  //pour tous les chat on applique deselectChart
+  //pour tous les chart on applique deselectChart
   for (i=0; i < allCharts.length; i++) {
     unselectChart(allCharts[i]);
   }
@@ -98,14 +142,23 @@ function getLayoutZoomState(stateX, stateY) { // state is a boolean, return an a
   };
 }
 
+function getLayoutColors() {
+  return window.config.palette[getFormPalette()];
+}
+
 function getLayout() {
   var layout = getLayoutZoomState(true, true);
+  var color = {colorway: getLayoutColors()};
+  var layout = Object.assign(layout, color);
   return layout;
 }
 
 // En dessous c'est pas moi qui est fait :)
 
 function makeplot() {
+
+
+
   var trace1 = {
     x: ['giraffes', 'orangutans', 'monkeys'],
     y: [20, 14, 23],
