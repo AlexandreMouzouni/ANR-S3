@@ -1,21 +1,49 @@
 var allCharts = ["graphique-type1", "graphique-type2", "graphique-type3", "graphique-type4", "graphique-type5", "graphique-type6"];
 var selectedChart = null;
 
-var requestURL = './config.json';
-var request = new XMLHttpRequest();
-request.open('GET', requestURL);
-request.responseType = 'json';
-request.send();
-request.onload = function() {
-  window.config = request.response;
+addAllEventListener();
+iniPalette();
+var allPalettes = window.config;
+popoverDismiss();
+
+
+function iniPalette() {
+  var requestURL = './config.json';
+  var request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function() {
+    window.config = request.response;
+  }
 }
 
-var allPalettes = window.config;
-addAllEventListener();
+function popoverDismiss() {
+  $('.popover-dismiss').popover({
+    trigger: 'focus'
+  })
+}
 
 function addFormPalette(txt) {
   var select = document.getElementById('palette');
   select.options[select.options.length] = new Option(txt, 'value');
+}
+
+
+function checkPertinence() {
+// Fonction à faire en regardant les résultats de la requête SQL
+/* if respaspertinent {
+  displayInfoDiv();
+}*/
+}
+
+function displayInfoDiv() {
+  var x = document.getElementById("display");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
 }
 
 function changeChartPalette() {
@@ -41,17 +69,32 @@ function addChartEventListener() {
   }
 }
 
+// Rajoute le choix pour les palettes
 function addPaletteEventListener() {
-  // Rajoute le choix pour les palettes
   document.getElementById("palette").addEventListener('change', function(e){changeChartPalette();});
 }
 
 function generateChosenChart(char) {
+  // Il faut intégrer lors de l'assemblage le swap du display info si la requête donne peu de résultats
+  // checkPertinence();
+
   switch(char) {
     case allCharts[0]:
       makeplot();
       break;
     case allCharts[1]:
+      makeplot2();
+      break;
+    case allCharts[2]:
+      makeplot2();
+      break;
+    case allCharts[3]:
+      makeplot2();
+      break;
+    case allCharts[4]:
+      makeplot2();
+      break;
+    case allCharts[5]:
       makeplot2();
       break;
     default:
@@ -153,13 +196,12 @@ function getLayout() {
   return layout;
 }
 
-// En dessous c'est pas moi qui est fait :)
+//***************************************
+// Function de test pour l'interface
+//***************************************
 
 function makeplot() {
-
-
-
-  var trace1 = {
+var trace1 = {
     x: ['giraffes', 'orangutans', 'monkeys'],
     y: [20, 14, 23],
     name: 'SF Zoo',
@@ -180,12 +222,10 @@ function makeplot() {
   var layout = Object.assign(layoutA, layoutB);
 
   Plotly.newPlot('generation-graphique', data, layout, barInit());
-//Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/2014_apple_stock.csv", function(data){ processData(data) } );
 
 };
 
 function makeplot2() {
-    //Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/2014_apple_stock.csv", function(data){ processData2(data) } );
     var data = [
       {
         x: ['giraffes', 'orangutans', 'monkeys'],
@@ -193,76 +233,6 @@ function makeplot2() {
         type: 'bar'
       }
     ];
-
-
     var layout = getLayout();
-
     Plotly.newPlot('generation-graphique', data, layout, barInit());
 };
-
-/*
-function processData(allRows) {
-
-    console.log(allRows);
-    var x = [], y = [], standard_deviation = [];
-
-    for (var i=0; i<allRows.length; i++) {
-        row = allRows[i];
-        x.push( row['AAPL_x'] );
-        y.push( row['AAPL_y'] );
-    }
-    console.log( 'X',x, 'Y',y, 'SD',standard_deviation );
-    makePlotly( x, y, standard_deviation );
-}
-
-function makePlotly( x, y, standard_deviation ){
-    var plotDiv = document.getElementById("plot");
-    var traces = [{
-        x: x,
-        y: y
-    }];
-
-    var layout = getLayout();
-
-    Plotly.newPlot('generation-graphique', traces, layout,
-        {title: 'Plotting CSV data from AJAX call'});
-};
-
-function processData2(allRows) {
-
-    console.log(allRows);
-    var x = [], y = [], standard_deviation = [];
-
-    for (var i=0; i<allRows.length; i++) {
-        row = allRows[i];
-        x.push( row['AAPL_x'] );
-        y.push( row['AAPL_y'] );
-    }
-    console.log( 'X',x, 'Y',y, 'SD',standard_deviation );
-    makePlotly2( x, y, standard_deviation );
-}
-
-function makePlotly2( x, y, standard_deviation ){
-    var plotDiv = document.getElementById("plot");
-    var traces = [{
-        x: x,
-        y: y
-    }];
-
-    var layout = getLayout();
-
-
-    Plotly.newPlot('generation-graphique', traces, layout,
-        barInit());
-};*/
-
-
-
-
-//var newSaveAsButtons = createSaveAsButton("Télécharger le graphique en fichier SVG", Plotly.Icons.camera, 'svg');
-//var BarButtonsNames = ['toImage', 'select2d', 'lasso2d', 'toggleSpikelines', 'hoverClosestCartesian', 'hoverCompareCartesian'];
-
-
-
-
-//Plotly.newPlot('myDiv', data, layout, barInit());

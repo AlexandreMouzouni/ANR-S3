@@ -13,6 +13,16 @@ color: #d31d17;
   cursor: help;
 }
 
+img.guide {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
 #underline:hover {
   text-decoration: underline;
 }
@@ -21,6 +31,10 @@ color: #d31d17;
 color: #d31d17;
 }
 
+
+div.alert-RechAvance {
+  margin: 10px 0px 20px 0px; /* haut | droit | bas | gauche */
+}
 
 .on-right {
   float: right;
@@ -44,7 +58,26 @@ div.boite-graphique {
 div.boite-graphique:hover {
   background-color: rgba(209, 205, 212, 0.4);
   cursor: pointer;
+}
 
+.btn-dark-red {
+  background-color: #d31d17;
+}
+
+.btn-dark-red:hover {
+  background-color: #b81a14;
+}
+
+h4 {
+  color: #d31d17;
+}
+
+div#inline {
+  background-color: red;
+}
+
+div.aide {
+  background-color: red;
 }
 
 #generation-graphique {
