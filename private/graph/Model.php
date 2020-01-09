@@ -19,69 +19,52 @@
 			return self::$instance;
 		}
 
-		/*
-			return le nombre de oeuvress
-		*/
-		public function getNbOeuvre(){
-			$sql= 'SELECT COUNT(*) AS nbOeuvre FROM oeuvres';
-			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
-			$res= $req->fetch();
-			$nbOeuvre= $res['nbOeuvre'];
-			$req->closeCursor();
-			return $nbOeuvre;
-		}
 
-		/*
-			return le nombre de oeuvres a une annee
-		*/
-		public function getNbOeuvreparAnnee($annee){
-			$sql= 'SELECT COUNT(*) as nbOeuvre FROM `oeuvres` WHERE anneePE = :anneePub';
-			$req= $this->bdd->prepare($sql) or die(print_r($bdd->errorInfo()));
-			$req->execute(array(
-				':anneePub' => htmlspecialchars($annee),
-			));
-			$res= $req->fetch();
-			$nbOeuvre= $res['nbOeuvre'];
-			$req->closeCursor();
-			return $nbOeuvre;
-		}
 
-		/*
-			return les date min et max
-		*/
-		public function getNbAnnee(){
-			$sql= 'SELECT MIN(anneePE) as dateMin, MAX(anneePE) as dateMax from oeuvres WHERE anneePE!=""';
-			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
-			$res= $req->fetch();
-			$req->closeCursor();
-			return $res;
-		}
-
-		public function getNbPublicationsPeriodes($anneeD, $anneeF){
-			$sql= 'SELECT COUNT(*) as nbOeuvre FROM `oeuvres` WHERE anneePE BETWEEN :anneeD AND :anneeF';
-			$req= $this->bdd->prepare($sql) or die(print_r($bdd->errorInfo()));
-			$req->execute(array(
-				':anneeD' => htmlspecialchars($anneeD),
-				':anneeF' => htmlspecialchars($anneeF)
-			));
-			$res= $req->fetch();
-			$nbOeuvre= $res['nbOeuvre'];
-			$req->closeCursor();
-			return $nbOeuvre;
-		}
-
-//		ajout
-		public function getAnneeTousOeuvre(){
-			$sql= 'SELECT anneePE as annee from oeuvres WHERE anneePE IS NOT NULL ORDER BY anneePE';
+		public function getListesAnnesTrad(){
+			$sql= 'SELECT dDate as annee from traductions ORDER BY dDate';
 			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
 			$res= $req->fetchALL();
 			$req->closeCursor();
 			return $res;
 		}
 
+		public function getNbTrad($annee){
+			$sql= 'SELECT COUNT(*) as nbTrad FROM traductions WHERE dDate = :annee';
+			$req= $this->bdd->prepare($sql) or die(print_r($bdd->errorInfo()));
+			$req->execute(array(
+				':annee' => htmlspecialchars($annee),
+			));
+			$res= $req->fetch();
+			$nbOeuvre= $res['nbTrad'];
+			$req->closeCursor();
+			return $nbOeuvre;
+		}
 
+		public function getListesOeuvreAdaptee(){
+			$sql= 'SELECT DISTINCT titrePE FROM adaptations INNER JOIN oeuvres on adaptations.idOeuvre = oeuvres.idOeuvre ORDER BY anneePE ASC';
+			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
+			$res= $req->fetchALL();
+			$req->closeCursor();
+			return $res;
+		}
 
+		public function getNbAdaptations($titre){
+			$sql= 'SELECT COUNT(*) as nbAdapation FROM adaptations WHERE idOeuvre in (SELECT idOeuvre from oeuvres WHERE titrePE = :titre)';
+			$req= $this->bdd->prepare($sql) or die(print_r($bdd->errorInfo()));
+			$req->execute(array(
+				':titre' => htmlspecialchars($titre),
+			));
+			$res= $req->fetch();
+			$nbOeuvre= $res['nbAdapation'];
+			$req->closeCursor();
+			return $nbOeuvre;
+		}
 
+/*
+SELECT COUNT(*) as nbAdapation FROM adaptations
+WHERE idOeuvre = (SELECT idOeuvre from oeuvres WHERE titrePE = '')
+*/
 
 	}
 
