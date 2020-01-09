@@ -6,7 +6,7 @@
 
 		private function __construct(){
 			try {
-				$this->bdd = new PDO('mysql:host=localhost;dbname=dataviz;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC));
+				$this->bdd = new PDO('mysql:host=localhost;dbname=anticipation;charset=utf8', 'php', 'jesuistresencolere', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC));
 	//			echo '<h3> Connexion Reussi à la Base </h3>';
 			}
 			catch (Exception $e) {
