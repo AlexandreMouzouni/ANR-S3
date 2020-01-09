@@ -186,7 +186,11 @@
 
                             <div class="metadata_fiche" style="text-align: unset;">
     <div class="bordure_top"></div>
-    <h1 class="name_book text-center">Génération de graphiques</h1>
+
+    <div class="inline">
+      <h1 class="name_book text-center">Le récit d'anticipation en graphique</h1>
+    </div>
+
 
 <form id="formRechAvance" class="form-horizontal">
   <div class="panel panel-anticipation">
@@ -198,8 +202,8 @@
           <span id="idImgColpsRechAvanc" class="glyphicon glyphicon-chevron-up"></span> Formulaire de génération de graphiques
         </a>
       </h4>
-      </div><!-- /col-md-11 -->
 
+      </div><!-- /col-md-11 -->
 
       </div><!-- /row -->
     </div><!-- /panel-heading -->
@@ -2214,9 +2218,59 @@
   <div class="panel-footer">
     <div class="btn-group" role="group">
             <button id="btnRechAvanceReset" class="btn btn-default" type="reset">Réinitialiser</button>
-      <button id="btnRechAvanceSubmit" class="btn btn-danger">Choisir le graphique le plus pertinent</button>
+            <button id="btnRechAvanceSubmit" class="btn btn-danger">Choisir le graphique le plus pertinent</button>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#guideModal">
+              <span class="glyphicon glyphicon-question-sign"></span>
+
+            </button>
+
+
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="guideModal" tabindex="-1" role="dialog" aria-labelledby="guideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="guideModalLabel">Guide d'utilisation</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>Pour générer un graphique il faut d'abord remplir les champs de recherches souhaités
+            puis choisir le graphique souhaité en cliquant dessus.</div>
+            <img title="La barre du menu" class="guide" src="../images/graphique/exemple_barre_plot.ly.png"/>
+
+            <div>
+            Tous les graphiques à l'exception du graphe réseaux, dispose d'une barre visible en haut à droite du graphique généré offrant plusieurs fonctionnalité à l'utilisateur :</br>
+            <ul>
+                <li>Sauvegarder l'image en .png</li>
+                <li>Sauvegarder l'image en .svg</li>
+                <li>Sélection rectangulaire</li>
+                <li>Sélection lasso</li>
+                <li>Activer/désactiver les pics</li>
+                <li>Données les plus proches en survol</li>
+                <li>Comparaison entre données en survol</li>
+            </ul>
+          </div>
+
+          <div>
+            Pour le graphe réseaux, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-dark-red" data-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+<!-- rajouter des modaux si pas bon -->
 
 </div><!-- /panel -->
 
@@ -2273,12 +2327,12 @@
 </script>
 
 <!-- Pondération -->
-<label id="information" title="Activer la pondération permet de générer des graphiques avec des données ajustées en fonction du nombre d'oeuvres au total sur la période et pas seulement celle représentée dans la base de donnée.">
+<label id="information" data-toggle="tooltip" data-placement="bottom" title="Activer la pondération permet de générer des graphiques avec des données ajustées en fonction du nombre d'oeuvres au total sur la période et pas seulement celle représentée dans la base de donnée.">
 <input id="ponderation" type="checkbox" name="ponderation" value="true" checked> <span id="underline">Activer la pondération ?</span></label>
 <!-- Fin pondération -->
 
 <!-- Sélection palette -->
-<label class="on-right" id="information"><span title="Choisir le style des graphiques" id="underline">Palettes de couleur du graphique</span>
+<label class="on-right" id="information"><span data-toggle="tooltip" data-placement="bottom" title="Choisir le style des graphiques" id="underline">Palettes de couleur du graphique</span>
 <select id="palette" name="palette">
 <?php
 include 'utils.php';
@@ -2303,12 +2357,13 @@ foreach ($nomPalettes as $nom):?>
       <?php // à voir https://stackoverflow.com/questions/5164404/json-decode-to-array
       $allCharts = [
         // Name => [id, name of the file without the extention]
-        "Histogramme" => ["graphique-type1", "chart"],
-        "Graphique 2" => ["graphique-type2", "piechart"],
-        "Graphique 3" => ["graphique-type3", "chart"],
-        "Graphique 4" => ["graphique-type4", "chart"],
-        "Graphique 5" => ["graphique-type5", "chart"],
-        "Nuage de mots" => ["graphique-type6", "chart"]
+        "Diagramme à barres" => ["graphique-type1", "diagramme_a_barres"],
+        "Circulaire" => ["graphique-type2", "circulaire"],
+        "Lignes" => ["graphique-type3", "lignes"],
+        "Radar" => ["graphique-type4", "radar"],
+        "Nuage de mots" => ["graphique-type5", "nuage_de_mots"],
+        "Réseaux" => ["graphique-type6", "reseaux"]//,
+        //"Nuage de mots" => ["graphique-type6", "chart"]
       ];
 
       foreach($allCharts as $name => $chart):?>
@@ -2318,6 +2373,10 @@ foreach ($nomPalettes as $nom):?>
         </div>
       <?php endforeach; ?>
     </div>
+  </div>
+
+  <div id="display" style="display: none" class="alert alert-info alert-RechAvance">
+    <strong>Information :</strong> Au vue du nombre d'oeuvres comprises dans le graphique généré, il serait peut-être plus pertinent d'effectuer une <a href="../?bRechercheAvancee=1" class="font-weight-bold">recherche avancée</a>.
   </div>
 
   <script src="../js/graphique.js"></script>
