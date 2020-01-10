@@ -28,12 +28,12 @@
       const data = <?php echo json_encode($tableauDonnee) . ";"; ?>
 
 var dates = donnee.map((d) => d.annee)
-  var nombresPub = donnee.map((d) => d.nombre)
+  var publication = donnee.map((d) => d.nombre)
   var trace1 = {
     type: "scatter",
     mode: "markers",
-    x: "x",
-    y: "y",
+    x: ,
+    y: ,
     marker: {
       color: 'rgba(165, 196, 50, 0.5)',
       line: {
