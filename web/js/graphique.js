@@ -83,7 +83,8 @@ function generateChosenChart(char) {
       makeplot();
       break;
     case allCharts[1]:
-      makeplot2();
+      makeCirculaire();
+//      makeplot2();
       break;
     case allCharts[2]:
       makeplot2();
@@ -235,4 +236,23 @@ function makeplot2() {
     ];
     var layout = getLayout();
     Plotly.newPlot('generation-graphique', data, layout, barInit());
+};
+
+
+
+/* ajout*/
+
+function makeCirculaire() {
+    var data = [{
+      values: [19, 26, 55],
+      labels: ['Residential', 'Non-Residential', 'Utility'],
+      type: 'pie'
+    }];
+
+    var layout = {
+      height: 400,
+      width: 500
+    };
+
+    Plotly.newPlot('generation-graphique', data, layout);
 };
