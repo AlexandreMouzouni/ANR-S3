@@ -435,7 +435,7 @@
         </script>
 
     <div class="form-group">
-      <label class="col-md-2 control-label">Désignations génériques</label>
+      <label class="col-md-2 control-label">Support de publication</label>
       <div class="col-md-10">
         <div class="input-group">
           <input type="text" class="form-control" id="txtListeSupportPub-0" name="support" placeholder="Support de publication">
