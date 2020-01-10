@@ -38,7 +38,7 @@
         width: 1,
       },
       symbol: 'circle',
-      size: 8,
+      size: 12,
     }
   };
 
