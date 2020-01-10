@@ -49,7 +49,7 @@ var layout = {
   showlegend: false,
 };
 
-Plotly.newPlot('container', data, layout);
+Plotly.newPlot('container', donnees, layout);
 
   </script>
 </body>
