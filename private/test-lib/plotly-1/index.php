@@ -42,10 +42,10 @@
     }
   };
 
-var data = [trace1];
+var donnees = [trace1];
 
 var layout = {
-  title: 'Evolution du nombre de traductions',
+  title: 'Evolution du nombre de publications',
   showlegend: false,
 };
 
