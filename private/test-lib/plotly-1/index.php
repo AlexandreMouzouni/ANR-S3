@@ -38,7 +38,7 @@
         width: 1,
       },
       symbol: 'circle',
-      size: 12,
+      size:  data.map(d => d.nombre),
     }
   };
 
