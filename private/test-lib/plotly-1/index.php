@@ -27,3 +27,33 @@
       ?>
       const data = <?php echo json_encode($tableauDonnee) . ";"; ?>
 
+var dates = donnee.map((d) => d.annee)
+  var nombresPub = donnee.map((d) => d.nombre)
+  var trace1 = {
+    type: "scatter",
+    mode: "markers",
+    x: "x",
+    y: "y",
+    marker: {
+      color: 'rgba(165, 196, 50, 0.5)',
+      line: {
+        color: 'rgba(165, 196, 50, 1)',
+        width: 1,
+      },
+      symbol: 'circle',
+      size: 8,
+    }
+  };
+
+var data = [trace1];
+
+var layout = {
+  title: 'Evolution du nombre de traductions',
+  showlegend: false,
+};
+
+Plotly.newPlot('container', data, layout);
+
+  </script>
+</body>
+</html>
