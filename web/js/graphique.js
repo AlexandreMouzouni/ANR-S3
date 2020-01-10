@@ -84,7 +84,6 @@ function generateChosenChart(char) {
       break;
     case allCharts[1]:
       makeCirculaire();
-//      makeplot2();
       break;
     case allCharts[2]:
       makeplot2();
@@ -249,10 +248,8 @@ function makeCirculaire() {
       type: 'pie'
     }];
 
-    var layout = {
-      height: 400,
-      width: 500
-    };
+    var layout = getLayout();
 
-    Plotly.newPlot('generation-graphique', data, layout);
+
+    Plotly.newPlot('generation-graphique', data, layout, barInit());
 };
