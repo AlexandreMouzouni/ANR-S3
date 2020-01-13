@@ -268,7 +268,7 @@ function makebar(donnes) {
         }
     ]
 
-    var graphData = [donneesBar];
+    var graphData = donneesBar;
     console.log(graphData);
 
     var layoutA = {barmode: 'group'};
