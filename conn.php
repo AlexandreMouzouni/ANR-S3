@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>jQuery post form data using .ajax() method by codeofaninja.com</title>
+        <title>BDD request for Dataviz</title>
 
     </head>
 <body>
