@@ -14,7 +14,7 @@ class Connexion extends mysqli  {
 
   public static function getBD() {
     if(self::$instance === null){
-      self::$instance = new OConnexion();
+      self::$instance = new Connexion();
       if (self::$instance->connect_errno)
         throw new Exception('<pre>'.__FILE__."\r\n".__LINE__."\r\n".__METHOD__."\r\n".self::$instance->connect_error.'</pre>');
       if (self::$instance->query("SET NAMES 'utf8'") === false)

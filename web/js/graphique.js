@@ -1,4 +1,10 @@
-var allCharts = ["graphique-type1", "graphique-type2", "graphique-type3", "graphique-type4", "graphique-type5", "graphique-type6"];
+var allCharts = [
+  "graphique-type1", 
+  "graphique-type2", 
+  "graphique-type3", 
+  "graphique-type4", 
+  "graphique-type5", 
+  "graphique-type6"];
 var selectedChart = null;
 
 addAllEventListener();
@@ -80,7 +86,7 @@ function generateChosenChart(char) {
 
   switch(char) {
     case allCharts[0]:
-      makeplot();
+      makebar();
       break;
     case allCharts[1]:
       makeCirculaire();
@@ -200,7 +206,76 @@ function getLayout() {
 // Function de test pour l'interface
 //***************************************
 
-function makeplot() {
+function makebar(donnes) {
+  /* TODO: Enlever data et remplacer avec le data recup en Ajax
+  */
+  var donnes = [
+    {"idOeuvre": 72},
+    {"idOeuvre": 126},
+    {"idOeuvre": 473},
+    {"idOeuvre": 179},
+    {"idOeuvre": 450},
+    {"idOeuvre": 217},
+    {"idOeuvre": 92},
+    {"idOeuvre": 219},
+    {"idOeuvre": 70},
+    {"idOeuvre": 274},
+    {"idOeuvre": 251},
+    {"idOeuvre": 369},
+    {"idOeuvre": 364},
+    {"idOeuvre": 136},
+    {"idOeuvre": 76},
+    {"idOeuvre": 233},
+    {"idOeuvre": 357},
+    {"idOeuvre": 402},
+    {"idOeuvre": 43},
+    {"idOeuvre": 120}
+  ]
+  
+  // Objet qu'on va envoyer en ajax
+  // Deux champs: la requete et le type de données
+  var obj = { 
+    data: donnes,
+    typeGraphe: "bar"
+  }
+
+  console.log(obj);
+  // Requête ajax pour générer la bonne structure
+  $.ajax({
+    type: 'POST',
+    url: './genGraph.php',
+    data: obj,
+    dataType: "json"
+  })
+  .done(function(data) {
+    console.log(data);
+    const xaxis = data.map(d => d.x)
+    const yaxis = data.map(d => d.y)
+
+    var donneesBar = [
+        {
+            x: xaxis,
+            y: yaxis,
+            type: 'bar',
+        }
+    ]
+
+    var graphData = [donneesBar];
+    console.log(graphData);
+
+    var layoutA = {barmode: 'group'};
+    var layoutB = getLayout();
+    var layout = Object.assign(layoutA, layoutB);
+
+    Plotly.newPlot('generation-graphique', graphData, layout, barInit());
+  })
+  .fail(function() {
+    alert( "Erreur de génération du graphe." );
+  });
+}
+
+// Ancien makeplot 
+function makeplot_old() {
 var trace1 = {
     x: ['giraffes', 'orangutans', 'monkeys'],
     y: [20, 14, 23],
@@ -211,7 +286,7 @@ var trace1 = {
   var trace2 = {
     x: ['giraffes', 'orangutans', 'monkeys'],
     y: [12, 18, 29],
-    name: 'LA Zoo',
+    name: 'LA Test',
     type: 'bar'
   };
 
