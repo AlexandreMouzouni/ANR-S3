@@ -54,3 +54,4 @@ $sub_sql = makeSubrequest($data);
 //echo $sub_sql;
 $result = barChart($data, $sub_sql, $conn);
 echo json_encode($result);
+?>
