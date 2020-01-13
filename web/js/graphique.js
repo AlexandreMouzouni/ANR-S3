@@ -1,4 +1,4 @@
-var allCharts = ["graphique-type1", "graphique-type2", "graphique-type3", "graphique-type4", "graphique-type5", "graphique-type6"];
+var allCharts = ["graphique-type1", "graphique-type2", "graphique-type3", "graphique-type4", "graphique-type5", "graphique-type6", "graphique-type7", "graphique-type8"];
 var selectedChart = null;
 
 addAllEventListener();
@@ -95,6 +95,12 @@ function generateChosenChart(char) {
       makeplot2();
       break;
     case allCharts[5]:
+      makeplot2();
+      break;
+    case allCharts[6]:
+      makeplot2();
+      break;
+    case allCharts[7]:
       makeplot2();
       break;
     default:
