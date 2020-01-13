@@ -216,8 +216,10 @@ function setLayout_tick(oldLayout, new_dtickX, new_dtickY) {
     yaxis: {dtick: new_dtickY}
   };
 
-  var layout = Object.assign(oldLayout, newLayout);
-  return layout;
+  oldLayout["xaxis"] = Object.assign(oldLayout["xaxis"], newLayout["xaxis"]);
+  oldLayout["yaxis"] = Object.assign(oldLayout["yaxis"], newLayout["yaxis"]);
+
+  return oldLayout;
 }
 
 //***************************************
