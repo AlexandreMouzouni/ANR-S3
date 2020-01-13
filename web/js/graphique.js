@@ -210,6 +210,16 @@ function getLayout() {
   return layout;
 }
 
+function setLayout_tick(oldLayout, new_dtickX, new_dtickY) {
+  var newLayout = {
+    xaxis: {dtick: new_dtickX},
+    yaxis: {dtick: new_dtickY}
+  };
+
+  var layout = Object.assign(oldLayout, newLayout);
+  return layout;
+}
+
 //***************************************
 // Function de test pour l'interface
 //***************************************
@@ -274,6 +284,7 @@ function makebar(donnes) {
     var layoutA = {barmode: 'group'};
     var layoutB = getLayout();
     var layout = Object.assign(layoutA, layoutB);
+    var layout = setLayout_tick(layout, 1, 1); //Il faudrait faire en sorte d'appeler cette fonction avec les paramètres 1, 1 quand des années sont impliqués et que le nombre d'oeuvre     n'est pas trop important
 
     Plotly.newPlot('generation-graphique', graphData, layout, barInit());
   })
