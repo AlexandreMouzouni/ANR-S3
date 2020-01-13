@@ -4,7 +4,9 @@ var allCharts = [
   "graphique-type3", 
   "graphique-type4", 
   "graphique-type5", 
-  "graphique-type6"];
+  "graphique-type6",
+  "graphique-type7",
+  "graphique-type8"];
 var selectedChart = null;
 
 addAllEventListener();
