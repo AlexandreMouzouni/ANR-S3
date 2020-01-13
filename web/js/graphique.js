@@ -103,6 +103,12 @@ function generateChosenChart(char) {
     case allCharts[5]:
       makeplot2();
       break;
+    case allCharts[6]:
+      makeplot2();
+      break;
+    case allCharts[7]:
+      makeplot2();
+      break;
     default:
       alert("Graphique non défini !");
   }
