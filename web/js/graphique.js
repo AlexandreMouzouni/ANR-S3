@@ -238,7 +238,7 @@ function makebar(donnes) {
     {"idOeuvre": 402},
     {"idOeuvre": 43},
     {"idOeuvre": 120}
-  ]
+  ];
   
   // Objet qu'on va envoyer en ajax
   // Deux champs: la requete et le type de données
