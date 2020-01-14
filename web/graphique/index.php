@@ -44,15 +44,12 @@
 
           <!-- Début espace graphique -->
           <div id="graphique">
-
             <div id="choix-graphiques">
               <h2 id="titre" class="text-center">Choix du graphique à générer</h2>
-
               <div id="choix">
 
-                <?php // à voir https://stackoverflow.com/questions/5164404/json-decode-to-array
+                <?php
                 $allCharts = [
-                  // Name => [id, name of the file without the extention]
                   "Diagramme à barres" => ["graphique-type1", "diagramme_a_barres"],
                   "Circulaire" => ["graphique-type2", "circulaire"],
                   "Lignes" => ["graphique-type3", "lignes"],
@@ -61,7 +58,6 @@
                   "Réseau" => ["graphique-type6", "reseau"],
                   "Aires" => ["graphique-type7", "aires"],
                   "Bulles" => ["graphique-type8", "bulles"]
-                  //"Nuage de mots" => ["graphique-type6", "chart"]
                 ];
 
                 foreach($allCharts as $name => $chart):?>
@@ -74,7 +70,7 @@
           </div>
 
           <div id="display" style="display: none" class="alert alert-info alert-RechAvance">
-            <strong>Information :</strong> Au vue du nombre d'oeuvres comprises dans le graphique généré, il serait peut-être plus pertinent d'effectuer une <a href="../?bRechercheAvancee=1" class="font-weight-bold">recherche avancée</a>.
+            <span class="font-weight-bold"> Information :</span> Au vue du nombre d'oeuvres comprises dans le graphique généré, il serait peut-être plus pertinent d'effectuer une <a href="../?bRechercheAvancee=1" class="font-weight-bold">recherche avancée</a>.
           </div>
 
           <script src="../js/graphique.js"></script>
@@ -84,7 +80,6 @@
 
           </div>
         </div>
-
         <!-- Fin espace graphique -->
         <div class="bordure_bottom"></div>
         <br>
@@ -95,5 +90,4 @@
   <!-- FIN CONTENU DE LA FICHE -->
 </div>
 <!-- FIN DIV PRINCIPALE -->
-
 <?php include 'fin.php';?>
