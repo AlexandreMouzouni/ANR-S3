@@ -296,7 +296,7 @@
                             <div class="dropdown-divider dividermenuprincipal"></div>
                         </li>
                         <li class="itemmenuprincipal">
-                            <a href="#">Le récit d'anticipation en graphique</a>
+                            <a href="./graphique">Le récit d'anticipation en graphique</a>
                             <div class="dropdown-divider dividermenuprincipal"></div>
                         </li>
                         <li class="itemmenuprincipal">
@@ -2498,7 +2498,7 @@
                                             <div class="dropdown-divider dividermenuprincipalHome"></div>
                                         </li>
                                         <li class="itemmenuprincipalHome">
-                                            <a href="#">Le récit d'anticipation en graphique</a>
+                                            <a href="./graphique">Le récit d'anticipation en graphique</a>
                                             <div class="dropdown-divider dividermenuprincipalHome"></div>
                                         </li>
                                         <li class="itemmenuprincipalHome">
