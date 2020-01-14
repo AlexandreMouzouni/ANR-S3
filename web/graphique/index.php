@@ -96,8 +96,4 @@
 </div>
 <!-- FIN DIV PRINCIPALE -->
 
-
-
-
-
 <?php include 'fin.php';?>
