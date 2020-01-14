@@ -18,7 +18,7 @@
 		$patternAnnee = "#(\d{4})#";
 
 		$listeDate= $model->getListesAnnesTrad();
-/**/	$lesAnnee= array();
+		$lesAnnee= array();
 		foreach ($listeDate as $value) {
 			if(preg_match($patternAnnee, trim($value['annee']), $annee))
 				$lesAnnee[]= $annee[1];
@@ -43,9 +43,7 @@
 
 
 	
-	<div id="myDivTest"><!-- Plotly chart will be drawn inside this DIV --></div>
-	<div id="myDivTest2"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <script src="graph.js">
+	<div id="myDivTest"></div>
  	
 
 
@@ -87,7 +85,7 @@
   		title :'<b> nombres d\'adaptation par oeuvres </b><br> (liste non exhaustive)'
 	};
 
-	Plotly.newPlot('myDivTest2', data, layout);
+	Plotly.newPlot('myDivTest', data, layout);
 
   </script>
 
