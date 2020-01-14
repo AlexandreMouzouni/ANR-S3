@@ -25,4 +25,4 @@ Cloner le projet dans /var/www/html/ ( le point est important ) :
 
     git clone https://gitlab.com/xy2_/projet-arp .
 
-C'est bon! ^_^
+C'est bon!
