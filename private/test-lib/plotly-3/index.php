@@ -25,7 +25,7 @@
   	 ?>
   <script>
  const data = <?php echo json_encode($liste) . ";"; ?>
- var data = [{
+ var donnee = [{
    type: 'scatterpolar',
    r: data.map(d => d.x),
    theta: donnee.map((d) => d.auteur),
@@ -43,7 +43,7 @@
    showlegend: false
  }
 
- Plotly.plot("container", data, layout)
+ Plotly.plot("container", donnee, layout)
 
    </script>
  </body>
