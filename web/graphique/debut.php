@@ -92,7 +92,7 @@
             <div class="dropdown-divider dividermenuprincipal"></div>
           </li>
           <li class="itemmenuprincipal">
-            <a href="index.php">Le récit d'anticipation en graphique</a>
+            <a href=".">Le récit d'anticipation en graphique</a>
             <div class="dropdown-divider dividermenuprincipal"></div>
           </li>
           <li class="itemmenuprincipal">
