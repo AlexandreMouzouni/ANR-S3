@@ -106,6 +106,16 @@
 			$req->closeCursor();
 			return $nbOeuvre;
 		}
+		
+		public function getNbOeuvreWithAuteur(){
+			$sql= 'SELECT auteurNom as x, count(*) as y from oeuvres where auteurFiche != "" group by auteurFiche ';
+			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
+			$res= $req->fetch();
+			$nbOeuvreX= $res['x'];
+            $nbOeuvreY= $res['Y'];
+			$req->closeCursor();
+			return $nbOeuvreX;
+		}
 
 		/*		FIN	REQUETE PLOTLY 2		*/
 
