@@ -92,7 +92,7 @@
             <div class="dropdown-divider dividermenuprincipal"></div>
           </li>
           <li class="itemmenuprincipal">
-            <a href="https://anticipation-dev.huma-num.fr/?bRechercheAvancee=1#">Le récit d'anticipation en graphique</a>
+            <a href="index.php">Le récit d'anticipation en graphique</a>
             <div class="dropdown-divider dividermenuprincipal"></div>
           </li>
           <li class="itemmenuprincipal">
