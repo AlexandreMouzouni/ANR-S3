@@ -27,7 +27,7 @@
  const data = <?php echo json_encode($liste) . ";"; ?>
  var donnee = [{
    type: 'scatterpolar',
-   r: data.map(d => d.x),
+   r: data.x,
    theta: donnee.map((d) => d.auteur),
    fill: 'toself',
  },
