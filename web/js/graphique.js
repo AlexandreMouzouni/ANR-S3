@@ -1,9 +1,9 @@
 var allCharts = [
-  "graphique-type1", 
-  "graphique-type2", 
-  "graphique-type3", 
-  "graphique-type4", 
-  "graphique-type5", 
+  "graphique-type1",
+  "graphique-type2",
+  "graphique-type3",
+  "graphique-type4",
+  "graphique-type5",
   "graphique-type6",
   "graphique-type7",
   "graphique-type8"];
@@ -14,7 +14,9 @@ iniPalette();
 var allPalettes = window.config;
 popoverDismiss();
 
-
+/**
+ * Initialise la palette de couleur à partir d'un fichier défini dans la fonction.
+ */
 function iniPalette() {
   var requestURL = './config.json';
   var request = new XMLHttpRequest();
@@ -32,6 +34,10 @@ function popoverDismiss() {
   })
 }
 
+/**
+ * Créer les options de la palette.
+ * @param txt Nom de la palette
+ */
 function addFormPalette(txt) {
   var select = document.getElementById('palette');
   select.options[select.options.length] = new Option(txt, 'value');
@@ -39,12 +45,12 @@ function addFormPalette(txt) {
 
 
 function checkPertinence() {
-// Fonction à faire en regardant les résultats de la requête SQL
-/* if respaspertinent {
-  displayInfoDiv();
-}*/
+
 }
 
+/**
+ * Selon l'état de l'élément portant l'id "display", l'affiche ou le cache.
+ */
 function displayInfoDiv() {
   var x = document.getElementById("display");
   if (x.style.display === "none") {
@@ -54,6 +60,9 @@ function displayInfoDiv() {
   }
 }
 
+/**
+ * Change le graphique actuellement selectionné.
+ */
 function changeChartPalette() {
   var currentPalette = getFormPalette();
   if (selectedChart != null) {
@@ -61,31 +70,44 @@ function changeChartPalette() {
   }
 }
 
+/**
+ * Renvoie la valeur du choix sélectionné dans la palette.
+ */
 function getFormPalette() {
   return document.getElementById("palette").value;
 }
 
+/**
+ * Ajoute tout les écouteurs.
+ */
 function addAllEventListener() {
   addChartEventListener();
   addPaletteEventListener();
 }
 
+/**
+ * Ajoute des écouteurs sur les boites permettant le choix des graphiques.
+ */
 function addChartEventListener() {
-  // Rajoute les écouteurs sur toutes les boites des graphiques
   for (var i = 0; i < allCharts.length; i++) {
     document.getElementById(allCharts[i]).addEventListener('click', function(e){processChart(e);});
   }
 }
 
-// Rajoute le choix pour les palettes
+/**
+ * Rajoute le choix pour les palettes.
+ */
 function addPaletteEventListener() {
   document.getElementById("palette").addEventListener('change', function(e){changeChartPalette();});
 }
 
+
+/**
+ * Génère le graphique à partir de la chaine de caractère passé en paramètre.
+ */
 function generateChosenChart(char) {
   // Il faut intégrer lors de l'assemblage le swap du display info si la requête donne peu de résultats
   // checkPertinence();
-
   switch(char) {
     case allCharts[0]:
       makebar();
@@ -100,10 +122,10 @@ function generateChosenChart(char) {
       makeplot2();
       break;
     case allCharts[4]:
-      makeplot2();
+      makeNuageDeMots();
       break;
-    case allCharts[5]:
-      makeplot2();
+    case allCharts[5]: //On désactive le clique sur la palette
+      makeReseau();
       break;
     case allCharts[6]:
       makeplot2();
@@ -116,13 +138,47 @@ function generateChosenChart(char) {
   }
 }
 
+function makeNuageDeMots() {
+  blockPalette();
+  makeplot2();
+}
+
+function makeReseau() {
+  blockPalette();
+  makeplot2();
+}
+
+/**
+ * Bloque la possibilité d'utiliser la palette.
+ */
+function blockPalette() {
+  document.getElementById("palette").disabled = true;
+}
+
+/**
+ * Débloque la possiblité d'utiliser la palette.
+ */
+function unblockPalette() {
+  document.getElementById("palette").disabled = false;
+}
+
+/**
+ * Renvoie la valeur d'un élément passé en paramètre.
+ */
 function getState(id) {
   return document.getElementById(id).value == "true";
 }
 
 
+/**
+ * Processus de création d'un graphique :
+ * - on débloque l'utilisation de la palette,
+ * - on met à jour le graphique sélectionné,
+ * - on envoie à la fonction de génération le type de graphique qu'il doit généré.
+ */
 function processChart(e) {
   var charType = e.currentTarget.id;
+  unblockPalette();
   updateSelectedChart(charType);
   generateChosenChart(charType);
   setTimeout(function() { // Dirige l'utilisateur vers le graphique générer, délai de 5ms pour laisser le temps à plotly de générer le graphique.
@@ -130,36 +186,56 @@ function processChart(e) {
   }, 5);
 }
 
+/**
+ * Sélectionne le graphique.
+ */
 function selectChart(chart) {
   selectedChart = chart;
   document.getElementById(chart).classList.add("selected")
 }
 
+/**
+ * Désélectionne le graphique passé en paramètre.
+ */
 function unselectChart(chart) {
   document.getElementById(chart).classList.remove("selected")
 }
 
+/**
+ * On désélectionne tous les graphiques.
+ */
 function unselectAllCharts() {
-  //pour tous les chart on applique deselectChart
   for (i=0; i < allCharts.length; i++) {
     unselectChart(allCharts[i]);
   }
 }
 
+/**
+ * On met à jour le graphique sélectionné.
+ */
 function updateSelectedChart(chart) {
   unselectAllCharts();
   selectChart(chart);
 }
 
+/**
+ * Dirige l'utilisateur vers le graphique généré.
+ */
 function jump(h){ //http://jsfiddle.net/DerekL/rEpPA/
     var top = document.getElementById(h).offsetTop;
     window.scrollTo(0, top);
 }
 
+/**
+ * Ajoute un bouton dans une barre de menu.
+ */
 function addButton(bar, button, index) {
   bar.splice(index, 0, button);
 }
 
+/**
+ * Créer un bouton de sauvegarde.
+ */
 function createSaveAsButton(name, icon, format) {
   var newButton = {
     name: name,
@@ -171,6 +247,9 @@ function createSaveAsButton(name, icon, format) {
   return newButton;
 }
 
+/**
+ * Initialise la barre menu de plot.ly.
+ */
 function barInit() {
   var barButtons = ['toImage', 'select2d', 'lasso2d', 'toggleSpikelines', 'hoverClosestCartesian', 'hoverCompareCartesian']; // all of the native options that will be dispayed, original list here : https://github.com/plotly/plotly.js/blob/master/src/components/modebar/buttons.js
 
@@ -188,6 +267,9 @@ function barInit() {
 }
 
 
+/**
+ * Renvoie des paramètres pour la désactivation de zoom plot.ly.
+ */
 function getLayoutZoomState(stateX, stateY) { // state is a boolean, return an array that contain information about the state of fixed ranges of yaxis and xaxis
   return {
     yaxis: {
@@ -199,10 +281,16 @@ function getLayoutZoomState(stateX, stateY) { // state is a boolean, return an a
   };
 }
 
+/**
+ * Renvoi les couleurs à utiliser.
+ */
 function getLayoutColors() {
   return window.config.palette[getFormPalette()];
 }
 
+/**
+ * Renvoie le layout de plot.ly.
+ */
 function getLayout() {
   var layout = getLayoutZoomState(true, true);
   var color = {colorway: getLayoutColors()};
@@ -210,6 +298,9 @@ function getLayout() {
   return layout;
 }
 
+/**
+ * Prends un layout et modifie l'occurence des valeurs sur les axes.
+ */
 function setLayout_tick(oldLayout, new_dtickX, new_dtickY) {
   var newLayout = {
     xaxis: {dtick: new_dtickX},
@@ -251,10 +342,10 @@ function makebar(donnes) {
     {"idOeuvre": 43},
     {"idOeuvre": 120}
   ];
-  
+
   // Objet qu'on va envoyer en ajax
   // Deux champs: la requete et le type de données
-  var obj = { 
+  var obj = {
     data: donnes,
     typeGraphe: "bar"
   }
@@ -295,7 +386,7 @@ function makebar(donnes) {
   });
 }
 
-// Ancien makeplot 
+// Ancien makeplot
 function makeplot_old() {
 var trace1 = {
     x: ['giraffes', 'orangutans', 'monkeys'],
@@ -318,7 +409,6 @@ var trace1 = {
   var layout = Object.assign(layoutA, layoutB);
 
   Plotly.newPlot('generation-graphique', data, layout, barInit());
-
 };
 
 function makeplot2() {
@@ -332,10 +422,6 @@ function makeplot2() {
     var layout = getLayout();
     Plotly.newPlot('generation-graphique', data, layout, barInit());
 };
-
-
-
-/* ajout*/
 
 function makeCirculaire() {
     var data = [{
