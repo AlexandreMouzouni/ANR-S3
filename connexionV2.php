@@ -21,7 +21,7 @@ class Connexion extends mysqli{
     return self::$instance;
     }
 
-  public function getResearch($var, $var2, $var3, $var4, $var5, $varTab6){ //Fait pour la recherche dans la table ouevres
+  public function getResearch($var, $var2, $var3, $var4, $varTab6){ //Fait pour la recherche dans la table ouevres
     $test = count($varTab6)!=0;
     if($var!=null or $var2!=null or $var3!=null or $var4!=null or $var5!=null or $test){
       $txt = 'SELECT idOeuvre FROM oeuvres WHERE';
@@ -43,25 +43,17 @@ class Connexion extends mysqli{
         $txt = $txt.' AND';
       }
 
-      if($var3!=null){ //Titre
-        $txt = $txt.' auteurPrenom = :var3 or auteurPrenom2 = :var3 or auteurPrenom3 = :var3';
-        $txt = $txt.' or auteurPrenomReel = :var3 or auteurPrenomReel2 = :var3 or auteurPrenomReel3 = :var3';
+      if($var3!=null){ //Année publication
+        $txt = $txt.' anneePE> :var3';
       }
+
 
       if (($var!=null or $var2!=null or $var3!=null) and $var4!=null){
         $txt = $txt.' AND';
       }
 
       if($var4!=null){ //Année publication
-        $txt = $txt.' anneePE> :var4';
-      }
-
-      if (($var!=null or $var2!=null or $var3!=null or $var4!=null) and $var5!=null){
-        $txt = $txt.' AND';
-      }
-
-      if($var5!=null){ //Année publication
-        $txt = $txt.' anneePE< :var5';
+        $txt = $txt.' anneePE< :var4';
       }
 
 
@@ -105,10 +97,6 @@ class Connexion extends mysqli{
 
       if ($var4!=null){
         $req0->bindValue(':var4', $var4);
-      }
-
-      if ($var5!=null){
-        $req0->bindValue(':var5', $var5);
       }
 
       $req0->execute();
@@ -1385,4 +1373,3 @@ public function informations($ID){
   }
 }
 ?>
-
