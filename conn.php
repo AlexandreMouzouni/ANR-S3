@@ -23,8 +23,14 @@
   <input type="textarea" name="dateTot" /><br/> <!--auteurNom,auteurNom2, auteurNomReel2, auteurNom3, auteurNomReel3-->
   <label>Date de dernière mise en circulation</label><br/>
   <input type="textarea" name="dateTard" /><br/>
-  <label>Recherche Mot clé</label><br/>
-  <input type="textarea" name="KeyW" /><br/>
+  <table>
+  <tr>
+    <td><input type="checkbox" name="boxPr[]" value='R'>Roman</td>
+    <td><input type="checkbox" name="boxPr[]" value='RC'>Réit court</td>
+    <td><input type="checkbox" name="boxPr[]" value='BD'>BD</td>
+  </tr>
+</table>
+
 </fieldset>
 <br/>
 <br/>
@@ -63,27 +69,35 @@
   <label>Année de parution</label><br/>
   <input type="textarea" name="yearParutionDebut" /><br/> <!--auteurNom,auteurNom2, auteurNomReel2, auteurNom3, auteurNomReel3-->
   <input type="textarea" name="yearParutionFin" /><br/> <!--auteurNom,auteurNom2, auteurNomReel2, auteurNom3, auteurNomReel3-->
+  <label>Filtrage</label><br/>
+  <table>
+  <tr>
+    <td><input type="checkbox" name="boxFil[]" value='V'>Volume</td>
+    <td><input type="checkbox" name="boxFil[]" value='P'>¨Periodique</td>
+    <td><input type="checkbox" name="boxFil[]" value='L'>Livraison</td>
+  </tr>
+</table>
   <label>Catégorie</label><br/>
   <table>
   <tr>
-    <td><input type="checkbox" name="boxC[]" value='Anticipation'>Anticipation</td>
-    <td><input type="checkbox" name="boxC[]" value='Jeunesse'>Jeunesse</td>
-    <td><input type="checkbox" name="boxC[]" value='Sentimental'>Sentimental</td>
+    <td><input type="checkbox" name="boxC[]" value='273'>Anticipation</td>
+    <td><input type="checkbox" name="boxC[]" value='269'>Jeunesse</td>
+    <td><input type="checkbox" name="boxC[]" value='278'>Sentimental</td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="boxC[]" value='Aventure'>Aventure</td>
-    <td><input type="checkbox" name="boxC[]" value='Litterature'>Littérature générale</td>
-    <td><input type="checkbox" name="boxC[]" value='SF'>SF</td>
+    <td><input type="checkbox" name="boxC[]" value='275'>Aventure</td>
+    <td><input type="checkbox" name="boxC[]" value='272'>Littérature générale</td>
+    <td><input type="checkbox" name="boxC[]" value='274'>SF</td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="boxC[]" value='Luxe'>Edition de luxe/bibliophilie</td>
-    <td><input type="checkbox" name="boxC[]" value='Policier'>Policier</td>
-    <td><input type="checkbox" name="boxC[]" value='Autre'>Autre</td>
+    <td><input type="checkbox" name="boxC[]" value='271'>Edition de luxe/bibliophilie</td>
+    <td><input type="checkbox" name="boxC[]" value='276'>Policier</td>
+    <td><input type="checkbox" name="boxC[]" value='279'>Autre</td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="boxC[]" value='Fantastique'>Fantastique</td>
-    <td><input type="checkbox" name="boxC[]" value='Populaire'>Populaire</td>
-    <td><input type="checkbox" name="boxC[]" value='Rien'>Rien</td>
+    <td><input type="checkbox" name="boxC[]" value='277'>Fantastique</td>
+    <td><input type="checkbox" name="boxC[]" value='270'>Populaire</td>
+    <td><input type="checkbox" name="boxC[]" value='280'>Rien</td>
   </tr>
 </table>
 <!--  <label>Genre<input type="textarea" name="type" /></label> <!--natureTxt , int-->
@@ -93,15 +107,15 @@
 <input type="textarea" name="langueTrad" /><br/>
 <label>Nature d'adaptation</label><br/>
 <select name="natureAdaptation">
-  <option>---Sélectionner un élément de la liste---</option>
-  <option>BD</option>
-  <option>Dance</option>
-  <option>Film</option>
-  <option>Livre Audio</option>
-  <option>Musique</option>
-  <option>Pièce Radiographique</option>
-  <option>Radio</option>
-  <option>Théâtre</option>
+  <option class="text-left" value="null" selected>--- Sélectionnez un élément de la liste---</option>
+  <option value="BD">BD</option>
+  <option value="Danse">Danse</option>
+  <option value="Film">Film</option>
+  <option value="Livre Audio">Livre Audio</option>
+  <option value="Musique">Musique</option>
+  <option value="Pièce radiophonique">Pièce radiophonique</option>
+  <option value="Radio">Radio</option>
+  <option value="Théâtre">Théâtre</option>
 </select>
 </fieldset>
 
@@ -146,14 +160,14 @@
 <label>Rapport au temps</label><br/>
 <table>
   <tr>
-    <td><input type="checkbox" name="boxNaration[]" value='ageOr'>Âge d'or</td>
-    <td><input type="checkbox" name="boxNaration[]" value='decadence'>Décadence</td>
-    <td><input type="checkbox" name="boxNaration[]" value='eschatologie'>Eschatologie</td>
+    <td><input type="checkbox" name="boxNaration3[]" value='ageOr'>Âge d'or</td>
+    <td><input type="checkbox" name="boxNaration3[]" value='decadence'>Décadence</td>
+    <td><input type="checkbox" name="boxNaration3[]" value='eschatologie'>Eschatologie</td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="boxNaration[]" value='evolutionnisme'>Évolutionnisme</td>
-    <td><input type="checkbox" name="boxNaration[]" value='histoireCyclique'>Histoire cyclique</td>
-    <td><input type="checkbox" name="boxNaration[]" value='progres'>Progrès</td>
+    <td><input type="checkbox" name="boxNaration3[]" value='evolutionnisme'>Évolutionnisme</td>
+    <td><input type="checkbox" name="boxNaration3[]" value='histoireCyclique'>Histoire cyclique</td>
+    <td><input type="checkbox" name="boxNaration3[]" value='progres'>Progrès</td>
   </tr>
 </table>
 
@@ -199,7 +213,46 @@
 </table>
 
 <label>Esthétique</label><br/>
-<input type="textarea" name="esthetique" /><br/>
+<select name='selectPoet'>
+  <option class="text-left" value="null" selected>--- Sélectionnez un élément de la liste---</option>
+  <option value="29">Aucun</option>
+  <option value="21">Aventure</option>
+  <option value="244">Conte philosophique</option>
+  <option value="5">Didactique</option>
+  <option value="12">Dystopie</option>
+  <option value="7">Épique</option>
+  <option value="25">Érotique</option>
+  <option value="177">Ésotérique</option>
+  <option value="227">étiologique</option>
+  <option value="8">Fantastique</option>
+  <option value="293">historique </option>
+  <option value="10">Horreur</option>
+  <option value="17">Humoristique</option>
+  <option value="15">Ironique</option>
+  <option value="28">Journalistique</option>
+  <option value="209">Lyrique</option>
+  <option value="9">Merveilleux</option>
+  <option value="217">Mystérieux</option>
+  <option value="18">Parodique</option>
+  <option value="6">Pathétique</option>
+  <option value="249">patriotique</option>
+  <option value="26">Philosophie</option>
+  <option value="27">Poésie</option>
+  <option value="19">Policier</option>
+  <option value="23">Post-apocalyptique</option>
+  <option value="221">Psychologique</option>
+  <option value="24">Religieux</option>
+  <option value="22">Robinsonnade</option>
+  <option value="308">roman d'apprentissage</option>
+  <option value="220">Roman de moeurs</option>
+  <option value="243">Roman philosophique</option>
+  <option value="283">Roman préhistorique</option>
+  <option value="16">Satirique</option>
+  <option value="20">Sentimental</option>
+  <option value="178">Tragique</option>
+  <option value="13">Uchronie</option>
+  <option value="11">Utopie</option>
+</select>
 
 </fieldset>
 
@@ -348,9 +401,33 @@
 <label>Termes utilisés dans la description</label><br/>
 <input type="textarea" name="termeDescription" /><br/>
 <label>Domaine des inventions techniques</label><br/>
-<input type="textarea" name="inventionsTechniques" /><br/>
+<select name="inventionsTechniques" />
+  <option class="text-left" value="null" selected>--- Sélectionnez un élément de la liste---</option>
+  <option value="258">Armes</option>
+  <option value="259">Communications, image/son</option>
+  <option value="250">Corps humain, pouvoirs psychiques, vie/mort</option>
+  <option value="254">Espace</option>
+  <option value="251">Formes de vie inconnue</option>
+  <option value="252">Modifications de la nature</option>
+  <option value="256">Sources d'énergie</option>
+  <option value="253">Temps</option>
+  <option value="260">Théories scientifiques</option>
+  <option value="257">Transports</option>
+  <option value="255">Vie quotidienne</option>
+</select>
 <label>Voyage(s)</label><br/>
-<input type="textarea" name="voyages" /><br/>
+<select name="voyages" />
+  <option class="text-left" value="null" selected>--- Sélectionnez un élément de la liste---</option>
+  <option value="81">Sur la Terre</option>
+  <option value="82">À l'intérieur de la Terre</option>
+  <option value="83">Dans l'espace</option>
+  <option value="84">Sur une autre planète</option>
+  <option value="85">Rêvé (par le personnage)</option>
+  <option value="86">Temporel</option>
+  <option value="87">À l’intérieur du corps humain</option>
+  <option value="223">Mondes parallèles et autres dimensions</option>
+<option value="88">Aucun</option>
+</select>
 
 <h4>Représentation de la société</h4>
 
@@ -376,7 +453,59 @@
   <td><input type="checkbox" name="boxNaration15[]" value='indetermineValeur'>Indéterminée</td>
 </table>
 <label>Traits spécifiques de la société imaginaire</label><br/>
-<input type="textarea" name="TraitsSocieteImaginaire" /><br/>
+<select name='selectSoc'>
+ <option value="null" selected>--- Sélectionnez un élément de la liste---</option>
+ <option value="39">Anarchisme</option>
+ <option value="37">Aristocratie</option>
+ <option value="38">Démocratie</option>
+ <option value="34">Dictature</option>
+ <option value="35">Monarchie</option>
+ <option value="36">Ploutocratie</option>
+ <option value="33">Politique</option>
+ <option value="205">République</option>
+ <option value="204">Révolution</option>
+ <option value="43">Capitalisme</option>
+ <option value="40">Économie</option>
+ <option value="42">Marxisme</option>
+ <option value="41">Socialisme</option>
+ <option value="245">Géopolitique</option>
+ <option value="44">Guerre</option>
+ <option value="45">Religion</option>
+ <option value="50">Positivisme</option>
+ <option value="53">Agriculture</option>
+ <option value="54">Commerce</option>
+ <option value="52">Écologie</option>
+ <option value="55">Justice</option>
+ <option value="186">Presse</option>
+ <option value="213">habitat</option>
+ <option value="56">Industrie</option>
+ <option value="175">Langues</option>
+ <option value="58">Moyens de communication</option>
+ <option value="57">Transport</option>
+ <option value="59">Urbanisme</option>
+ <option value="63">Musique</option>
+ <option value="62">Peinture</option>
+ <option value="60">Poésie/littérature</option>
+ <option value="61">Sculpture</option>
+ <option value="68">Alimentation</option>
+ <option value="192">Climat</option>
+ <option value="64">Éducation</option>
+ <option value="67">Famille</option>
+ <option value="69">Habillement</option>
+ <option value="72">Loisirs</option>
+ <option value="66">Mariage</option>
+ <option value="70">Mort</option>
+ <option value="71">Santé</option>
+ <option value="65">Sexualité</option>
+ <option value="75">Classes sociales</option>
+ <option value="74">Colonialisme</option>
+ <option value="78">Handicap</option>
+ <option value="73">Place des femmes</option>
+ <option value="76">Races</option>
+ <option value="77">Vieillesse</option>
+ <option value="188">Animaux</option>
+ <option value="248">Science</option>
+</select>
 </fieldset>
     <div><input type='submit' value='Submit' /></div>
 </form>
