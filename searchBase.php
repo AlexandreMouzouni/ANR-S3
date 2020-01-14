@@ -6,7 +6,7 @@
       $check2=null;
       $check3=null;
       $check4=null;
-      $check5=null;
+      $tabCheckedPresentation=array();
 //Première partie pour la Presentation
 
       if (isset($_POST['titre']) and $_POST['titre']!=null)
@@ -15,16 +15,21 @@
       if (isset($_POST['name']) and $_POST['name']!=null)
         $check2 = $_POST['name'];
 
-      if (isset($_POST['surname']) and $_POST['surname']!=null)
-        $check3 = $_POST['surname'];
-
       if (isset($_POST['dateTot']) and $_POST['dateTot']!=null)
-        $check4 = $_POST['dateTot'];
+        $check3 = $_POST['dateTot'];
 
       if (isset($_POST['dateTard']) and $_POST['dateTard']!=null)
-        $check5 = $_POST['dateTard'];
+        $check4 = $_POST['dateTard'];
 
-      $tab_1 = $conn->getResearch($check1,$check2,$check3,$check4,$check5);
+      if(!empty($_POST['boxPr'])){
+         foreach ($_POST['boxPr'] as $c => $v){
+          if ($v!=null or $v!=0 or $v!=''){
+          $tabCheckedPresentation[]=$v;
+          }
+        }
+      }
+
+      $tab_1 = $conn->getResearch($check1,$check2,$check3,$check4,$check5,$tabCheckedPresentation);
 
       //Deuxième partie pour le Materiel
             $check1G=null;
@@ -77,7 +82,8 @@
       $check3M=null;
       $check4M=null;
       $check5M=null;
-      $tabChecked=array();
+      $tabCheckedM=array();
+      $tabChecked2M=array();
 //Première partie pour la Presentation
       if(isset($_POST['support']) and $_POST['support']!=null)
         $check1M = $_POST['support'];
@@ -88,6 +94,29 @@
       if (isset($_POST['yearParutionFin']) and $_POST['yearParutionFin']!=null)
         $check2MBis = $_POST['yearParutionFin'];
 
+      if(!empty($_POST['boxFil'])){
+         foreach ($_POST['boxFil'] as $c => $v){
+          if ($v!=null or $v!=0 or $v!=''){
+            $tabCheckedM[]=$v;
+          }
+        }
+      }
+
+      if(!empty($_POST['boxFil'])){
+         foreach ($_POST['boxFil'] as $c => $v){
+          if ($v!=null or $v!=0 or $v!=''){
+            $tabCheckedM[]=$v;
+          }
+        }
+      }
+
+      if(!empty($_POST['boxC'])){
+         foreach ($_POST['boxC'] as $c => $v){
+          if ($v!=null or $v!=0 or $v!=''){
+            $tabChecked2M []=$v;
+          }
+        }
+      }
 
       if (isset($_POST['nomIllus']) and $_POST['nomIllus']!=null)
         $check3M = $_POST['nomIllus'];
@@ -96,19 +125,12 @@
       if (isset($_POST['langueTrad']) and $_POST['langueTrad']!=null)
         $check4M = $_POST['langueTrad'];
 
+
       if (isset($_POST['natureAdaptation']) and $_POST['natureAdaptation']!=null)
         $check5M = $_POST['natureAdaptation'];
 
-      if(!empty($_POST['boxC'])){
-         foreach ($_POST['boxC'] as $c => $v){
-          if ($v!=null or $v!=0 or $v!=''){
-            $tabChecked[]=$v;
-          }
-        }
-      }
 
-
-      $tab_3 = $conn->getResearchMaterial($check1M,$check2M,$check2MBis,$check3M,$check4M);
+      $tab_3 = $conn->getResearchMaterial($check1M,$check2M,$check2MBis,$tabCheckedM,$tabChecked2M,$check3M,$check4M,$check5M);
 
 
       $check1P=null;
@@ -119,9 +141,12 @@
       $check5P=null;
       $tabCheckedP=array();
       $tabCheckedP2=array();
+      $tabCheckedP3=array();
       $tabCheckedP4=array();
       $tabCheckedP5=array();
       $tabCheckedP6=array();
+      $check6P=null;
+
 //Première partie pour la Presentation
 
       if(!empty($_POST['boxNaration'])){
@@ -152,12 +177,23 @@
           }
         }
 
+        if(!empty($_POST['boxNaration3'])){
+          foreach ($_POST['boxNaration3'] as $c => $v){
+            if ($v!=null or $v!=0 or $v!=''){
+              $tabCheckedP3[]=$v;
+            }
+          }
+        }
 
-      if (isset($_POST['referencesInter']) and $_POST['referencesInter']!=null)
+
+      if (isset($_POST['referencesInter']) and $_POST['referencesInter']!=null and (strlen($_POST['referencesInter'])>0))
         $check3P = $_POST['referencesInter'];
 
+        if (isset($_POST['persoScientifique']) and $_POST['persoScientifique']!=null)
+          $check4P = $_POST['persoScientifique'];
+
       if (isset($_POST['profession']) and $_POST['profession']!=null)
-        $check4P = $_POST['profession'];
+        $check5P = $_POST['profession'];
 
 
       if(!empty($_POST['boxNaration4'])){
@@ -177,7 +213,7 @@
       }
 
       if (isset($_POST['caracteristiques']) and $_POST['caracteristiques']!=null)
-        $check5P = $_POST['caracteristiques'];
+        $check6P = $_POST['caracteristiques'];
 
       if(!empty($_POST['boxNaration6'])){
         foreach ($_POST['boxNaration6'] as $c => $v){
@@ -186,9 +222,13 @@
           }
         }
       }
+
+
+      if (isset($_POST['selectPoet']) and $_POST['selectPoet']!=null)
+        $check7P = $_POST['selectPoet'];
  //FAIRE AUSSI LE DERNIER !!!!!
 
-      $tab_4 = $conn->getResearchPoet($tabCheckedP, $check1P, $check2P,$check2PBis,$tabCheckedP2,$check3P,$check4P,$tabCheckedP4,$tabCheckedP5,$check5P,$tabCheckedP6);
+      $tab_4 = $conn->getResearchPoet($tabCheckedP, $check1P, $check2P,$check2PBis,$tabCheckedP2,$tabCheckedP3,$check3P,$check4P,$check5P,$tabCheckedP4,$tabCheckedP5,$check6P,$tabCheckedP6,$check7P);
 
 
 
@@ -218,6 +258,11 @@
       $tabCheckedS14=array();
       $tabCheckedS15=array();
       $tabCheckedS16=array();
+      $check3S=null;
+
+      $check4S=null;
+      $check5S=null;
+      $check6S=null;
 //Première partie pour la Presentation
 
       if(!empty($_POST['boxScience'])){
@@ -339,6 +384,15 @@
       }
 
 
+      if (isset($_POST['termeDescription']) and $_POST['termeDescription']!=null)
+        $check4S = $_POST['termeDescription'];
+
+      if (isset($_POST['inventionsTechniques']) and $_POST['inventionsTechniques']!=null)
+        $check5S = $_POST['inventionsTechniques'];
+
+      if (isset($_POST['voyages']) and $_POST['voyages']!=null)
+        $check6S = $_POST['voyages'];
+
 
       if(!empty($_POST['boxScience13'])){
           foreach ($_POST['boxScience13'] as $c => $v){ //A voir ce qu'il faut mettre
@@ -364,8 +418,11 @@
         }
       }
 
+      if (isset($_POST['selectSoc']) and $_POST['selectSoc']!=null)
+        $check3S = $_POST['selectSoc'];
 
-      $tab_5 = $conn->getResearchScience($tabCheckedS,$tabCheckedS2,$tabCheckedS3,$tabCheckedS4,$tabCheckedS5,$tabCheckedSAlt,$tabCheckedS6,$tabCheckedS7,$tabCheckedS8,$tabCheckedS9,$tabCheckedS10,$tabCheckedS11, $check1S,$check2S,$tabCheckedS12,$tabCheckedS13,$tabCheckedS14,$tabCheckedS15,$tabCheckedS16);
+
+      $tab_5 = $conn->getResearchScience($tabCheckedS,$tabCheckedS2,$tabCheckedS3,$tabCheckedS4,$tabCheckedS5,$tabCheckedSAlt,$tabCheckedS6,$tabCheckedS7,$tabCheckedS8,$tabCheckedS9,$tabCheckedS10,$tabCheckedS11, $check1S,$check2S,$tabCheckedS12,$tabCheckedS13,$tabCheckedS14,$tabCheckedS15,$tabCheckedS16,$check3S,$check4S,$check5S,$check6S);
 
 
       if ($tab_1==null)
