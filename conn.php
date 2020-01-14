@@ -16,8 +16,6 @@
     <input type="textarea" name="titre" /><br/> <!--auteurNom,auteurNom2, auteurNomReel2, auteurNom3, auteurNomReel3-->
     <label>Nom</label><br/>
     <input type="textarea" name="name" /><br/> <!--auteurNom,auteurNom2, auteurNomReel2, auteurNom3, auteurNomReel3-->
-    <label>Prenom</label><br/>
-    <input type="textarea" name="surname" /><br/> <!--auteurPrenom,auteurPrenomReel,auteurPrenom2, auteurPrenomReel2, auteurPrenom3, auteurPrenomReel3 -->
 <!--  <label>Genre<input type="textarea" name="type" /></label> <!--natureTxt , int-->
   <label>Date de première mise en circulation</label><br/>
   <input type="textarea" name="dateTot" /><br/> <!--auteurNom,auteurNom2, auteurNomReel2, auteurNom3, auteurNomReel3-->
