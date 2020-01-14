@@ -23,7 +23,6 @@ img.guide {
   margin-bottom: 10px;
 }
 
-
 #underline:hover {
   text-decoration: underline;
 }
@@ -32,9 +31,8 @@ img.guide {
 color: #d31d17;
 }
 
-
 div.alert-RechAvance {
-  margin: 10px 0px 20px 0px; /* haut | droit | bas | gauche */
+  margin: 10px 0px 20px 0px;
 }
 
 .on-right {
@@ -46,14 +44,10 @@ div.boite-graphique {
   text-decoration: inherit;
   border: 4px solid #d31d17;
   border-radius: 3px;
-  margin: 10px 10px 10px 10px; /* haut | droit | bas | gauche */
-  /*background-image: url("../images/graphique/chart.png");*/
+  margin: 10px 10px 10px 10px;
   min-width: 25%;
   min-height: 50%;
-  /*max-width: 25%;
-  max-height: 25%;*/
   background-color: rgb(255, 255, 255, 0.4);
-
 }
 
 div.boite-graphique:hover {
@@ -82,7 +76,7 @@ div.aide {
 }
 
 #generation-graphique {
-  margin: 10px 10px 10px 10px; /* haut | droit | bas | gauche */
+  margin: 10px 10px 10px 10px;
 }
 
 div.selected {
@@ -100,15 +94,14 @@ h2#titre{
     font-size:30pt;
 }
 
+select:disabled {
+  color: gray;
+}
+
 img#img-graphique {
   text-align: center;
   width:100px;
   height: 100px;
-  /*height: auto;
-  max-width: 80px;
-  max-height: 100px;
-  padding-top: 5px;
-  padding-bottom: 5px;*/
   margin: 0 2% 2% 2%;
 }
 
