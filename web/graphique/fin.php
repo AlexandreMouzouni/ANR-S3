@@ -1,9 +1,9 @@
 <!-- PIED DE PAGE -->
 <div class="footer col-sm-12">
   <div class="menu_footer offset-sm-2 col-sm-9">
-    <!--<a class="nav-link" href="#">Accueil</a>-->
-    <!--<a class="nav-link" href="#">Le récit d'anticipation</a>-->
-    <a class="nav-link" href=".">En graphique</a>
+    <!--<a class="nav-link" href="#">Accueil</a>
+    <a class="nav-link" href="#">Le récit d'anticipation</a>
+    <a class="nav-link" href="#">En graphique</a>-->
     <a class="nav-link" href="https://anticipation-dev.huma-num.fr/?bRechercheAvancee=1#">L'ANR Anticipation</a>
     <a class="nav-link" href="https://anticipation-dev.huma-num.fr/?bRechercheAvancee=1#">Principe de sélection des oeuvres</a>
     <a class="nav-link" href="https://anticipation-dev.huma-num.fr/?bRechercheAvancee=1#">Les contributeurs</a>
