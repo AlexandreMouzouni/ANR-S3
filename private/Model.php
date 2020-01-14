@@ -65,8 +65,60 @@
 		}
 
 
+		/*			REQUETE PLOTLY 2		*/
+
+		public function getListesAnnesTrad(){
+			$sql= 'SELECT dDate as annee from traductions ORDER BY dDate';
+			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
+			$res= $req->fetchALL();
+			$req->closeCursor();
+			return $res;
+		}
+
+		public function getNbTrad($annee){
+			$sql= 'SELECT COUNT(*) as nbTrad FROM traductions WHERE dDate = :annee';
+			$req= $this->bdd->prepare($sql) or die(print_r($bdd->errorInfo()));
+			$req->execute(array(
+				':annee' => htmlspecialchars($annee),
+			));
+			$res= $req->fetch();
+			$nbOeuvre= $res['nbTrad'];
+			$req->closeCursor();
+			return $nbOeuvre;
+		}
+
+		public function getListesOeuvreAdaptee(){
+			$sql= 'SELECT DISTINCT titrePE FROM adaptations INNER JOIN oeuvres on adaptations.idOeuvre = oeuvres.idOeuvre ORDER BY anneePE ASC';
+			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
+			$res= $req->fetchALL();
+			$req->closeCursor();
+			return $res;
+		}
+
+		public function getNbAdaptations($titre){
+			$sql= 'SELECT COUNT(*) as nbAdapation FROM adaptations WHERE idOeuvre in (SELECT idOeuvre from oeuvres WHERE titrePE = :titre)';
+			$req= $this->bdd->prepare($sql) or die(print_r($bdd->errorInfo()));
+			$req->execute(array(
+				':titre' => htmlspecialchars($titre),
+			));
+			$res= $req->fetch();
+			$nbOeuvre= $res['nbAdapation'];
+			$req->closeCursor();
+			return $nbOeuvre;
+		}
+
+		/*		FIN	REQUETE PLOTLY 2		*/
 
 
+		/* nuages */
+
+		public function getAuteurNom(){
+			$sql= 'SELECT auteurNom FROM oeuvres';
+			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
+			$res= $req->fetchALL();
+			$req->closeCursor();
+			return $res;
+		}
 
 
 	}
