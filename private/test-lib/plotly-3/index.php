@@ -1,9 +1,7 @@
 <?php
-	require_once '../../Model.php';
+	require_once '../../../Model.php';
 	$model = Model::get_model();
 ?>
-
-<!DOCTYPE html>
 <html>
     <head>
         <title>Test Plotly</title>
@@ -13,12 +11,8 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <div id="container" style="max-width: 1000px; height: 600px; margin: 2em auto"></div>
   <script type="module">
-</head>
-<body>
-	<h1>Dataviz</h1>
-
-	<?php
-  $listauteur= $model->getNbOeuvreWithAuteur();
+    <?php
+        $listauteur= $model->getNbOeuvreWithAuteur();
 
 
   		$liste= [];
@@ -26,9 +20,9 @@
   			$liste[] = ['x'=>$value["x"],'y'=>$value["y"]];
   		}
   		print_r($liste);
-  	 ?>
-  <script>
- const data = <?php echo json_encode($liste) . ";"; ?>
+  	
+      ?>
+       const data = <?php echo json_encode($liste) . ";"; ?>
  var donnee = [{
    type: 'scatterpolar',
    r: data.x,
@@ -49,6 +43,6 @@
 
  Plotly.plot("container", donnee, layout)
 
-   </script>
- </body>
- </html>
+  </script>
+</body>
+</html>
