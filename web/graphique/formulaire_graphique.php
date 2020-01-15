@@ -2088,12 +2088,12 @@
                 <li>Comparaison entre données en survol</li>
             </ul>
           </div>
-          Pour le graphe réseau, vous pouvez à l'aide d'un clic droit sur le graphe :
+          Vous pouvez à l'aide d'un clic droit sur le graphe réseau accéder aux fonctionnalités suivantes :
           <ul>
-              <li>Sauvegarder le graphe</li>
-              <li>Sauvegarder les données du graphe</li>
               <li>Sélection rectangulaire</li>
+              <li>Sauvegarder le graphe aux formats : .png, .jpg, .pdf et .svg</li>
               <li>Partager le graphe</li>
+              <li>Sauvegarder les données du graphe aux formats : .csv et .xlsx</li>
               <li>Imprimer</li>
               <li>Mettre le graphe en plein écran</li>
           </ul>
