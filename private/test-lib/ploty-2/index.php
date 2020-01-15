@@ -42,8 +42,8 @@
 	 ?>
 
 
-	
-	<div id="myDivTest"></div>
+	<div id="myDiv1"></div>
+	<div id="myDiv2"></div>
  	
 
 
@@ -67,7 +67,7 @@
   		title :'<b> Evolution de la traductions des oeuvres </b><br> 16 oeuvres non prises en compte*'
 	};
 
-	Plotly.newPlot('myDivTest', data, layout);
+	Plotly.newPlot('myDiv1', data, layout);
 
 
 //	deuxieme
@@ -85,7 +85,7 @@
   		title :'<b> nombres d\'adaptation par oeuvres </b><br> (liste non exhaustive)'
 	};
 
-	Plotly.newPlot('myDivTest', data, layout);
+	Plotly.newPlot('myDiv2', data, layout);
 
   </script>
 
