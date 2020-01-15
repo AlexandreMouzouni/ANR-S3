@@ -68,7 +68,6 @@ function networkChart($data, $sub_sql, $conn) {
       }
     }
     return array($nodes,$edges);
-    return $tabLinks;
 }
 
 
