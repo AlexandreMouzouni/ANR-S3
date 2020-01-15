@@ -20,16 +20,16 @@
 
   		$liste= [];
   		foreach ($listauteur as $value) {
-  			$liste[] = ['auteur'=>$value["x"],'nombre'=>$value["y"]];
+  			$liste[] = ['x'=>$value["x"],'y'=>$value["y"]];
   		}
   		print_r($liste);
   	 ?>
   <script>
- /*/const data = <?php echo json_encode($liste) . ";"; ?>
+ const data = <?php echo json_encode($liste) . ";"; ?>
  var donnee = [{
    type: 'scatterpolar',
    r: data.x,
-   theta: donnee.map((d) => d.auteur),
+   theta: data.y,
    fill: 'toself',
  },
  ]
@@ -38,7 +38,7 @@
    polar: {
      radialaxis: {
        visible: true,
-       range: donnee.map((d) => d.nombre),
+       range: data.y,
      }
    },
    showlegend: false
