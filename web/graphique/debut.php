@@ -36,6 +36,15 @@
   <link rel="stylesheet" href="../css/fonts.css?V=0.6">
   <link rel="stylesheet" href="../css/jquery-ui-1.12.1.css?V=0.6">
   <link rel="stylesheet" href="../css/jquery-ui-ajout.css?V=0.6">
+  
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-graph.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+  <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+  <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+
 
 </head>
 <body data-spy="scroll" data-target=".scrollSpy">
