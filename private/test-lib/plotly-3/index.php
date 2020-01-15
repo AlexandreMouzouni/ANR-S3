@@ -2,6 +2,8 @@
 	require_once '../../Model.php';
 	$model = Model::get_model();
 ?>
+
+<!DOCTYPE html>
 <html>
     <head>
         <title>Test Plotly</title>
@@ -11,19 +13,22 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <div id="container" style="max-width: 1000px; height: 600px; margin: 2em auto"></div>
   <script type="module">
-    <?php
-        $listauteur= $model->getNbOeuvreWithAuteur();
+</head>
+<body>
+	<h1>Dataviz</h1>
+
+	<?php
+  $listauteur= $model->getNbOeuvreWithAuteur();
 print_r($listauteur);
-print("<br>");
-print("<br>");
+print("<br><br>");
   		$liste= [];
   		foreach ($listauteur as $value) {
   			$liste[] = ['x'=>$value["x"],'y'=>$value["y"]];
   		}
   		print_r($liste);
-  	
-      ?>
-       const data = <?php echo json_encode($liste) . ";"; ?>
+  	 ?>
+  <script>
+ const data = <?php echo json_encode($liste) . ";"; ?>
  var donnee = [{
    type: 'scatterpolar',
    r: data.x,
@@ -44,6 +49,6 @@ print("<br>");
 
  Plotly.plot("container", donnee, layout)
 
-  </script>
-</body>
-</html>
+   </script>
+ </body>
+ </html>
