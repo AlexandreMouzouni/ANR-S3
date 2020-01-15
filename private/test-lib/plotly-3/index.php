@@ -10,6 +10,7 @@
 	<title>Dataviz</title>
 	<!-- Resources -->
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	 <div id="container" style="width:100%; height: 500px;"></div>
 </head>
 <body>
 	<h1>Dataviz</h1>
@@ -50,7 +51,7 @@ print("<br><br>");
 
    </script>	
 
-	 <div id="container" style="width:100%; height: 500px;"></div>
+	
 
 </body>
 </html>
