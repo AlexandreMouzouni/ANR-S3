@@ -865,25 +865,25 @@
                                   <span class="input-group-addon">
                     <div class="checkbox">
                       <label>
-                <input type="checkbox" id="chkScSoDiscThem93" name="chkScSoDiscThem[]" value="93|Anthropologie"> Anthropologie                      </label>
+                <input type="checkbox" id="chkScSoDiscThem93" name="boxScienceAlt2[]" value="anthropologie"> Anthropologie                      </label>
                     </div>
                   </span><!-- /input-group-addon -->
                                   <span class="input-group-addon">
                     <div class="checkbox">
                       <label>
-                <input type="checkbox" id="chkScSoDiscThem94" name="chkScSoDiscThem[]" value="94|Archéologie"> Archéologie                      </label>
+                <input type="checkbox" id="chkScSoDiscThem94" name="boxScienceAlt2[]" value="archeologie"> Archéologie                      </label>
                     </div>
                   </span><!-- /input-group-addon -->
                                   <span class="input-group-addon">
                     <div class="checkbox">
                       <label>
-                <input type="checkbox" id="chkScSoDiscThem95" name="chkScSoDiscThem[]" value="95|Armement : applications aux arts militaires (explosifs, canons, machines…)"> Armement : applications aux arts militaires (explosifs, canons, machines…)                      </label>
+                <input type="checkbox" id="chkScSoDiscThem95" name="boxScienceAlt2[]" value="armement"> Armement : applications aux arts militaires (explosifs, canons, machines…)                      </label>
                     </div>
                   </span><!-- /input-group-addon -->
                                   <span class="input-group-addon">
                     <div class="checkbox">
                       <label>
-                <input type="checkbox" id="chkScSoDiscThem96" name="chkScSoDiscThem[]" value="96|Art des constructions (génie civil), grands travaux (canaux, isthmes)"> Art des constructions (génie civil), grands travaux (canaux, isthmes)                      </label>
+                <input type="checkbox" id="chkScSoDiscThem96" name="boxScienceAlt2[]" value="construction"> Art des constructions (génie civil), grands travaux (canaux, isthmes)                      </label>
                     </div>
                   </span><!-- /input-group-addon -->
                                 </div><!-- /input-group -->
@@ -893,7 +893,7 @@
                                   <span class="input-group-addon">
                     <div class="checkbox">
                       <label>
-                <input type="checkbox" id="chkScSoDiscThem97" name="chkScSoDiscThem[]" value="97|Astronomie / Astrophysique"> Astronomie / Astrophysique                      </label>
+                <input type="checkbox" id="chkScSoDiscThem97" name="boxScienceAlt2[]" value="astronomie"> Astronomie / Astrophysique                      </label>
                     </div>
                   </span><!-- /input-group-addon -->
                                 </div><!-- /input-group -->
@@ -1027,7 +1027,7 @@
                                   <span class="input-group-addon">
                     <div class="checkbox">
                       <label>
-                <input type="checkbox" id="chkScSoDiscThem113" name="boxScience4[]" value="113|Mathématiques"> Mathématiques                      </label>
+                <input type="checkbox" id="chkScSoDiscThem113" name="boxScienceAlt3" value="math"> Mathématiques                      </label>
                     </div>
                   </span><!-- /input-group-addon -->
                                 </div><!-- /input-group -->
@@ -1036,7 +1036,7 @@
                                   <div class="panel-heading">
                     <div class="checkbox">
                       <label>
-                <input type="checkbox" id="chkScSoDiscThem114" name="boxScience4[]" value="114|Médecine"> Médecine                      </label>
+                <input type="checkbox" id="chkScSoDiscThem114" name="chkScSoDiscThem[]" value="114|Médecine"> Médecine                      </label>
                     </div>
                   </div><!-- /panel-heading -->
                   <div class="panel-body"><div class="input-group">
@@ -1563,13 +1563,13 @@
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelDiscipline1" name="boxNaration11[]" value="scienceVie"> Sciences de la vie (inclut biologie, botanique, zoologie)                   </label>
+              <input type="checkbox" id="chkReelDiscipline1" name="boxScience11[]" value="scienceVie"> Sciences de la vie (inclut biologie, botanique, zoologie)                   </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelDiscipline2" name="boxNaration11[]" value="scienceMedicale"> Sciences médicales                  </label>
+              <input type="checkbox" id="chkReelDiscipline2" name="boxScience11[]" value="scienceMedicale"> Sciences médicales                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                           </div><!-- /input-group -->
@@ -1585,19 +1585,19 @@
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelDiscipline4" name="boxNaration11[]" value="sciencePhysique"> Physique, chimie et mathématiques                  </label>
+              <input type="checkbox" id="chkReelDiscipline4" name="boxScience11[]" value="sciencePhysique"> Physique, chimie et mathématiques                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelDiscipline5" name="boxNaration11[]" value="ingenieurie"> Ingénierie et technique                  </label>
+              <input type="checkbox" id="chkReelDiscipline5" name="boxScience11[]" value="ingenieurie"> Ingénierie et technique                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelDiscipline6" name="boxNaration11[]" value="autree"> Autre                  </label>
+              <input type="checkbox" id="chkReelDiscipline6" name="boxScience11[]" value="autree"> Autre                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                           </div><!-- /input-group -->
@@ -1611,25 +1611,25 @@
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelModal1" name="boxNaration12[]" value="serieux"> Sérieux                  </label>
+              <input type="checkbox" id="chkReelModal1" name="boxScience12[]" value="serieux"> Sérieux                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelModal2" name="boxNaration12[]" value="satire"> Satire                  </label>
+              <input type="checkbox" id="chkReelModal2" name="boxScience12[]" value="satire"> Satire                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelModal3" name="boxNaration12[]" value="hommage"> Hommage                  </label>
+              <input type="checkbox" id="chkReelModal3" name="boxScience12[]" value="hommage"> Hommage                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkReelModal4" name="boxNaration12[]" value="refutation"> Réfutation                  </label>
+              <input type="checkbox" id="chkReelModal4" name="boxScience12[]" value="refutation"> Réfutation                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                           </div><!-- /input-group -->
@@ -1862,21 +1862,21 @@
               <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" id="chkImaginSoci1" name="boxNaration13[]" value="presentTemp"> Présente
+                    <input type="checkbox" id="chkImaginSoci1" name="boxScience13[]" value="presentTemp"> Présente
                   </label>
                 </div>
               </span><!-- /input-group-addon -->
               <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" id="chkImaginSoci2" name="boxNaration13[]" value="absentTemp"> Absente
+                    <input type="checkbox" id="chkImaginSoci2" name="boxScience13[]" value="absentTemp"> Absente
                   </label>
                 </div>
               </span><!-- /input-group-addon -->
               <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" id="chkImaginSoci3" name="boxNaration13[]" value="plusieursTemp"> Plusieurs
+                    <input type="checkbox" id="chkImaginSoci3" name="boxScience13[]" value="plusieursTemp"> Plusieurs
                   </label>
                 </div>
               </span><!-- /input-group-addon -->
@@ -1897,19 +1897,19 @@
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkImaginTechno2" name="boxNaration14[]" value="neutreDegre"> Neutre                  </label>
+              <input type="checkbox" id="chkImaginTechno2" name="boxScience14[]" value="neutreDegre"> Neutre                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkImaginTechno3" name="boxNaration14[]" value="faibleDegre"> Faible                  </label>
+              <input type="checkbox" id="chkImaginTechno3" name="boxScience14[]" value="faibleDegre"> Faible                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkImaginTechno4" name="boxNaration14[]" value="indetermiteDegre"> Indéterminé                  </label>
+              <input type="checkbox" id="chkImaginTechno4" name="boxScience14[]" value="indetermiteDegre"> Indéterminé                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                           </div><!-- /input-group -->
@@ -1925,25 +1925,25 @@
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkImaginValeur1" name="boxNaration15[]" value="positifValeur"> Positive                  </label>
+              <input type="checkbox" id="chkImaginValeur1" name="boxScience15[]" value="positifValeur"> Positive                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkImaginValeur2" name="boxNaration15[]" value="negatifValeur"> Négative                  </label>
+              <input type="checkbox" id="chkImaginValeur2" name="boxScience15[]" value="negatifValeur"> Négative                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkImaginValeur3" name="boxNaration15[]" value="neutreValeur"> Neutre                  </label>
+              <input type="checkbox" id="chkImaginValeur3" name="boxScience15[]" value="neutreValeur"> Neutre                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
                 <div class="checkbox">
                   <label>
-              <input type="checkbox" id="chkImaginValeur4" name="boxNaration15[]" value="ambivalenteValeur"> Ambivalente                  </label>
+              <input type="checkbox" id="chkImaginValeur4" name="boxScience15[]" value="ambivalenteValeur"> Ambivalente                  </label>
                 </div>
               </span><!-- /input-group-addon -->
                             <span class="input-group-addon">
