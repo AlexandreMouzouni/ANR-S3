@@ -15,7 +15,7 @@
 	<h1>Dataviz</h1>
 
 	<?php
-  $listauteur= $model->getNbOeuvreWithAuteur();
+  $listauteur= $model->getNbOeuvreWithAuteurX();
 
   		$liste= [];
   		foreach ($listauteur as $value) {
