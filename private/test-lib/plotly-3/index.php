@@ -13,8 +13,9 @@
   <script type="module">
     <?php
         $listauteur= $model->getNbOeuvreWithAuteur();
-
-
+print_r($listauteur);
+print("<br>");
+print("<br>");
   		$liste= [];
   		foreach ($listauteur as $value) {
   			$liste[] = ['x'=>$value["x"],'y'=>$value["y"]];
