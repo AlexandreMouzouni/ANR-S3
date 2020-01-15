@@ -8,17 +8,26 @@ define('BDD_DATABASE', 'anticipation');
 $conn = Connexion::getBD();
 
 /**
- * Retourne le SQL nécéssaire pour faire une sous-requete.
- * Ce code est le même pour toutes les requêtes, 
- * parce que nous avons besoin uniquement des oeuvres elle-mêmes.
- * @param data Les données de base (tableau js.)
+ * String -> tableau de donneés
+ * @param data Le JSON en entrée
  */
-function makeSubrequest($data) {
+function makeTab($data) {
+    // Transformer en tableau
     $listeID = [];
     foreach($data as $_ => $val) {
         array_push($listeID, $val['idOeuvre']);
     }
-    $sql = implode($listeID, ","); // "1,2,34,238"...
+    return $listeID;
+}
+
+/**
+ * Retourne le SQL nécéssaire pour faire une sous-requete.
+ * Ce code est le même pour toutes les requêtes, 
+ * parce que nous avons besoin uniquement des oeuvres elle-mêmes.
+ * @param data Les données de  base (tableau js.)
+ */
+function makeSubrequest($data) {
+    $sql = implode($data, ","); // "1,2,34,238"...
     return $sql;
 }
 
@@ -47,8 +56,7 @@ if (!isset($_POST)) {
 }
 
 $typeGraphe = $_POST['typeGraphe'];
-$data = $_POST['data'];
-
+$data = makeTab($_POST['data']);
 //echo $data;
 $sub_sql = makeSubrequest($data);
 //echo $sub_sql;

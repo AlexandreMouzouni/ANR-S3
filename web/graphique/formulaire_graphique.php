@@ -2110,7 +2110,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
 <script>
-var test = false;
+var globalData = false;
 $(document).ready(function(){
     $('#formRechAvance').submit(function(){
 
@@ -2133,7 +2133,14 @@ $(document).ready(function(){
               // Remettre l'html vide
               $('#response').html("");
 
-              test = data;
+              globalData = data;
+              // Si l'on a pas choisi de graphe, générer un bar chart par défault
+              // TODO: Il faudrait faire le choix de graphe automatiquement
+              // Ne pas faire ce choix si un graphique est déja choisi
+              if (selectedChart === null) {
+                selectedChart = "graphique-type1";
+              }
+              generateChosenChart(selectedChart);
             }
         });
 

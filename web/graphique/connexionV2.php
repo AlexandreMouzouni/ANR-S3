@@ -10,7 +10,7 @@ class Connexion extends mysqli{
   private static $instance = null;
 
   public function __construct() {
-    $this->bd = new PDO("mysql:host=localhost;dbname=scibase","root","");
+    $this->bd = new PDO("mysql:host=localhost;dbname=anticipation","php","jesuistresencolere");
     $this->bd-> query("SET NAME utf8");
     $this->bd-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
@@ -23,10 +23,12 @@ class Connexion extends mysqli{
 
   public function getResearch($var, $var2, $var3, $var4, $varTab6){ //Fait pour la recherche dans la table ouevres
     $test = count($varTab6)!=0;
+    /*
     echo $var;
     echo $var2;
     echo $var3;
     echo $var4;
+    */
     if($var!=null or $var2!=null or $var3!=null or $var4!=null or $test){
       $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE';
       if ($var != null){ //Nom
@@ -104,7 +106,7 @@ class Connexion extends mysqli{
         $req0->bindValue(':var4', $var4);
       }
 
-      echo $txt;
+    //echo $txt;
       $req0->execute();
       $tabNom = $req0->fetchAll(PDO::FETCH_ASSOC);
       return $tabNom;
@@ -1407,7 +1409,7 @@ $txt = $txt.' )';
 
     $txt=$txt.' group by idOeuvre';
 
-      echo $txt;
+  //echo $txt;
 
     $req0->execute();
     $tabNom = $req0->fetchAll(PDO::FETCH_ASSOC);

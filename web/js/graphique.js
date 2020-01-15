@@ -110,7 +110,9 @@ function generateChosenChart(char) {
   // checkPertinence();
   switch(char) {
     case allCharts[0]:
-      makebar();
+      // globalData : défini par le premier ajax du formulaire,
+      // voir formulaire_graphique.php 
+      makebar(globalData);
       break;
     case allCharts[1]:
       makeCirculaire();
@@ -317,32 +319,8 @@ function setLayout_tick(oldLayout, new_dtickX, new_dtickY) {
 // Function de test pour l'interface
 //***************************************
 
+// On passe les données global
 function makebar(donnes) {
-  /* TODO: Enlever data et remplacer avec le data recup en Ajax
-  */
-  var donnes = [
-    {"idOeuvre": 72},
-    {"idOeuvre": 126},
-    {"idOeuvre": 473},
-    {"idOeuvre": 179},
-    {"idOeuvre": 450},
-    {"idOeuvre": 217},
-    {"idOeuvre": 92},
-    {"idOeuvre": 219},
-    {"idOeuvre": 70},
-    {"idOeuvre": 274},
-    {"idOeuvre": 251},
-    {"idOeuvre": 369},
-    {"idOeuvre": 364},
-    {"idOeuvre": 136},
-    {"idOeuvre": 76},
-    {"idOeuvre": 233},
-    {"idOeuvre": 357},
-    {"idOeuvre": 402},
-    {"idOeuvre": 43},
-    {"idOeuvre": 120}
-  ];
-
   // Objet qu'on va envoyer en ajax
   // Deux champs: la requete et le type de données
   var obj = {
