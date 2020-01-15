@@ -108,10 +108,10 @@ class Connexion extends mysqli{
 
 
 
-  public function getResearchGenre($var, $var2, $var3, $varTab4, $var5){ //Fait pour la recherche dans la table ouevres
+  public function getResearchGenre($var, $var2, $var3, $varTab4, $var5, $var6, $var7){ //Fait pour la recherche dans la table ouevres
 
     $test4 = count($varTab4)!=0;
-    if($var!=null or $var2!=null or $var3!=null or $test4!=null or $var5!=null){
+    if($var!=null or $var2!=null or $var3!=null or $test4!=null or $var5!=null or $varnull!=null or $var7!=null){
       $txt = 'SELECT idOeuvre FROM oeuvres WHERE';
 
       if ($var != null){ //Nom
@@ -144,11 +144,11 @@ class Connexion extends mysqli{
             $txt = $txt." AND";
           }
           if ($v=='Discours auctorial'){
-            $txt = $txt.' discoursAuditorialOK!=1'; //A regler si en distinct
+            $txt = $txt.' discoursAuctorialOK!=1'; //A regler si en distinct
             $testFirst++;
           }
           else if ($v=='Réception critique'){
-            $txt = $txt." discowursAuctorialCom!='null'"; //A regler si en distinct
+            $txt = $txt." discoursAuctorialCom!='null'"; //A regler si en distinct
             $testFirst++;
           }
           else if ($v=='Dispositif éditorial'){
@@ -184,7 +184,7 @@ class Connexion extends mysqli{
 
       //$txtt = "SELECT auteurNom,auteurPrenom FROM oeuvres where auteurNom = :var and auteurPrenom = :var2 or auteurNomReel = :var and auteurPrenomReel= :var2 or auteurNom2 = :var and auteurPrenom2= :var2 or auteurNomReel2 = :var and auteurPrenomReel2= :var2 or auteurNom3 = :var and auteurPrenom3= :var2 or auteurNomReel3 = :var and auteurPrenomReel3= :var2";
       $req0 = $this->bd->prepare($txt);
-      if ($var1!=null){
+      if ($var!=null){
         $req0->bindValue(':var1', $var);
       }
 
@@ -197,15 +197,15 @@ class Connexion extends mysqli{
       }
 
       if ($var5!=null){
-        $req0->bindValue(':var4', $var5);
+        $req0->bindValue(':var5', $var5);
       }
 
       if ($var6!=null){
-        $req0->bindValue(':var5', $var6);
+        $req0->bindValue(':var6', $var6);
       }
 
       if ($var7!=null){
-        $req0->bindValue(':var5', $var7);
+        $req0->bindValue(':var7', $var7);
       }
 
       $req0->execute();
