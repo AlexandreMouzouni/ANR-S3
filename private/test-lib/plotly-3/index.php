@@ -1,19 +1,19 @@
 <?php
-	require_once '../../Model.php';
+	require_once '../../Model.php'; 
 	$model = Model::get_model();
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Test Plotly</title>
-        <meta charset="utf-8"/>
-          <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<head>
+	<meta charset="utf-8">
+	<title>Dataviz</title>
+	<!-- Resources -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-  <div id="container" style="max-width: 1000px; height: 600px; margin: 2em auto"></div>
-  <script type="module">
 	<h1>Dataviz</h1>
+
 
 	<?php
   $listauteur= $model->getNbOeuvreWithAuteur();
@@ -47,6 +47,9 @@ print("<br><br>");
 
  Plotly.plot("container", donnee, layout)
 
-   </script>
- </body>
- </html>
+   </script>	
+
+	 <div id="container" style="width:100%; height: 500px;"></div>
+
+</body>
+</html>
