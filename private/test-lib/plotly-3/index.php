@@ -29,6 +29,7 @@ print("<br><br>");
   	 ?>
   <script>
  const data = <?php echo json_encode($liste) . ";"; ?>
+   var donnee = [{"titre":"Paul Eluard","nombre":"10"},{"titre":"Alexandre Dumas","nombre":"5"},{"titre":"Victor Hugo","nombre":"5"},{"titre":"Edmond Malone","nombre":"13"},{"titre":"Christine de Pisan","nombre":"5"},{"titre":"George Sand","nombre":"7"},{"titre":"Hector Servadac","nombre":"3"},{"titre":"Marguerite Audoux","nombre":"1"},{"titre":"Edgar Allan Poe","nombre":"6"},{"titre":"Honoré de Balzac","nombre":"13"}];
  var donnee = [{
    type: 'scatterpolar',
    r: data.map((d) => d.x),
