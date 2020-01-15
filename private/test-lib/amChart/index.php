@@ -66,10 +66,6 @@
 		title.fontSize = 20;
 		title.fontWeight = "800";
 
-		setInterval(function () {
-		  series.dataItems.getIndex(Math.round(Math.random() * (series.dataItems.length - 1))).setValue("value", Math.round(Math.random() * 10));
-		 }, 10000)
-
 		}); 
 	</script>	
 
