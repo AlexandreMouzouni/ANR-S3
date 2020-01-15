@@ -429,27 +429,31 @@ function makenetwork(donnes) {
     dataType: "json"
   })
   .done(function(data) {
-    console.log(data);
-    const xaxis = data.map(d => d.x)
-    const yaxis = data.map(d => d.y)
+    var chart = anychart.graph(data);
 
-    var donneesBar = [
-        {
-            x: xaxis,
-            y: yaxis,
-            type: 'bar',
-        }
-    ]
 
-    var graphData = donneesBar;
-    console.log(graphData);
+    var nodes = chart.nodes();
+    nodes.normal().fill("#A01816");
+    nodes.stroke('2 #CE2C1C');	// contour des nodes
+    nodes.hovered().height(10).width(10).stroke('2 #A52317'); // countour des nodes quand hovered
+    nodes.hovered().fill("white");
+    nodes.selected().fill("#911A14");
+    nodes.selected().height(10).width(10).stroke('2 #B52319'); // contour des nodes quand sélectioné
 
-    var layoutA = {barmode: 'group'};
-    var layoutB = getLayout();
-    var layout = Object.assign(layoutA, layoutB);
-    var layout = setLayout_tick(layout, 1, 1); //Il faudrait faire en sorte d'appeler cette fonction avec les paramètres 1, 1 quand des années sont impliqués et que le nombre d'oeuvre     n'est pas trop important
+    var edges = chart.edges();
+    edges.stroke('2 #CE2C1C'); // lignes
+    edges.hovered().stroke('2 #A52317'); // lignes hovered
+    edges.selected().stroke('2 #B52319'); // lignes sélectionnés
 
-    Plotly.newPlot('generation-graphique', graphData, layout, barInit());
+
+    // set the chart title
+    chart.title("Network Graph: Basic Sample");
+
+    // set the container id
+    chart.container("generation-graphique");
+
+    // initiate drawing the chart
+    chart.draw();
   })
   .fail(function() {
     alert( "Erreur de génération du graphe." );
