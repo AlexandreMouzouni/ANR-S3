@@ -10,7 +10,7 @@ class Connexion extends mysqli{
   private static $instance = null;
 
   public function __construct() {
-    $this->bd = new PDO("mysql:host=localhost;dbname=anticipation","php","jesuistresencolere");
+    $this->bd = new PDO("mysql:host=localhost;dbname=scibase","root","");
     $this->bd-> query("SET NAME utf8");
     $this->bd-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
@@ -23,9 +23,12 @@ class Connexion extends mysqli{
 
   public function getResearch($var, $var2, $var3, $var4, $varTab6){ //Fait pour la recherche dans la table ouevres
     $test = count($varTab6)!=0;
+    echo $var;
+    echo $var2;
+    echo $var3;
+    echo $var4;
     if($var!=null or $var2!=null or $var3!=null or $var4!=null or $test){
-      $txt = 'SELECT idOeuvre FROM oeuvres WHERE';
-
+      $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE';
       if ($var != null){ //Nom
         $txt = $txt." LOCATE(:var, titrePE)";
       }
@@ -35,8 +38,10 @@ class Connexion extends mysqli{
       }
 
       if($var2!=null){ //auteurPrenom
-        $txt = $txt.' auteurNom = :var2 or auteurNom2 = :var or auteurNom3 = :var2';
+        $txt = $txt.' auteurNom = :var2 or auteurNom2 = :var2 or auteurNom3 = :var2';
         $txt = $txt.' or auteurNomReel = :var2 or auteurNomReel2 = :var2 or auteurNomReel3 = :var2';
+        $txt = $txt.' or auteurPrenom = :var2 or auteurPrenom2 = :var2 or auteurPrenom3 = :var2';
+        $txt = $txt.' or auteurPrenomReel = :var2 or auteurPrenomReel2 = :var2 or auteurPrenomReel3 = :var2';
       }
 
       if (($var!=null or $var2!=null) and $var3!=null){
@@ -58,7 +63,7 @@ class Connexion extends mysqli{
 
 
       if ($test){ //Nom
-        if ($var!=null or $var2!=null or $var3!=null)
+        if ($var!=null or $var2!=null or $var3!=null or $var4!=null)
           $txt = $txt.' AND';
         $testFirst=0;
         foreach($varTab6 as $c => $v){
@@ -80,7 +85,7 @@ class Connexion extends mysqli{
       }
     }
 
-
+      $txt = $txt.' GROUP BY idOeuvre';
       //$txtt = "SELECT auteurNom,auteurPrenom FROM oeuvres where auteurNom = :var and auteurPrenom = :var2 or auteurNomReel = :var and auteurPrenomReel= :var2 or auteurNom2 = :var and auteurPrenom2= :var2 or auteurNomReel2 = :var and auteurPrenomReel2= :var2 or auteurNom3 = :var and auteurPrenom3= :var2 or auteurNomReel3 = :var and auteurPrenomReel3= :var2";
       $req0 = $this->bd->prepare($txt);
       if ($var!=null){
@@ -99,6 +104,7 @@ class Connexion extends mysqli{
         $req0->bindValue(':var4', $var4);
       }
 
+      echo $txt;
       $req0->execute();
       $tabNom = $req0->fetchAll(PDO::FETCH_ASSOC);
       return $tabNom;
@@ -755,7 +761,7 @@ $txt = $txt.' )';
 
 
 
-    if($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or (strlen($var1)>0) or (strlen($var2)>0) or $test12 or $test13 or $test14 or ($var3!='null' and $var3!=null) or $test15 or  $test16 or $var3!='null' or $var4!=null or $var5!='null' or $var6!='null' or $testAlt2 or $varTab3!=null){
+    if($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or (strlen($var1)>0) or (strlen($var2)>0) or $test12 or $test13 or $test14 or ($var3!='null' and $var3!=null) or $test15 or  $test16 or $var3!='null' or $var4!=null or ($var5!='null' and $var5!=null) or $var6!='null' or $testAlt2 or $varTab3!=null){
       $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE'; //Distinct ??
 
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11)
@@ -1314,9 +1320,9 @@ $txt = $txt.' )';
       $txt = $txt.' exists (SELECT idOeuvre from representations where oeuvres.idOeuvre=representations.idOeuvre and idMot=:var4)';
     }
 
-    if (($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14 or $test15 or $test16 or($var3!='null' and $var3!=null) or $var4!=null) and $var5!='null')
+    if (($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14 or $test15 or $test16 or($var3!='null' and $var3!=null) or $var4!=null) and ($var5!='null' and $var5!=null))
       $txt = $txt.' AND';
-    if ($var5!='null'){
+    if ($var5!='null' and $var5!=null){
       $txt = $txt.' exists (SELECT idOeuvre from representations where oeuvres.idOeuvre=representations.idOeuvre and idMot=:var5)';
     }
 
@@ -1401,8 +1407,7 @@ $txt = $txt.' )';
 
     $txt=$txt.' group by idOeuvre';
 
-    // Cet echo permet de montrer la requête réele
-    //echo $txt;
+      echo $txt;
 
     $req0->execute();
     $tabNom = $req0->fetchAll(PDO::FETCH_ASSOC);
