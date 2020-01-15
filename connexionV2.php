@@ -23,7 +23,7 @@ class Connexion extends mysqli{
 
   public function getResearch($var, $var2, $var3, $var4, $varTab6){ //Fait pour la recherche dans la table ouevres
     $test = count($varTab6)!=0;
-    if($var!=null or $var2!=null or $var3!=null or $var4!=null or $var5!=null or $test){
+    if($var!=null or $var2!=null or $var3!=null or $var4!=null or $test){
       $txt = 'SELECT idOeuvre FROM oeuvres WHERE';
 
       if ($var != null){ //Nom
@@ -219,7 +219,7 @@ class Connexion extends mysqli{
   public function getResearchMaterial($var, $var2, $var2Bis,$tabChecked1,$tabChecked2, $var3, $var4, $var5){ //Fait pour la recherche dans la table ouevres
     $test1 = count($tabChecked1)!=0;
     $test2 = count($tabChecked2)!=0;
-    if($var!=null or $var2!=null or $var2Bis!=null or $test1 or $test2 or $var3!=null or $var4!=null or $var5!=null){
+    if($var!=null or $var2!=null or $var2Bis!=null or $test1 or $test2 or $var3!=null or $var4!=null or ($var5!=null and $var5!='null') ){
       $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE'; //Distinct ??
 
       if ($var != null){ //Nom
@@ -350,11 +350,11 @@ class Connexion extends mysqli{
         $txt = $txt.'  exists (SELECT idOeuvre from traductions where oeuvres.idOeuvre=traductions.idOeuvre and LOCATE(:var4,langue))';
       }
 
-      if (($var!=null or $var2!=null or $var2Bis!=null or $test1 or $test2 or $var3!=null or $var4!=null) and $var5!='null'){
+      if (($var!=null or $var2!=null or $var2Bis!=null or $test1 or $test2 or $var3!=null or $var4!=null) and ($var5!=null and $var5!='null')){
         $txt = $txt.' AND';
       }
 
-      if ($var5!='null')
+      if (($var5!=null and $var5!='null'))
         $txt = $txt.' exists (SELECT idOeuvre from adaptations where oeuvres.idOeuvre=adaptations.idOeuvre and nature=:var5)';
 
 
@@ -383,6 +383,7 @@ class Connexion extends mysqli{
       if ($var5!=null){
         $req0->bindValue(':var5', $var5);
       }
+
       $txt=$txt.' group by idOeuvre';
       $req0->execute();
       $tabNom = $req0->fetchAll(PDO::FETCH_ASSOC);
@@ -553,7 +554,7 @@ class Connexion extends mysqli{
     $txt = $txt.' AND';
   }
   if ($var5!=null){
-    $txt = $txt." exists (SELECT idOeuvre from personnages where oeuvres.idOeuvre=personnages.idOeuvre and LOCATE(:var4,profession))";
+    $txt = $txt." exists (SELECT idOeuvre from personnages where oeuvres.idOeuvre=personnages.idOeuvre and LOCATE(:var5,profession))";
   }
 
   if ($test4){ //REGLER LE PB DU NATURAL JOIN LIEUX
@@ -619,7 +620,7 @@ $txt = $txt.' )';
   if (($test or $var1!=null or $var2!=null or $var2Bis!=null or $var3!=null or $test2 or $var4!=null or $var5!=null or $test4 or $test5) and $var6!=null)
     $txt = $txt." AND";
   if ($var6!=null)
-    $txt = $txt." exists (SELECT idOeuvre from personnages where oeuvres.idOeuvre=personnages.idOeuvre and LOCATE(:var5,caracteristique))";
+    $txt = $txt." exists (SELECT idOeuvre from personnages where oeuvres.idOeuvre=personnages.idOeuvre and LOCATE(:var6,caracteristique))";
 
 
   if ($test6){ //REGLER LE PB DU NATURAL JOIN LIEUX
@@ -665,7 +666,7 @@ $txt = $txt.' )';
     $txt= $txt.' AND';
 
   if ($var7!='null')
-    $txt = $txt." exists (SELECT idOeuvre from esthetique where oeuvres.idOeuvre=esthetique.idOeuvre and idMot=:var6)";
+    $txt = $txt." exists (SELECT idOeuvre from esthetique where oeuvres.idOeuvre=esthetique.idOeuvre and idMot=:var7)";
 
 
 
@@ -701,6 +702,10 @@ $txt = $txt.' )';
         $req0->bindValue(':var6', $var6);
       }
 
+      if ($var7!='null'){
+        $req0->bindValue(':var6', $var7);
+      }
+
       $txt=$txt.' group by idOeuvre';
 
       $req0->execute();
@@ -710,7 +715,7 @@ $txt = $txt.' )';
     return null;
   }
 
-  public function getResearchScience($varTab1, $varTab2, $varTab3, $varTab4, $varTab5, $varTabAlt, $varTab6, $varTab7, $varTab8,$varTab9,$varTab10,$varTab11, $var1, $var2, $varTab12, $varTab13, $varTab14, $varTab15, $varTab16, $var3, $var4, $var5, $var6){ //Fait pour la recherche dans la table ouevres
+  public function getResearchScience($varTab1, $varTab2, $varTab3, $varTab4, $varTab5, $varTabAlt, $varTab6, $varTab7, $varTab8,$varTab9,$varTab10,$varTab11, $var1, $var2, $varTab12, $varTab13, $varTab14, $varTab15, $varTab16, $var3, $var4, $var5, $var6, $varTabAlt2, $varTabAlt3){ //Fait pour la recherche dans la table ouevres
 
     $test1 = count($varTab1)!=0;
 
@@ -746,9 +751,11 @@ $txt = $txt.' )';
 
     $test16 = count($varTab16)!=0;
 
+    $testAlt2 = count($varTabAlt2)!=0;
 
 
-    if($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or (strlen($var1)>0) or (strlen($var2)>0) or $test12 or $test13 or $test14 or ($var3!='null' and $var3!=null) or $test15 or  $test16 or $var3!='null' or $var4!=null or $var5!='null' or $var6!='null'){
+
+    if($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or (strlen($var1)>0) or (strlen($var2)>0) or $test12 or $test13 or $test14 or ($var3!='null' and $var3!=null) or $test15 or  $test16 or $var3!='null' or $var4!=null or $var5!='null' or $var6!='null' or $testAlt2 or $varTab3!=null){
       $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE'; //Distinct ??
 
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11)
@@ -1124,13 +1131,13 @@ $txt = $txt.' )';
     if (($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11) and (strlen($var1)>0))
       $txt = $txt.' AND';
     if((strlen($var1)>0)){
-      $txt = $txt.' exists (SELECT idOeuvre from refaureel where a.idOeuvre=refaureel.idOeuvre and LOCATE(:var1,theorie) or LOCATE(:var1,citation))';
+      $txt = $txt.' exists (SELECT idOeuvre from refaureel where oeuvres.idOeuvre=refaureel.idOeuvre and LOCATE(:var1,theorie) or LOCATE(:var1,citation))';
     }
 
     if (($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or (strlen($var1)>0)) and (strlen($var2)>0))
       $txt = $txt.' AND';
     if((strlen($var2)>0)){
-      $txt = $txt.' exists (SELECT idOeuvre from refaureel where a.idOeuvre=refaureel.idOeuvre and LOCATE(:var2,personnalite)) or LOCATE(:var2,citation)';
+      $txt = $txt.' exists (SELECT idOeuvre from refaureel where oeuvres.idOeuvre=refaureel.idOeuvre and LOCATE(:var2,personnalite)) or LOCATE(:var2,citation)';
     }
 
 
@@ -1138,7 +1145,7 @@ $txt = $txt.' )';
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null)
         $txt = $txt.' AND';
 
-      $txt = $txt." exists (SELECT idOeuvre from refaureel where a.idOeuvre=refaureel.idOeuvre and";
+      $txt = $txt." exists (SELECT idOeuvre from refaureel where oeuvres.idOeuvre=refaureel.idOeuvre and";
       $testFirst=0;
       foreach($varTab12 as $c => $v){
         if ($testFirst>=1 and $testFirst<=count($varTab12)){
@@ -1172,12 +1179,11 @@ $txt = $txt.' )';
       $txt = $txt.")";
     }
 
-
     if ($test13){
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12)
         $txt = $txt.' AND';
 
-      $txt = $txt." exists (SELECT idOeuvre from refaureel where a.idOeuvre=refaureel.idOeuvre and";
+      $txt = $txt." exists (SELECT idOeuvre from refaureel where oeuvres.idOeuvre=refaureel.idOeuvre and";
       $testFirst=0;
       foreach($varTab13 as $c => $v){
         if ($testFirst>=1 and $testFirst<=count($varTab13)){
@@ -1234,7 +1240,7 @@ $txt = $txt.' )';
     if ($test15){
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14)
         $txt = $txt.' AND';
-      $txt = $txt." exists (SELECT idOeuvre from societeimg where a.idOeuvre=societeimg.idOeuvre and";
+      $txt = $txt." exists (SELECT idOeuvre from societeimg where oeuvres.idOeuvre=societeimg.idOeuvre and";
       $testFirst=0;
       foreach($varTab13 as $c => $v){
         if ($testFirst>=1 and $testFirst<=count($varTab13)){
@@ -1265,7 +1271,7 @@ $txt = $txt.' )';
     if ($test16){
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14 or $test13 or $test15)
         $txt = $txt.' AND';
-      $txt = $txt." exists (SELECT idOeuvre from societeimg where a.idOeuvre=societeimg.idOeuvre and";
+      $txt = $txt." exists (SELECT idOeuvre from societeimg where oeuvres.idOeuvre=societeimg.idOeuvre and";
       $testFirst=0;
       foreach($varTab13 as $c => $v){
         if ($testFirst>=1 and $testFirst<=count($varTab13)){
@@ -1321,6 +1327,48 @@ $txt = $txt.' )';
     }
 
 
+    if ($testAlt2){
+      if (($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14 or $test15 or $test16 or ($var3!='null' and $var3!=null) or $var4!=null or $var5!='null' or $var6!='null'))
+        $txt = $txt.' AND';
+      $txt = $txt." exists (SELECT idOeuvre from representations where oeuvres.idOeuvre=representations.idOeuvre and";
+      $testFirst=0;
+      foreach($varTabAlt2 as $c => $v){
+        if ($testFirst>=1 and $testFirst<=count($varTabAlt2)){
+          $txt = $txt." AND";
+        }
+        if ($v=='anthropologie'){
+          $txt = $txt." idMot =93";
+          $testFirst++;
+        }
+        else if ($v=='archeologie'){
+          $txt = $txt." idMot =94";
+          $testFirst++;
+        }
+        else if ($v=='armement'){
+          $txt = $txt." idMot =95";
+          $testFirst++;
+        }
+        else if ($v=='construction'){
+          $txt = $txt." idMot =96";
+          $testFirst++;
+        }
+        else if ($v=='astronomie'){
+          $txt = $txt." idMot =97";
+          $testFirst++;
+        }
+      }
+      $txt = $txt.")";
+    }
+
+    if (($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14 or $test15 or $test16 or ($var3!='null' and $var3!=null) or $var4!=null or $var5!='null' or $var6!='null' or $testAlt2) and $varTabAlt3!=null)
+      $txt = $txt.' AND';
+
+    if ($varTabAlt3!=null){
+      $txt = $txt." exists (SELECT idOeuvre from representations where oeuvres.idOeuvre=representations.idOeuvre and idMot=113)";
+    }
+
+
+
 
 
 
@@ -1335,7 +1383,7 @@ $txt = $txt.' )';
       $req0->bindValue(':var2', $var2);
     }
 
-    if ($var3!=null){
+    if ($var3!='null'){
       $req0->bindValue(':var3', $var3);
     }
 
@@ -1343,11 +1391,11 @@ $txt = $txt.' )';
       $req0->bindValue(':var4', $var4);
     }
 
-    if ($var5!=null){
+    if ($var5!='null'){
       $req0->bindValue(':var5', $var5);
     }
 
-    if ($var6!=null){
+    if ($var6!='null'){
       $req0->bindValue(':var6', $var6);
     }
 
