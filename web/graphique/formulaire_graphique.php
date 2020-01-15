@@ -2061,9 +2061,6 @@
               <span class="glyphicon glyphicon-question-sign"></span>
 
             </button>
-
-
-
     </div>
     <!-- Modal -->
     <div class="modal fade" id="guideModal" tabindex="-1" role="dialog" aria-labelledby="guideModalLabel" aria-hidden="true">
@@ -2079,9 +2076,8 @@
             <div>Pour générer un graphique il faut d'abord remplir les champs de recherches souhaités
             puis choisir le graphique souhaité en cliquant dessus.</div>
             <img title="La barre du menu" class="guide" src="../images/graphique/exemple_barre_plot.ly.png"/>
-
             <div>
-            Tous les graphiques à l'exception du graphe réseaux, dispose d'une barre visible en haut à droite du graphique généré offrant plusieurs fonctionnalité à l'utilisateur :</br>
+            Tous les graphiques à l'exception du graphe réseaux et du nuage de mot disposent d'une barre visible en haut à droite du graphique généré offrant plusieurs fonctionnalités à l'utilisateur :</br>
             <ul>
                 <li>Sauvegarder l'image en .png</li>
                 <li>Sauvegarder l'image en .svg</li>
@@ -2092,11 +2088,15 @@
                 <li>Comparaison entre données en survol</li>
             </ul>
           </div>
-
-          <div>
-            Pour le graphe réseaux, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-
+          Pour le graphe réseau, vous pouvez à l'aide d'un clic droit sur le graphe :
+          <ul>
+              <li>Sauvegarder le graphe</li>
+              <li>Sauvegarder les données du graphe</li>
+              <li>Sélection rectangulaire</li>
+              <li>Partager le graphe</li>
+              <li>Imprimer</li>
+              <li>Mettre le graphe en plein écran</li>
+          </ul>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger btn-dark-red" data-dismiss="modal">Fermer</button>
@@ -2105,9 +2105,7 @@
       </div>
     </div>
   </div>
-
-<!-- rajouter des modaux si pas bon -->
-
+  
 </div><!-- /panel -->
 
   <script>
