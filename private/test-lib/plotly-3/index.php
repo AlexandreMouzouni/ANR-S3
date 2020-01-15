@@ -31,8 +31,8 @@ print("<br><br>");
  const data = <?php echo json_encode($liste) . ";"; ?>
  var donnee = [{
    type: 'scatterpolar',
-   r: data.map(d => d.x),
-   theta: data.map(d => d.y),
+   r: data.map((d) => d.x),
+   theta: data.map((d) => d.y),
    fill: 'toself',
  },
  ]
