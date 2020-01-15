@@ -32,8 +32,8 @@ print("<br><br>");
  const data = <?php echo json_encode($liste) . ";"; ?>
  var donnee = [{
    type: 'scatterpolar',
-   r: data.x,
-   theta: data.y,
+   r: data.map(d => d.x),
+   theta: data.map(d => d.y),
    fill: 'toself',
  },
  ]
@@ -42,7 +42,7 @@ print("<br><br>");
    polar: {
      radialaxis: {
        visible: true,
-       range: data.y,
+       range:data.map(d => d.y),
      }
    },
    showlegend: false
