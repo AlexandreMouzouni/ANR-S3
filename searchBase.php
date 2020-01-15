@@ -464,7 +464,8 @@
       foreach($tab_list as $c => $v){
         $res = array_merge($res, $v);
       }
-
+      
+      $res = array_values($res)
       echo json_encode($res);
 
 ?>
