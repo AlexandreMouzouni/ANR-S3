@@ -20,8 +20,10 @@
 print_r($listauteur);
 print("<br><br>");
   		$liste= [];
-  		foreach ($listauteur as $value) {
-  			$liste[] = $value;
+  		foreach($listeauteur as $v){
+  		    foreach ($v as $value) {
+  			    $liste[] = ['x'=> $value['x']];
+  		    }
   		}
   		
   		print_r($liste);
