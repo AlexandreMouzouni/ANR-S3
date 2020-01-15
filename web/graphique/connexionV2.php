@@ -1418,8 +1418,24 @@ $txt = $txt.' )';
   return null;
 }
 
+public function infoBarChart($data, $sub_sql, $conn){
+  $sql = 
+    'SELECT anneePE as x, count(*) as y
+    from oeuvres
+    where idOeuvre in (' 
+    . $sub_sql 
+    . ')
+    group by anneePE
+    order by anneePE asc;';
 
-public function informations($ID){
+    //print $sql;
+    $req = $this->bd->prepare($sql);
+    $req->execute();
+    $result = $req->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+public function infoNetwork($ID){
   $txt = 'SELECT titrePE,auteurCompare FROM liensautresauteurs natural join oeuvres WHERE idOeuvre=:var';
   $req0 = $this->bd->prepare($txt);
   $req0->bindValue(':var', $ID);

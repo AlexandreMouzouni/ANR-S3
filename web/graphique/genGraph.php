@@ -1,10 +1,5 @@
 <?php
-require '../lib/connexion.php';
-define('BDD_HOST', 'localhost');
-define('BDD_LOGIN', 'php');
-define('BDD_MDP', 'jesuistresencolere');
-define('BDD_DATABASE', 'anticipation');
-
+require('connexionV2.php');
 $conn = Connexion::getBD();
 
 /**
@@ -32,19 +27,31 @@ function makeSubrequest($data) {
 }
 
 function barChart($data, $sub_sql, $conn) {
-    $sql = 
-    'SELECT anneePE as x, count(*) as y
-    from oeuvres
-    where idOeuvre in (' 
-    . $sub_sql 
-    . ')
-    group by anneePE
-    order by anneePE asc;';
+    return $conn->infoBarChart($data, $sub_sql, $conn);
+}
 
-    //print $sql;
-    $req = $conn->query($sql) or die();
-    $result = $req->fetch_all(MYSQLI_ASSOC);
-    return $result;
+function networkChart($data, $sub_sql, $conn) {
+    error_reporting(0);
+    $tabLinks = array();
+    $tabLiensAuteurs = array();
+    for($i=0; $i<count($data); $i++){
+      // Voir connexionV2
+      $tabLiensAuteurs = $conn->infoNetwork($data[$i]);
+      //print_r($tabLiensAuteurs);
+      for($j=0; $j<count($tabLiensAuteurs); $j++){
+      // tab = Array({ 'Jean'=>{}, 'Dupond'=>{}, 'Jule'=>{} })
+        if(array_key_exists($tabLiensAuteurs[$j]['auteurCompare'],$tabLinks)){
+          if(!in_array($tabLiensAuteurs[$i]['titrePE'], $tabLinks[$tabLiensAuteurs[$j]['auteurCompare']])){
+            array_push($tabLinks[$tabLiensAuteurs[$j]['auteurCompare']], $tabLiensAuteurs[$j]['titrePE']);
+          }
+        }
+        else{
+          $tabLinks[$tabLiensAuteurs[$j]['auteurCompare']] = array();
+          array_push($tabLinks[$tabLiensAuteurs[$j]['auteurCompare']], $tabLiensAuteurs[$j]['titrePE']);
+        }
+      }
+    }
+    return $tabLinks;
 }
 
 
@@ -60,6 +67,12 @@ $data = makeTab($_POST['data']);
 //echo $data;
 $sub_sql = makeSubrequest($data);
 //echo $sub_sql;
-$result = barChart($data, $sub_sql, $conn);
+
+if ($typeGraphe === 'bar'){
+    $result = barChart($data, $sub_sql, $conn);
+}else if ($typeGraphe === 'network') {
+    $result = networkChart($data, $sub_sql, $conn);
+}
+
 echo json_encode($result);
 ?>

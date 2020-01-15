@@ -127,10 +127,10 @@ function generateChosenChart(char) {
       makeNuageDeMots();
       break;
     case allCharts[5]: //On désactive le clique sur la palette
-      makeReseau();
+      makenetwork(globalData);
       break;
     case allCharts[6]:
-      makeplot2();
+      makeReseau();
       break;
     case allCharts[7]:
       makeplot2();
@@ -364,30 +364,50 @@ function makebar(donnes) {
   });
 }
 
-// Ancien makeplot
-function makeplot_old() {
-var trace1 = {
-    x: ['giraffes', 'orangutans', 'monkeys'],
-    y: [20, 14, 23],
-    name: 'SF Zoo',
-    type: 'bar'
-  };
+// On passe les données global
+function makenetwork(donnes) {
+  // Objet qu'on va envoyer en ajax
+  // Deux champs: la requete et le type de données
+  var obj = {
+    data: donnes,
+    typeGraphe: "network"
+  }
 
-  var trace2 = {
-    x: ['giraffes', 'orangutans', 'monkeys'],
-    y: [12, 18, 29],
-    name: 'LA Test',
-    type: 'bar'
-  };
+  console.log(obj);
+  // Requête ajax pour générer la bonne structure
+  $.ajax({
+    type: 'POST',
+    url: './genGraph.php',
+    data: obj,
+    dataType: "json"
+  })
+  .done(function(data) {
+    console.log(data);
+    const xaxis = data.map(d => d.x)
+    const yaxis = data.map(d => d.y)
 
-  var data = [trace1, trace2];
+    var donneesBar = [
+        {
+            x: xaxis,
+            y: yaxis,
+            type: 'bar',
+        }
+    ]
 
-  var layoutA = {barmode: 'group'};
-  var layoutB = getLayout();
-  var layout = Object.assign(layoutA, layoutB);
+    var graphData = donneesBar;
+    console.log(graphData);
 
-  Plotly.newPlot('generation-graphique', data, layout, barInit());
-};
+    var layoutA = {barmode: 'group'};
+    var layoutB = getLayout();
+    var layout = Object.assign(layoutA, layoutB);
+    var layout = setLayout_tick(layout, 1, 1); //Il faudrait faire en sorte d'appeler cette fonction avec les paramètres 1, 1 quand des années sont impliqués et que le nombre d'oeuvre     n'est pas trop important
+
+    Plotly.newPlot('generation-graphique', graphData, layout, barInit());
+  })
+  .fail(function() {
+    alert( "Erreur de génération du graphe." );
+  });
+}
 
 function makeplot2() {
     var data = [
