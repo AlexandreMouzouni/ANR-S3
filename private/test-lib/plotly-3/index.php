@@ -8,13 +8,11 @@
     <head>
         <title>Test Plotly</title>
         <meta charset="utf-8"/>
+          <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <div id="container" style="max-width: 1000px; height: 600px; margin: 2em auto"></div>
   <script type="module">
-</head>
-<body>
 	<h1>Dataviz</h1>
 
 	<?php
