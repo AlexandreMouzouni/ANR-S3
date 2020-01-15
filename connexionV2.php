@@ -111,7 +111,7 @@ class Connexion extends mysqli{
   public function getResearchGenre($var, $var2, $var3, $varTab4, $var5, $var6, $var7){ //Fait pour la recherche dans la table ouevres
 
     $test4 = count($varTab4)!=0;
-    if($var!=null or $var2!=null or $var3!=null or $test4!=null or $var5!=null or $varnull!=null or $var7!=null){
+    if($var!=null or $var2!=null or $var3!=null or $test4!=null or $var5!=null or $var6!=null or $var7!=null){
       $txt = 'SELECT idOeuvre FROM oeuvres WHERE';
 
       if ($var != null){ //Nom
