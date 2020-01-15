@@ -55,6 +55,19 @@ function networkChart($data, $sub_sql, $conn) {
         }
       }
     }
+    
+    $nodes = array();
+    foreach ($tabLinks as $c => $v){
+      $nodes[]=array('id'=>$c);
+    }
+
+    $edges = array();
+    foreach($tabLinks as $c => $v){
+      foreach($v as $cle => $val){
+        $edges[]=array('from'=>$c, 'to'=>$val);
+      }
+    }
+    return array($nodes,$edges);
     return $tabLinks;
 }
 
