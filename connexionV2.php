@@ -1271,7 +1271,7 @@ $txt = $txt.' )';
     if ($test16){
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14 or $test13 or $test15)
         $txt = $txt.' AND';
-      $txt = $txt." exists (SELECT idOeuvre from societesimg where oeuvres.idOeuvre=sociesteimg.idOeuvre and";
+      $txt = $txt." exists (SELECT idOeuvre from societesimg where oeuvres.idOeuvre=societesimg.idOeuvre and";
       $testFirst=0;
       foreach($varTab16 as $c => $v){
         if ($testFirst>=1 and $testFirst<=count($varTab16)){
