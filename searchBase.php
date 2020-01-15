@@ -29,7 +29,7 @@
         }
       }
 
-      $tab_1 = $conn->getResearch($check1,$check2,$check3,$check4,$check5,$tabCheckedPresentation);
+      $tab_1 = $conn->getResearch($check1,$check2,$check3,$check4,$tabCheckedPresentation);
 
       //Deuxième partie pour le Materiel
             $check1G=null;
@@ -258,6 +258,8 @@
       $tabCheckedS14=array();
       $tabCheckedS15=array();
       $tabCheckedS16=array();
+      $tabCheckedSAlt2=array();
+      $tabCheckedSAlt3=null;
       $check3S=null;
 
       $check4S=null;
@@ -375,13 +377,14 @@
         }
       }
 
-      if(!empty($_POST['boxScience12'])){
+      if(isset($_POST['boxScience12'])){
           foreach ($_POST['boxScience12'] as $c => $v){ //A voir ce qu'il faut mettre
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS13[]=$v;
           }
         }
       }
+
 
 
       if (isset($_POST['termeDescription']) and $_POST['termeDescription']!=null)
@@ -418,11 +421,23 @@
         }
       }
 
+
       if (isset($_POST['selectSoc']) and $_POST['selectSoc']!=null)
         $check3S = $_POST['selectSoc'];
 
+      if(!empty($_POST['boxScienceAlt2'])){
+          foreach ($_POST['boxScienceAlt2'] as $c => $v){ //A voir ce qu'il faut mettre
+          if ($v!=null or $v!=0 or $v!=''){
+            $tabCheckedSAlt2[]=$v;
+          }
+        }
+      }
 
-      $tab_5 = $conn->getResearchScience($tabCheckedS,$tabCheckedS2,$tabCheckedS3,$tabCheckedS4,$tabCheckedS5,$tabCheckedSAlt,$tabCheckedS6,$tabCheckedS7,$tabCheckedS8,$tabCheckedS9,$tabCheckedS10,$tabCheckedS11, $check1S,$check2S,$tabCheckedS12,$tabCheckedS13,$tabCheckedS14,$tabCheckedS15,$tabCheckedS16,$check3S,$check4S,$check5S,$check6S);
+      if (isset($_POST['boxScienceAlt3']) and $_POST['boxScienceAlt3']!=null and !empty($_POST['boxScienceAlt3']))
+        $tabCheckedSAlt3= $_POST['boxScienceAlt3'];
+
+
+      $tab_5 = $conn->getResearchScience($tabCheckedS,$tabCheckedS2,$tabCheckedS3,$tabCheckedS4,$tabCheckedS5,$tabCheckedSAlt,$tabCheckedS6,$tabCheckedS7,$tabCheckedS8,$tabCheckedS9,$tabCheckedS10,$tabCheckedS11, $check1S,$check2S,$tabCheckedS12,$tabCheckedS13,$tabCheckedS14,$tabCheckedS15,$tabCheckedS16,$check3S,$check4S,$check5S,$check6S,$tabCheckedSAlt2,$tabCheckedSAlt3);
 
 
       if ($tab_1==null)
