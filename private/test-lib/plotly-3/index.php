@@ -15,16 +15,17 @@
 	<h1>Dataviz</h1>
 
 	<?php
-  $listauteur= $model->getNbOeuvreWithAuteurX();
+  $listauteur= $model->getNbOeuvreWithAuteur();
+print_r($listauteur);
 
   		$liste= [];
   		foreach ($listauteur as $value) {
-  			$liste[] = $value["x"];
+  			$liste[] = ['auteur'=>$value["x"],'nombre'=>$value["y"]];
   		}
-
+  		print_r($liste);
   	 ?>
   <script>
- const data = <?php echo json_encode($liste) . ";"; ?>
+ /*/const data = <?php echo json_encode($liste) . ";"; ?>
  var donnee = [{
    type: 'scatterpolar',
    r: data.x,
