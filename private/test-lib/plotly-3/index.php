@@ -22,7 +22,7 @@ print("<br><br>");
   		$liste= [];
   		foreach($listauteur as $v){
   		    foreach ($v as $value) {
-  			    $liste[] = ['x'=> $value['x']];
+  			    $liste[] = ['x'=> $value['x'],'y'=> $value['y']];
   		    }
   		}
   		
