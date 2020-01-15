@@ -1435,6 +1435,23 @@ public function infoBarChart($data, $sub_sql, $conn){
     return $result;
 }
 
+public function infoBubbleChart($data, $sub_sql, $conn){
+  $sql = 
+    'SELECT anneePE as x, count(*) as y
+    from oeuvres
+    where idOeuvre in (' 
+    . $sub_sql 
+    . ')
+    group by anneePE
+    order by anneePE asc;';
+
+    //print $sql;
+    $req = $this->bd->prepare($sql);
+    $req->execute();
+    $result = $req->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
 public function infoNetwork($ID){
   $txt = 'SELECT titrePE,auteurCompare FROM liensautresauteurs natural join oeuvres WHERE idOeuvre=:var';
   $req0 = $this->bd->prepare($txt);

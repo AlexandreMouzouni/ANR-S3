@@ -130,10 +130,10 @@ function generateChosenChart(char) {
       makenetwork(globalData);
       break;
     case allCharts[6]:
-      makeReseau();
+      makeplot2()
       break;
     case allCharts[7]:
-      makeplot2();
+      makebubble(globalData);
       break;
     default:
       alert("Graphique non défini !");
@@ -351,6 +351,53 @@ function makebar(donnes) {
 
     var graphData = donneesBar;
     console.log(graphData);
+
+    var layoutA = {barmode: 'group'};
+    var layoutB = getLayout();
+    var layout = Object.assign(layoutA, layoutB)
+    var layout = setLayout_tick(layout, 1, 1);
+
+    Plotly.newPlot('generation-graphique', graphData, layout, barInit());
+  })
+  .fail(function() {
+    alert( "Erreur de génération du graphe." );
+  });
+}
+
+function makebubble(donnes) {
+  // Objet qu'on va envoyer en ajax
+  // Deux champs: la requete et le type de données
+  var obj = {
+    data: donnes,
+    typeGraphe: "bubble"
+  }
+
+  console.log(obj);
+  // Requête ajax pour générer la bonne structure
+  $.ajax({
+    type: 'POST',
+    url: './genGraph.php',
+    data: obj,
+    dataType: "json"
+  })
+  .done(function(data) {
+    var trace1 = {
+      type: "scatter",
+      mode: "markers",
+      // x nombre
+      // y annee
+      x: data.map(d => d.x),
+      y: data.map(d => d.y),
+      marker: {
+        line: {
+          width: 1,
+        },
+        symbol: 'circle',
+        size: data.map(d => (d.y * 3)),
+      }
+    };
+  
+    var graphData = [trace1];
 
     var layoutA = {barmode: 'group'};
     var layoutB = getLayout();

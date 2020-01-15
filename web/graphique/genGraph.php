@@ -30,6 +30,10 @@ function barChart($data, $sub_sql, $conn) {
     return $conn->infoBarChart($data, $sub_sql, $conn);
 }
 
+function bubbleChart($data, $sub_sql, $conn) {
+    return $conn->infoBubbleChart($data, $sub_sql, $conn);
+}
+
 function networkChart($data, $sub_sql, $conn) {
     error_reporting(0);
     $tabLinks = array();
@@ -70,6 +74,8 @@ $sub_sql = makeSubrequest($data);
 
 if ($typeGraphe === 'bar'){
     $result = barChart($data, $sub_sql, $conn);
+}else if ($typeGraphe === 'bubble') {
+    $result = bubbleChart($data, $sub_sql, $conn);
 }else if ($typeGraphe === 'network') {
     $result = networkChart($data, $sub_sql, $conn);
 }
