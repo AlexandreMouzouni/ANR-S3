@@ -2110,11 +2110,12 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
 <script>
+var test = false;
 $(document).ready(function(){
     $('#formRechAvance').submit(function(){
 
         // show that something is loading
-        $('#response').html("<b>Loading response...</b>");
+        $('#response').html("<b>Chargement des graphiques... Veuillez patienter.</b>");
 
         /*
          * 'post_receiver.php' - where you will pass the form data
@@ -2124,19 +2125,16 @@ $(document).ready(function(){
         $.ajax({
             type: 'POST',
             url: 'searchBase.php',
-            data: $(this).serialize()
-        })
-        .done(function(data){
+            data: $(this).serialize(),
+            async: false,
+            dataType: "json",
+            success: function(data){
 
-            // show the response
-            $('#response').html(data);
+              // Remettre l'html vide
+              $('#response').html("");
 
-        })
-        .fail(function() {
-
-            // just in case posting your form failed
-            alert( "Posting failed." );
-
+              test = data;
+            }
         });
 
         // to prevent refreshing the whole page page
