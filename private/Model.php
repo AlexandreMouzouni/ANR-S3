@@ -110,11 +110,9 @@
 		public function getNbOeuvreWithAuteur(){
 			$sql= 'SELECT auteurNom as x, count(*) as y from oeuvres where auteurFiche != "" group by auteurFiche ';
 			$req= $this->bdd->query($sql) or die(print_r($bdd->errorInfo()));
-			$res= $req->fetch();
-			$nbOeuvreX= $res['x'];
-            $nbOeuvreY= $res['Y'];
+			$res= $req->fetchALL();
 			$req->closeCursor();
-			return $nbOeuvreX;
+			return $res;
 		}
 
 		/*		FIN	REQUETE PLOTLY 2		*/
