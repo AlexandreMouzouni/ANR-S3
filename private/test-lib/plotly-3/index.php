@@ -16,7 +16,7 @@
 
 	<?php
   $listauteur= $model->getNbOeuvreWithAuteur();
-print_r($listauteur);
+
 
   		$liste= [];
   		foreach ($listauteur as $value) {
