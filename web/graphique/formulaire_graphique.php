@@ -2074,10 +2074,10 @@
           </div>
           <div class="modal-body">
             <div>Pour générer un graphique il faut d'abord remplir les champs de recherches souhaités
-            puis choisir le graphique souhaité en cliquant dessus.</div>
+            puis choisir un graphique en cliquant dessus.</div>
             <img title="La barre du menu" class="guide" src="../images/graphique/exemple_barre_plot.ly.png"/>
             <div>
-            Tous les graphiques à l'exception du graphe réseaux et du nuage de mot disposent d'une barre visible en haut à droite du graphique généré offrant plusieurs fonctionnalités à l'utilisateur :</br>
+            Tous les graphiques à l'exception du graphe réseaux et du nuage de mots disposent d'une barre visible en haut à droite du graphique généré offrant plusieurs fonctionnalités à l'utilisateur :</br>
             <ul>
                 <li>Sauvegarder l'image en .png</li>
                 <li>Sauvegarder l'image en .svg</li>
