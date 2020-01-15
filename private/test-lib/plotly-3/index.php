@@ -21,9 +21,7 @@ print_r($listauteur);
 print("<br><br>");
   		$liste= [];
   		foreach($listauteur as $v){
-  		    foreach ($v as $value) {
-  			    $liste[] = ['x'=> $value['x'],'y'=> $value['y']];
-  		    }
+  		    $liste[] = ['x'=> $value['x'],'y'=> $value['y'] ];
   		}
   		
   		print_r($liste);
