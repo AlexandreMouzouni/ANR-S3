@@ -44,7 +44,7 @@
   <label>Filtrage sur les types de designations</label>
   <table>
   <tr>
-    <td><input type="checkbox" name="boxFiltre[]" value='Discours auctorial'>Discours auctorial</td>
+    <td><input type="checkbox" name="boxCFiltre[]" value='Discours auctorial'>Discours auctorial</td>
     <td><input type="checkbox" name="boxCFiltre[]" value='Dispositif éditorial'>Dispositif éditorial</td>
     <td><input type="checkbox" name="boxCFiltre[]" value='Réception critique'>Réception critique</td>
   </tr>
@@ -268,8 +268,21 @@
 <!--Y A UN TRUC ICI OUBLIE PAS HARRY-->
 <label>Chimie</label><br/>
 <table>
+  <tr>
+  <td><input type="checkbox" name="boxScienceAlt2[]" value='anthropologie'>anthropologie</td>
+  <td><input type="checkbox" name="boxScienceAlt2[]" value='archeologie'>archeologie</td>
+  <td><input type="checkbox" name="boxScienceAlt2[]" value='armement'>armement</td>
+  <td><input type="checkbox" name="boxScienceAlt2[]" value='construction'>construction</td>
+</tr>
+<tr>
+  <td><input type="checkbox" name="boxScienceAlt2[]" value='astronomie'>Astronomie</td>
+</tr>
+</table>
+
+<table>
   <td><input type="checkbox" name="boxScience1[]" value='chimieAnalytique'>Chimie analytique</td>
   <td><input type="checkbox" name="boxScience1[]" value='chimieIndustrielle'>Chimie industrielle</td>
+  <td><input type="checkbox" name="boxScience1[]" value='chimieOrganique'>Chimie organique</td>
   <td><input type="checkbox" name="boxScience1[]" value='chimieOrganique'>Chimie organique</td>
 </table>
 
@@ -295,6 +308,10 @@
   <td><input type="checkbox" name="boxScience3[]" value='steampunk'>Machines à vapeur/moteurs életriques</td>
   <td><input type="checkbox" name="boxScience3[]" value='photo'>Photographie, cinématographie, phonographie</td>
   <td><input type="checkbox" name="boxScience3[]" value='tele'>Télégraphie, téléphone, radio</td>
+</table>
+
+<table>
+  td><input type="checkbox" name="boxScienceAlt3" value='math'>math</td>
 </table>
 
 <label>Médecine</label><br/>
@@ -376,24 +393,24 @@
 <label>Discipline</label><br/>
 <table>
   <tr>
-    <td><input type="checkbox" name="boxNaration11[]" value='scienceVie'>Sciences de la vie (inclut biologie, botanique, zoologie)</td>
-    <td><input type="checkbox" name="boxNaration11[]" value='scienceMedicale'>Sciences médicales</td>
+    <td><input type="checkbox" name="boxScience11[]" value='scienceVie'>Sciences de la vie (inclut biologie, botanique, zoologie)</td>
+    <td><input type="checkbox" name="boxScience11[]" value='scienceMedicale'>Sciences médicales</td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="boxNaration11[]" value='scienceTerre'>Sciences de la terre et de l’espace (astronomie, géologie, géographie)</td>
+    <td><input type="checkbox" name="boxScience11[]" value='scienceTerre'>Sciences de la terre et de l’espace (astronomie, géologie, géographie)</td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="boxNaration11[]" value='sciencePhysique'>Physique, chimie et mathématiques</td>
-    <td><input type="checkbox" name="boxNaration11[]" value='ingenieurie'>Ingénierie et technique</td>
-    <td><input type="checkbox" name="boxNaration11[]" value='autree'>Autre</td>
+    <td><input type="checkbox" name="boxScience11[]" value='sciencePhysique'>Physique, chimie et mathématiques</td>
+    <td><input type="checkbox" name="boxScience11[]" value='ingenieurie'>Ingénierie et technique</td>
+    <td><input type="checkbox" name="boxScience11[]" value='autree'>Autre</td>
   </tr>
 </table>
 <label>Modalité</label><br/>
 <table>
-  <td><input type="checkbox" name="boxNaration12[]" value='serieux'>Sérieux</td>
-  <td><input type="checkbox" name="boxNaration12[]" value='satire'>Satire</td>
-  <td><input type="checkbox" name="boxNaration12[]" value='hommage'>Hommage</td>
-  <td><input type="checkbox" name="boxNaration12[]" value='refutation'>Réfutation</td>
+  <td><input type="checkbox" name="boxScience12[]" value='serieux'>Sérieux</td>
+  <td><input type="checkbox" name="boxScience12[]" value='satire'>Satire</td>
+  <td><input type="checkbox" name="boxScience12[]" value='hommage'>Hommage</td>
+  <td><input type="checkbox" name="boxScience12[]" value='refutation'>Réfutation</td>
 </table>
 <h4>Références à des éléments scientifiques imaginaires</h4>
 <label>Termes utilisés dans la description</label><br/>
@@ -431,24 +448,24 @@
 
 <label>Représentation d'une société imaginaire</label><br/>  <!--IL FAUT VOIR COMMENT CA MARCHE DANS LA BDD-->
 <table>
-  <td><input type="checkbox" name="boxNaration13[]" value='presentTemp'>Présente</td>
-  <td><input type="checkbox" name="boxNaration13[]" value='absentTemp'>Absente</td>
-  <td><input type="checkbox" name="boxNaration13[]" value='plusieursTemp'>Plusieurs</td>
+  <td><input type="checkbox" name="boxScience13[]" value='presentTemp'>Présente</td>
+  <td><input type="checkbox" name="boxScience13[]" value='absentTemp'>Absente</td>
+  <td><input type="checkbox" name="boxScience13[]" value='plusieursTemp'>Plusieurs</td>
 </table>
 <label>Degré de technologie</label><br/>
 <table>
-  <td><input type="checkbox" name="boxNaration14[]" value='fortDegre'>Fort</td>
-  <td><input type="checkbox" name="boxNaration14[]" value='neutreDegre'>Neutre</td>
-  <td><input type="checkbox" name="boxNaration14[]" value='faibleDegre'>Faible</td>
-  <td><input type="checkbox" name="boxNaration14[]" value='indetermiteDegre'>Indéterminé</td>
+  <td><input type="checkbox" name="boxScience14[]" value='fortDegre'>Fort</td>
+  <td><input type="checkbox" name="boxScience14[]" value='neutreDegre'>Neutre</td>
+  <td><input type="checkbox" name="boxScience14[]" value='faibleDegre'>Faible</td>
+  <td><input type="checkbox" name="boxScience14[]" value='indetermiteDegre'>Indéterminé</td>
 </table>
 <label>Valeur</label><br/>
 <table>
-  <td><input type="checkbox" name="boxNaration15[]" value='positifValeur'>Positive</td>
-  <td><input type="checkbox" name="boxNaration15[]" value='negatifValeur'>Négative</td>
-  <td><input type="checkbox" name="boxNaration15[]" value='neutreValeur'>Neutre</td>
-  <td><input type="checkbox" name="boxNaration15[]" value='ambivalenteValeur'>Ambivalente</td>
-  <td><input type="checkbox" name="boxNaration15[]" value='indetermineValeur'>Indéterminée</td>
+  <td><input type="checkbox" name="boxScience15[]" value='positifValeur'>Positive</td>
+  <td><input type="checkbox" name="boxScience15[]" value='negatifValeur'>Négative</td>
+  <td><input type="checkbox" name="boxScience15[]" value='neutreValeur'>Neutre</td>
+  <td><input type="checkbox" name="boxScience15[]" value='ambivalenteValeur'>Ambivalente</td>
+  <td><input type="checkbox" name="boxScience15[]" value='indetermineValeur'>Indéterminée</td>
 </table>
 <label>Traits spécifiques de la société imaginaire</label><br/>
 <select name='selectSoc'>
