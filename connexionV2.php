@@ -1215,8 +1215,8 @@ $txt = $txt.' )';
         $txt = $txt.' AND';
 
       $testFirst=0;
-      foreach($varTab13 as $c => $v){
-        if ($testFirst>=1 and $testFirst<=count($varTab13)){
+      foreach($varTab14 as $c => $v){
+        if ($testFirst>=1 and $testFirst<=count($varTab14)){
           $txt = $txt." AND";
         }
         if ($v=='presentTemp'){
@@ -1240,10 +1240,10 @@ $txt = $txt.' )';
     if ($test15){
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14)
         $txt = $txt.' AND';
-      $txt = $txt." exists (SELECT idOeuvre from societeimg where oeuvres.idOeuvre=societeimg.idOeuvre and";
+      $txt = $txt." exists (SELECT idOeuvre from societesimg where oeuvres.idOeuvre=societesimg.idOeuvre and";
       $testFirst=0;
-      foreach($varTab13 as $c => $v){
-        if ($testFirst>=1 and $testFirst<=count($varTab13)){
+      foreach($varTab15 as $c => $v){
+        if ($testFirst>=1 and $testFirst<=count($varTab15)){
           $txt = $txt." AND";
         }
         if ($v=='fortDegre'){
@@ -1271,10 +1271,10 @@ $txt = $txt.' )';
     if ($test16){
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or $var1!=null or $var2!=null or $test12 or $test13 or $test14 or $test13 or $test15)
         $txt = $txt.' AND';
-      $txt = $txt." exists (SELECT idOeuvre from societeimg where oeuvres.idOeuvre=societeimg.idOeuvre and";
+      $txt = $txt." exists (SELECT idOeuvre from societesimg where oeuvres.idOeuvre=sociesteimg.idOeuvre and";
       $testFirst=0;
-      foreach($varTab13 as $c => $v){
-        if ($testFirst>=1 and $testFirst<=count($varTab13)){
+      foreach($varTab16 as $c => $v){
+        if ($testFirst>=1 and $testFirst<=count($varTab16)){
           $txt = $txt." AND";
         }
         if ($v=='positifValeur'){
