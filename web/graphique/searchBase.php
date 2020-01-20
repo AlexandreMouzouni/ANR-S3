@@ -1,13 +1,17 @@
 <?php
   require('connexionV2.php');
   $conn = Connexion::getBD();
+  
+  
+//======================================================================
+// PREMIER CHAMP
+//======================================================================
 
       $check1=null;
       $check2=null;
       $check3=null;
       $check4=null;
       $tabCheckedPresentation=array();
-//Première partie pour la Presentation
 
       if (isset($_POST['titre']) and $_POST['titre']!=null)
         $check1 = $_POST['titre'];
@@ -30,8 +34,13 @@
       }
 
       $tab_1 = $conn->getResearch($check1,$check2,$check3,$check4,$tabCheckedPresentation);
+      
+      
+      
+//======================================================================
+// DEUXIEME CHAMP
+//======================================================================
 
-      //Deuxième partie pour le Materiel
             $check1G=null;
             $check2G=null;
             $check3G=null;
@@ -39,7 +48,8 @@
             $check6G=null;
             $check7G=null;
             $tabCheckedG=array();
-      //Première partie pour la Presentation
+      
+      
             if(isset($_POST['designation']) and $_POST['designation']!=null)
               $check1G = $_POST['designation'];
 
@@ -75,7 +85,11 @@
 
 
 
-//Deuxième partie pour le Materiel
+
+//======================================================================
+// TROISIEME CHAMP
+//======================================================================
+
       $check1M=null;
       $check2M=null;
       $check2MBis=null;
@@ -84,7 +98,8 @@
       $check5M=null;
       $tabCheckedM=array();
       $tabChecked2M=array();
-//Première partie pour la Presentation
+
+
       if(isset($_POST['support']) and $_POST['support']!=null)
         $check1M = $_POST['support'];
 
@@ -132,6 +147,11 @@
 
       $tab_3 = $conn->getResearchMaterial($check1M,$check2M,$check2MBis,$tabCheckedM,$tabChecked2M,$check3M,$check4M,$check5M);
 
+
+
+//======================================================================
+// QUATRIEME CHAMP
+//======================================================================
 
       $check1P=null;
       $check2P=null;
@@ -236,6 +256,9 @@
 
 
 
+//======================================================================
+// CINQUIEME CHAMP
+//======================================================================
 
 
 
@@ -265,10 +288,9 @@
       $check4S=null;
       $check5S=null;
       $check6S=null;
-//Première partie pour la Presentation
 
       if(!empty($_POST['boxScience'])){
-         foreach ($_POST['boxScience'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS[]=$v;
           }
@@ -276,7 +298,7 @@
       }
 
       if(!empty($_POST['boxScience1'])){
-         foreach ($_POST['boxScience1'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience1'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS2[]=$v;
           }
@@ -284,7 +306,7 @@
       }
 
       if(!empty($_POST['boxScience2'])){
-         foreach ($_POST['boxScience2'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience2'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS3[]=$v;
           }
@@ -292,7 +314,7 @@
       }
 
       if(!empty($_POST['boxScience3'])){
-         foreach ($_POST['boxScience3'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience3'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS4[]=$v;
           }
@@ -300,7 +322,7 @@
       }
 
       if(!empty($_POST['boxScience4'])){
-         foreach ($_POST['boxScience4'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience4'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS5[]=$v;
           }
@@ -308,7 +330,7 @@
       }
 
       if(!empty($_POST['boxScienceAlt'])){
-         foreach ($_POST['boxScienceAlt'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScienceAlt'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedSAlt[]=$v;
           }
@@ -316,7 +338,7 @@
       }
 
       if(!empty($_POST['boxScience5'])){
-         foreach ($_POST['boxScience5'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience5'] as $c => $v){
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS6[]=$v;
           }
@@ -324,7 +346,7 @@
       }
 
       if(!empty($_POST['boxScience6'])){
-         foreach ($_POST['boxScience6'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience6'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS7[]=$v;
           }
@@ -332,7 +354,7 @@
       }
 
       if(!empty($_POST['boxScience7'])){
-         foreach ($_POST['boxScience7'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience7'] as $c => $v){
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS8[]=$v;
           }
@@ -340,7 +362,7 @@
       }
 
       if(!empty($_POST['boxScience8'])){
-         foreach ($_POST['boxScience8'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience8'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS9[]=$v;
           }
@@ -348,7 +370,7 @@
       }
 
       if(!empty($_POST['boxScience9'])){
-         foreach ($_POST['boxScience9'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience9'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS10[]=$v;
           }
@@ -356,7 +378,7 @@
       }
 
       if(!empty($_POST['boxScience10'])){
-         foreach ($_POST['boxScience10'] as $c => $v){ //A voir ce qu'il faut mettre
+         foreach ($_POST['boxScience10'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS11[]=$v;
           }
@@ -370,7 +392,7 @@
         $check2S = $_POST['personaliteScientifique'];
 
       if(!empty($_POST['boxScience11'])){
-          foreach ($_POST['boxScience11'] as $c => $v){ //A voir ce qu'il faut mettre
+          foreach ($_POST['boxScience11'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS12[]=$v;
           }
@@ -378,7 +400,7 @@
       }
 
       if(isset($_POST['boxScience12'])){
-          foreach ($_POST['boxScience12'] as $c => $v){ //A voir ce qu'il faut mettre
+          foreach ($_POST['boxScience12'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS13[]=$v;
           }
@@ -398,7 +420,7 @@
 
 
       if(!empty($_POST['boxScience13'])){
-          foreach ($_POST['boxScience13'] as $c => $v){ //A voir ce qu'il faut mettre
+          foreach ($_POST['boxScience13'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS14[]=$v;
           }
@@ -406,7 +428,7 @@
       }
 
       if(!empty($_POST['boxScience14'])){
-          foreach ($_POST['boxScience14'] as $c => $v){ //A voir ce qu'il faut mettre
+          foreach ($_POST['boxScience14'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS15[]=$v;
           }
@@ -414,7 +436,7 @@
       }
 
       if(!empty($_POST['boxScience15'])){
-          foreach ($_POST['boxScience15'] as $c => $v){ //A voir ce qu'il faut mettre
+          foreach ($_POST['boxScience15'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedS16[]=$v;
           }
@@ -426,7 +448,7 @@
         $check3S = $_POST['selectSoc'];
 
       if(!empty($_POST['boxScienceAlt2'])){
-          foreach ($_POST['boxScienceAlt2'] as $c => $v){ //A voir ce qu'il faut mettre
+          foreach ($_POST['boxScienceAlt2'] as $c => $v){ 
           if ($v!=null or $v!=0 or $v!=''){
             $tabCheckedSAlt2[]=$v;
           }
@@ -439,6 +461,10 @@
 
       $tab_5 = $conn->getResearchScience($tabCheckedS,$tabCheckedS2,$tabCheckedS3,$tabCheckedS4,$tabCheckedS5,$tabCheckedSAlt,$tabCheckedS6,$tabCheckedS7,$tabCheckedS8,$tabCheckedS9,$tabCheckedS10,$tabCheckedS11, $check1S,$check2S,$tabCheckedS12,$tabCheckedS13,$tabCheckedS14,$tabCheckedS15,$tabCheckedS16,$check3S,$check4S,$check5S,$check6S,$tabCheckedSAlt2,$tabCheckedSAlt3);
 
+
+//======================================================================
+// ASSOCIATION DES DIFFERENTS TABLEAUX
+//======================================================================
 
       if ($tab_1==null)
         $tab_1 = array();
@@ -461,10 +487,10 @@
       $tab_all = array();
       $res = array();
 
-      foreach($tab_list as $c => $v){
-        $res = array_merge($res, $v);
+      foreach($tab_list as $c => $v){ //ici les tableaux sont associés entre eux
+        $res = array_merge($res, $v); //on peut considéré qu'on les associé avec une union pour avoir plus de résultats exploitables
       }
 
-      echo json_encode($res);
+      echo json_encode($res); //pour récuperer un format json avec ajax
 
 ?>
