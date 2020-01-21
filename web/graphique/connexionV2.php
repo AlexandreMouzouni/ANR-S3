@@ -20,15 +20,21 @@ class Connexion extends mysqli{
       self::$instance = new Connexion();
     return self::$instance;
     }
+    
+/***********************************************************************************
+ *
+ *  PREMIER CHAMP
+ *
+ ***********************************************************************************/
+ 
+ ##########################################################################################################################################
+ #
+ #  Les divers champs sont faits de sorte à pouvoir facilement etre mit à jour/modifier celui-ci suivant une architecture qui se répète pour tous les champs
+ #
+ ##########################################################################################################################################
 
   public function getResearch($var, $var2, $var3, $var4, $varTab6){ //Fait pour la recherche dans la table ouevres
     $test = count($varTab6)!=0;
-    /*
-    echo $var;
-    echo $var2;
-    echo $var3;
-    echo $var4;
-    */
     if($var!=null or $var2!=null or $var3!=null or $var4!=null or $test){
       $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE';
       if ($var != null){ //Nom
@@ -39,7 +45,7 @@ class Connexion extends mysqli{
         $txt = $txt.' AND';
       }
 
-      if($var2!=null){ //auteurPrenom
+      if($var2!=null){ 
         $txt = $txt.' auteurNom = :var2 or auteurNom2 = :var2 or auteurNom3 = :var2';
         $txt = $txt.' or auteurNomReel = :var2 or auteurNomReel2 = :var2 or auteurNomReel3 = :var2';
         $txt = $txt.' or auteurPrenom = :var2 or auteurPrenom2 = :var2 or auteurPrenom3 = :var2';
@@ -50,7 +56,7 @@ class Connexion extends mysqli{
         $txt = $txt.' AND';
       }
 
-      if($var3!=null){ //Année publication
+      if($var3!=null){ 
         $txt = $txt.' anneePE> :var3';
       }
 
@@ -73,22 +79,21 @@ class Connexion extends mysqli{
             $txt = $txt." OR";
           }
           if ($v=='R'){
-            $txt = $txt.' natureTxt=1 '; //A regler si en distinct
+            $txt = $txt.' natureTxt=1 '; 
             $testFirst++;
           }
           else if ($v=='RC'){
-            $txt = $txt." natureTxt=2"; //A regler si en distinct
+            $txt = $txt." natureTxt=2"; 
             $testFirst++;
           }
           else if ($v=='BD'){
-            $txt = $txt.' natureTxt=3'; //A regler si en distinct
+            $txt = $txt.' natureTxt=3'; 
             $testFirst++;
           }
       }
     }
 
       $txt = $txt.' GROUP BY idOeuvre';
-      //$txtt = "SELECT auteurNom,auteurPrenom FROM oeuvres where auteurNom = :var and auteurPrenom = :var2 or auteurNomReel = :var and auteurPrenomReel= :var2 or auteurNom2 = :var and auteurPrenom2= :var2 or auteurNomReel2 = :var and auteurPrenomReel2= :var2 or auteurNom3 = :var and auteurPrenom3= :var2 or auteurNomReel3 = :var and auteurPrenomReel3= :var2";
       $req0 = $this->bd->prepare($txt);
       if ($var!=null){
         $req0->bindValue(':var', $var);
@@ -113,6 +118,12 @@ class Connexion extends mysqli{
     }
     return null;
   }
+  
+ /***********************************************************************************
+ *
+ *  DEUXIEME CHAMP 
+ *
+ ***********************************************************************************/
 
 
 
@@ -130,7 +141,7 @@ class Connexion extends mysqli{
         $txt = $txt.' AND';
       }
 
-      if($var2!=null and $var3!=null){ //auteurPrenom
+      if($var2!=null and $var3!=null){
         $txt = $txt.' exists (SELECT idOeuvre from dispositifeditorial where a.idOeuvre=dispositifeditorial.idOeuvre and dDate>:var2 and dDate<:var3)';
       }
 
@@ -152,15 +163,15 @@ class Connexion extends mysqli{
             $txt = $txt." AND";
           }
           if ($v=='Discours auctorial'){
-            $txt = $txt.' discoursAuctorialOK!=1'; //A regler si en distinct
+            $txt = $txt.' discoursAuctorialOK!=1'; 
             $testFirst++;
           }
           else if ($v=='Réception critique'){
-            $txt = $txt." discoursAuctorialCom!='null'"; //A regler si en distinct
+            $txt = $txt." discoursAuctorialCom!='null'"; 
             $testFirst++;
           }
           else if ($v=='Dispositif éditorial'){
-            $txt = $txt.' dispositifEditorialOK=1'; //A regler si en distinct
+            $txt = $txt.' dispositifEditorialOK=1';
             $testFirst++;
           }
       }
@@ -178,7 +189,7 @@ class Connexion extends mysqli{
       $txt = $txt.' AND';
     }
 
-    if($var6!=null and $var7!=null){ //auteurPrenom
+    if($var6!=null and $var7!=null){
       $txt = $txt.' exists (SELECT idOeuvre from liensaitresauteurs where a.idOeuvre=liensaitresauteurs.idOeuvre and dDate>:var6 and dDate<:var7)';
     }
 
@@ -190,7 +201,6 @@ class Connexion extends mysqli{
       $txt = $txt.' exists (SELECT idOeuvre from liensaitresauteurs where a.idOeuvre=liensaitresauteurs.idOeuvre and dDate<:var7)';
     }
 
-      //$txtt = "SELECT auteurNom,auteurPrenom FROM oeuvres where auteurNom = :var and auteurPrenom = :var2 or auteurNomReel = :var and auteurPrenomReel= :var2 or auteurNom2 = :var and auteurPrenom2= :var2 or auteurNomReel2 = :var and auteurPrenomReel2= :var2 or auteurNom3 = :var and auteurPrenom3= :var2 or auteurNomReel3 = :var and auteurPrenomReel3= :var2";
       $req0 = $this->bd->prepare($txt);
       if ($var!=null){
         $req0->bindValue(':var1', $var);
@@ -223,12 +233,17 @@ class Connexion extends mysqli{
     return null;
   }
 
+ /***********************************************************************************
+ *
+ *  TROISIEME CHAMP
+ *
+ ***********************************************************************************/
 
   public function getResearchMaterial($var, $var2, $var2Bis,$tabChecked1,$tabChecked2, $var3, $var4, $var5){ //Fait pour la recherche dans la table ouevres
     $test1 = count($tabChecked1)!=0;
     $test2 = count($tabChecked2)!=0;
     if($var!=null or $var2!=null or $var2Bis!=null or $test1 or $test2 or $var3!=null or $var4!=null or ($var5!=null and $var5!='null') ){
-      $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE'; //Distinct ??
+      $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE';
 
       if ($var != null){ //Nom
         $txt = $txt.'  exists (SELECT idOeuvre from editions where oeuvres.idOeuvre=editions.idOeuvre and LOCATE(:var,volEditeur) or LOCATE(:var,livEditeur) or LOCATE(:var,livCollecNom) or LOCATE(:var,perNom))'; //A regler si en distinct
@@ -239,7 +254,7 @@ class Connexion extends mysqli{
       }
 
       if($var2!=null){ //auteurPrenom
-          $txt = $txt.'  exists (SELECT idOeuvre from editions where oeuvres.idOeuvre=editions.idOeuvre and anneeParution>:var2)'; //A regler si en distinct
+          $txt = $txt.'  exists (SELECT idOeuvre from editions where oeuvres.idOeuvre=editions.idOeuvre and anneeParution>:var2)'; 
       }
 
       if (($var!=null or $var2!=null) and $var2Bis!=null){
@@ -248,7 +263,7 @@ class Connexion extends mysqli{
 
 
       if($var2Bis!=null){ //Titre
-          $txt = $txt.'  exists (SELECT idOeuvre from editions where oeuvres.idOeuvre=editions.idOeuvre and anneeParution<:var2)'; //A regler si en distinct
+          $txt = $txt.'  exists (SELECT idOeuvre from editions where oeuvres.idOeuvre=editions.idOeuvre and anneeParution<:var2)'; 
       }
 
 
@@ -262,15 +277,15 @@ class Connexion extends mysqli{
             $txt = $txt." AND";
           }
           if ($v=='V'){
-            $txt = $txt." typeEdit ='V'"; //A regler si en distinct
+            $txt = $txt." typeEdit ='V'"; 
             $testFirst++;
           }
           else if ($v=='P'){
-            $txt = $txt." typeEdit ='P'"; //A regler si en distinct
+            $txt = $txt." typeEdit ='P'"; 
             $testFirst++;
           }
           else if ($v=='L'){
-            $txt = $txt." typeEdit ='L'"; //A regler si en distinct
+            $txt = $txt." typeEdit ='L'"; 
             $testFirst++;
           }
       }
@@ -287,51 +302,51 @@ class Connexion extends mysqli{
           $txt = $txt." AND";
         }
         if ($v=='273'){
-          $txt = $txt." idRef =273"; //A regler si en distinct
+          $txt = $txt." idRef =273"; 
           $testFirst++;
         }
         else if ($v=='269'){
-          $txt = $txt." idRef =269"; //A regler si en distinct
+          $txt = $txt." idRef =269"; 
           $testFirst++;
         }
         else if ($v=='278'){
-          $txt = $txt." idRef =278"; //A regler si en distinct
+          $txt = $txt." idRef =278"; 
           $testFirst++;
         }
         else if ($v=='275'){
-          $txt = $txt." idRef =275"; //A regler si en distinct
+          $txt = $txt." idRef =275"; 
           $testFirst++;
         }
         else if ($v=='272'){
-          $txt = $txt." idRef =272"; //A regler si en distinct
+          $txt = $txt." idRef =272"; 
           $testFirst++;
         }
         else if ($v=='274'){
-          $txt = $txt." idRef =274"; //A regler si en distinct
+          $txt = $txt." idRef =274"; 
           $testFirst++;
         }
         else if ($v=='271'){
-          $txt = $txt." idRef =271"; //A regler si en distinct
+          $txt = $txt." idRef =271"; 
           $testFirst++;
         }
         else if ($v=='276'){
-          $txt = $txt." idRef =276"; //A regler si en distinct
+          $txt = $txt." idRef =276"; 
           $testFirst++;
         }
         else if ($v=='279'){
-          $txt = $txt." idRef =279"; //A regler si en distinct
+          $txt = $txt." idRef =279";
           $testFirst++;
         }
         else if ($v=='277'){
-          $txt = $txt." idRef =277"; //A regler si en distinct
+          $txt = $txt." idRef =277"; 
           $testFirst++;
         }
         else if ($v=='270'){
-          $txt = $txt." idRef =270"; //A regler si en distinct
+          $txt = $txt." idRef =270"; 
           $testFirst++;
         }
         else if ($v=='280'){
-          $txt = $txt." idRef =280"; //A regler si en distinct
+          $txt = $txt." idRef =280";
           $testFirst++;
         }
     }
@@ -346,7 +361,7 @@ class Connexion extends mysqli{
       $txt = $txt.' AND';
     }
 
-      if($var3!=null){ //Année publication
+      if($var3!=null){ 
         $txt = $txt.'  exists (SELECT idOeuvre from editions where oeuvres.idOeuvre=editions.idOeuvre and volIllustrAuteur=:var3 or livIllustrAuteur=:var3  or perIllustrAuteur=:var3)';
       }
 
@@ -354,7 +369,7 @@ class Connexion extends mysqli{
         $txt = $txt.' AND';
       }
 
-      if($var4!=null){ //Année publication
+      if($var4!=null){ 
         $txt = $txt.'  exists (SELECT idOeuvre from traductions where oeuvres.idOeuvre=traductions.idOeuvre and LOCATE(:var4,langue))';
       }
 
@@ -366,7 +381,6 @@ class Connexion extends mysqli{
         $txt = $txt.' exists (SELECT idOeuvre from adaptations where oeuvres.idOeuvre=adaptations.idOeuvre and nature=:var5)';
 
 
-      //$txtt = "SELECT auteurNom,auteurPrenom FROM oeuvres where auteurNom = :var and auteurPrenom = :var2 or auteurNomReel = :var and auteurPrenomReel= :var2 or auteurNom2 = :var and auteurPrenom2= :var2 or auteurNomReel2 = :var and auteurPrenomReel2= :var2 or auteurNom3 = :var and auteurPrenom3= :var2 or auteurNomReel3 = :var and auteurPrenomReel3= :var2";
       $req0 = $this->bd->prepare($txt);
       if ($var!=null){
         $req0->bindValue(':var', $var);
@@ -400,7 +414,13 @@ class Connexion extends mysqli{
     return null;
   }
 
-
+  
+ /***********************************************************************************
+ *
+ *  QUATRIEME CHAMP
+ *
+ ***********************************************************************************/
+  
   public function getResearchPoet($varTab1, $var1, $var2, $var2Bis, $varTab2, $varTab3, $var3, $var4, $var5, $varTab4, $varTab5, $var6, $varTab6, $var7){ //Fait pour la recherche dans la table ouevres
 
     $test = count($varTab1)!=0;
@@ -409,15 +429,15 @@ class Connexion extends mysqli{
 
     $test3 = count($varTab3)!=0;
 
-    $test4 = count($varTab4)!=0; //Corriger les numerotations
+    $test4 = count($varTab4)!=0;
 
-    $test5 = count($varTab5)!=0; //Corriger les numerotations
+    $test5 = count($varTab5)!=0;
 
-    $test6 = count($varTab6)!=0; //Corriger les numerotations
+    $test6 = count($varTab6)!=0;
 
 
     if($test or $var1!=null or $var2!=null or $var2Bis!=null or $test2 or $test3 or $var3 or $var4 or $var5 or $test4 or $test5 or $var6 or $test6 or $var7!='null'){
-      $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE'; //Distinct ??
+      $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE'; 
 
       if ($test){ //Nom
 
@@ -427,19 +447,19 @@ class Connexion extends mysqli{
             $txt = $txt." AND";
           }
           if ($v=='1st'){
-            $txt = $txt.' narrationP1=1'; //A regler si en distinct
+            $txt = $txt.' narrationP1=1';
             $testFirst++;
           }
           else if ($v=='3rd'){
-            $txt = $txt.' narrationP3=1'; //A regler si en distinct
+            $txt = $txt.' narrationP3=1';
             $testFirst++;
           }
           else if ($v=='multiple'){
-            $txt = $txt.' narrationMulti=1'; //A regler si en distinct
+            $txt = $txt.' narrationMulti=1';
             $testFirst++;
           }
           else if ($v=='enchassee'){
-            $txt = $txt.' narrationEnchassee=1'; //A regler si en distinct
+            $txt = $txt.' narrationEnchassee=1';
             $testFirst++;
           }
       }
@@ -464,7 +484,7 @@ class Connexion extends mysqli{
     if($var2!=null and $var2Bis!=null)
       $txt = $txt." dateDeb>=$var2 and dateFin<=$var2Bis";
     else if ($var2!=null)
-      $txt = $txt." dateDeb>=$var2";////////////////////////////////////////////////////////////:::IL FAUT BIND ICI !!!!!!!!
+      $txt = $txt." dateDeb>=$var2";
     else if ($var2Bis!=null)
       $txt = $txt." dateFin<=$var2Bis";
 
@@ -477,27 +497,27 @@ class Connexion extends mysqli{
 
       $testFirst=0;
       foreach($varTab2 as $c => $v){
-        if ($testFirst>=1 and $testFirst<=count($varTab2)){ ////////////////////// A CORRIGER
+        if ($testFirst>=1 and $testFirst<=count($varTab2)){ 
           $txt = $txt." AND";
         }
         if ($v=='passeLointain'){
-          $txt = $txt." ecart='PL'"; //A regler si en distinct
+          $txt = $txt." ecart='PL'";
           $testFirst++;
         }
         else if($v=='passeProche'){
-          $txt = $txt." ecart='PP'"; //A regler si en distinct
+          $txt = $txt." ecart='PP'"; 
           $testFirst++;
         }
         else if($v=='present'){
-          $txt = $txt." ecart='PR'"; //A regler si en distinct
+          $txt = $txt." ecart='PR'"; 
           $testFirst++;
         }
         else if ($v=='futurProche'){
-          $txt = $txt." ecart='FP'"; //A regler si en distinct
+          $txt = $txt." ecart='FP'"; 
           $testFirst++;
         }
         else if ($v=='futurLointain'){
-          $txt = $txt." ecart='FL'"; //A regler si en distinct
+          $txt = $txt." ecart='FL'"; 
           $testFirst++;
         }
     }
@@ -512,31 +532,31 @@ class Connexion extends mysqli{
 
     $testFirst=0;
     foreach($varTab3 as $c => $v){
-      if ($testFirst>=1 and $testFirst<=count($varTab3)){ ////////////////////// A CORRIGER
+      if ($testFirst>=1 and $testFirst<=count($varTab3)){ 
         $txt = $txt." AND";
       }
       if ($v=='ageOr'){
-        $txt = $txt." idMot=47"; //A regler si en distinct
+        $txt = $txt." idMot=47"; 
         $testFirst++;
       }
       else if($v=='decadence'){
-        $txt = $txt." idMot=48"; //A regler si en distinct
+        $txt = $txt." idMot=48"; 
         $testFirst++;
       }
       else if($v=='eschatologie'){
-        $txt = $txt." idMot=46"; //A regler si en distinct
+        $txt = $txt." idMot=46"; 
         $testFirst++;
       }
       else if ($v=='evolutionnisme'){
-        $txt = $txt." idMot=51"; //A regler si en distinct
+        $txt = $txt." idMot=51"; 
         $testFirst++;
       }
       else if ($v=='histoireCyclique'){
-        $txt = $txt." idMot=49"; //A regler si en distinct
+        $txt = $txt." idMot=49";
         $testFirst++;
       }
       else if ($v=='progres'){
-        $txt = $txt." idMot=224"; //A regler si en distinct
+        $txt = $txt." idMot=224";
         $testFirst++;
       }
   }
@@ -573,19 +593,19 @@ class Connexion extends mysqli{
 
     $testFirst=0;
     foreach($varTab4 as $c => $v){
-      if ($testFirst>=1 and $testFirst<=count($varTab4)){ ////////////////////// A CORRIGER
+      if ($testFirst>=1 and $testFirst<=count($varTab4)){
         $txt = $txt." AND";
       }
       if ($v=='masculin'){
-        $txt = $txt." genre='M'"; //A regler si en distinct
+        $txt = $txt." genre='M'"; 
         $testFirst++;
       }
       else if($v=='feminin'){
-        $txt = $txt." genre='F'"; //A regler si en distinct
+        $txt = $txt." genre='F'"; 
         $testFirst++;
       }
       else if($v=='indetermine'){
-        $txt = $txt." genre=''"; //A regler si en distinct
+        $txt = $txt." genre=''"; 
         $testFirst++;
       }
     }
@@ -602,23 +622,23 @@ if ($test5){ //REGLER LE PB DU NATURAL JOIN LIEUX
 
   $testFirst=0;
   foreach($varTab5 as $c => $v){
-    if ($testFirst>=1 and $testFirst<=count($varTab5)){ ////////////////////// A CORRIGER
+    if ($testFirst>=1 and $testFirst<=count($varTab5)){ 
       $txt = $txt." AND";
     }
     if ($v=='positif'){
-      $txt = $txt." valorisation='P'"; //A regler si en distinct ET A VOIR SI CEST JUSTE
+      $txt = $txt." valorisation='P'"; 
       $testFirst++;
     }
     else if($v=='negatif'){
-      $txt = $txt." valorisation='N'"; //A regler si en distinct
+      $txt = $txt." valorisation='N'"; 
       $testFirst++;
     }
     else if($v=='problematique'){
-      $txt = $txt." valorisation='M'"; //A regler si en distinct
+      $txt = $txt." valorisation='M'"; 
       $testFirst++;
     }
     else if($v=='neutre'){
-      $txt = $txt." valorisation='T'"; //A regler si en distinct
+      $txt = $txt." valorisation='T'"; 
       $testFirst++;
     }
 }
@@ -631,7 +651,7 @@ $txt = $txt.' )';
     $txt = $txt." exists (SELECT idOeuvre from personnages where oeuvres.idOeuvre=personnages.idOeuvre and LOCATE(:var6,caracteristique))";
 
 
-  if ($test6){ //REGLER LE PB DU NATURAL JOIN LIEUX
+  if ($test6){ 
     if ($test or $var1!=null or $var2!=null or $var2Bis!=null or $var3!=null or $test2 or $var4!=null or $var5!=null or $test4 or $test5 or $var6!=null)
       $txt = $txt.' AND';
 
@@ -639,31 +659,31 @@ $txt = $txt.' )';
 
     $testFirst=0;
     foreach($varTab6 as $c => $v){
-      if ($testFirst>=1 and $testFirst<=count($varTab6)){ ////////////////////// A CORRIGER
+      if ($testFirst>=1 and $testFirst<=count($varTab6)){ 
         $txt = $txt." AND";
       }
       if ($v=='europe'){
-        $txt = $txt." alterite='EU'"; //A regler si en distinct ET A VOIR SI CEST JUSTE
+        $txt = $txt." alterite='EU'"; 
         $testFirst++;
       }
       else if($v=='extra-europe'){
-        $txt = $txt." alterite='EE'"; //A regler si en distinct
+        $txt = $txt." alterite='EE'"; 
         $testFirst++;
       }
       else if($v=='extra-terrestre'){
-        $txt = $txt." alterite='ET'"; //A regler si en distinct
+        $txt = $txt." alterite='ET'"; 
         $testFirst++;
       }
       else if($v=='creature-artificielle'){
-        $txt = $txt." alterite='CA'"; //A regler si en distinct
+        $txt = $txt." alterite='CA'"; 
         $testFirst++;
       }
       else if($v=='mutante'){
-        $txt = $txt." alterite='MU'"; //A regler si en distinct
+        $txt = $txt." alterite='MU'"; 
         $testFirst++;
       }
       else if($v=='autre'){
-        $txt = $txt." alterite='' or alterite='ZZ'"; //A regler si en distinct
+        $txt = $txt." alterite='' or alterite='ZZ'"; 
         $testFirst++;
       }
   }
@@ -677,9 +697,6 @@ $txt = $txt.' )';
     $txt = $txt." exists (SELECT idOeuvre from esthetique where oeuvres.idOeuvre=esthetique.idOeuvre and idMot=:var7)";
 
 
-
-
-      //$txtt = "SELECT auteurNom,auteurPrenom FROM oeuvres where auteurNom = :var and auteurPrenom = :var2 or auteurNomReel = :var and auteurPrenomReel= :var2 or auteurNom2 = :var and auteurPrenom2= :var2 or auteurNomReel2 = :var and auteurPrenomReel2= :var2 or auteurNom3 = :var and auteurPrenom3= :var2 or auteurNomReel3 = :var and auteurPrenomReel3= :var2";
       $req0 = $this->bd->prepare($txt);
 
       if ($var1!=null){
@@ -722,6 +739,12 @@ $txt = $txt.' )';
     }
     return null;
   }
+  
+ /***********************************************************************************
+ *
+ *  CINQUIEME CHAMP
+ *
+ ***********************************************************************************/
 
   public function getResearchScience($varTab1, $varTab2, $varTab3, $varTab4, $varTab5, $varTabAlt, $varTab6, $varTab7, $varTab8,$varTab9,$varTab10,$varTab11, $var1, $var2, $varTab12, $varTab13, $varTab14, $varTab15, $varTab16, $var3, $var4, $var5, $var6, $varTabAlt2, $varTabAlt3){ //Fait pour la recherche dans la table ouevres
 
@@ -764,7 +787,7 @@ $txt = $txt.' )';
 
 
     if($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11 or (strlen($var1)>0) or (strlen($var2)>0) or $test12 or $test13 or $test14 or ($var3!='null' and $var3!=null) or $test15 or  $test16 or $var3!='null' or $var4!=null or ($var5!='null' and $var5!=null) or $var6!='null' or $testAlt2 or $varTab3!=null){
-      $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE'; //Distinct ??
+      $txt = 'SELECT distinct idOeuvre FROM oeuvres WHERE'; 
 
       if ($test1 or $test2 or $test3 or $test4 or $test5 or $testAlt or $test6 or $test7 or $test8 or $test9 or $test10 or $test11)
         $txt = $txt." exists (SELECT idOeuvre from representations where oeuvres.idOeuvre=representations.idOeuvre and";
@@ -775,15 +798,15 @@ $txt = $txt.' )';
             $txt = $txt." AND";
           }
           if ($v=='agriculture'){
-            $txt = $txt."  idMot = 90"; //A regler si en distinct
+            $txt = $txt."  idMot = 90"; 
             $testFirst++;
           }
           else if ($v=='veterinaire'){
-            $txt = $txt." idMot = 91"; //A regler si en distinct
+            $txt = $txt." idMot = 91"; 
             $testFirst++;
           }
           else if ($v=='diet'){
-            $txt = $txt." idMot = 92"; //A regler si en distinct
+            $txt = $txt." idMot = 92"; 
             $testFirst++;
           }
         }
@@ -799,15 +822,15 @@ $txt = $txt.' )';
           $txt = $txt." AND";
         }
         if ($v=='chimieAnalytique'){
-          $txt = $txt." idMot = 99"; //A regler si en distinct
+          $txt = $txt." idMot = 99"; 
           $testFirst++;
         }
         else if ($v=='chimieIndustrielle'){
-          $txt = $txt." idMot = 100"; //A regler si en distinct
+          $txt = $txt." idMot = 100"; 
           $testFirst++;
         }
         else if ($v=='chimieOrganique'){
-          $txt = $txt." idMot = 101"; //A regler si en distinct
+          $txt = $txt." idMot = 101"; 
           $testFirst++;
         }
       }
@@ -824,35 +847,35 @@ $txt = $txt.' )';
           $txt = $txt." AND";
         }
         if ($v=='atomique'){
-          $txt = $txt." idMot = 107"; //A regler si en distinct
+          $txt = $txt." idMot = 107"; 
           $testFirst++;
         }
         else if ($v=='electricite'){
-          $txt = $txt." idMot = 104"; //A regler si en distinct
+          $txt = $txt." idMot = 104"; 
           $testFirst++;
         }
         else if ($v=='eolienne'){
-          $txt = $txt." idMot = 199"; //A regler si en distinct
+          $txt = $txt." idMot = 199"; 
           $testFirst++;
         }
         else if ($v=='ether'){
-          $txt = $txt." idMot = 106"; //A regler si en distinct
+          $txt = $txt." idMot = 106"; 
           $testFirst++;
         }
         else if ($v=='geothermique'){
-          $txt = $txt." idMot = 197"; //A regler si en distinct
+          $txt = $txt." idMot = 197";
           $testFirst++;
         }
         else if ($v=='hydraulique'){
-          $txt = $txt." idMot = 198"; //A regler si en distinct
+          $txt = $txt." idMot = 198";
           $testFirst++;
         }
         else if ($v=='magnetisme'){
-          $txt = $txt." idMot = 105"; //A regler si en distinct
+          $txt = $txt." idMot = 105";
           $testFirst++;
         }
         else if ($v=='thermodynamique'){
-          $txt = $txt." idMot = 103"; //A regler si en distinct
+          $txt = $txt." idMot = 103";
           $testFirst++;
         }
       }
@@ -870,19 +893,19 @@ $txt = $txt.' )';
           $txt = $txt." AND";
         }
         if ($v=='eclairage'){
-          $txt = $txt." idMot = 109"; //A regler si en distinct
+          $txt = $txt." idMot = 109";
           $testFirst++;
         }
         else if ($v=='steampunk'){
-          $txt = $txt." idMot = 110"; //A regler si en distinct
+          $txt = $txt." idMot = 110";
           $testFirst++;
         }
         else if ($v=='photo'){
-          $txt = $txt." idMot = 111"; //A regler pour radio
+          $txt = $txt." idMot = 111";
           $testFirst++;
         }
         else if ($v=='tele'){
-          $txt = $txt." idMot = 112"; //A regler si en distinct
+          $txt = $txt." idMot = 112";
           $testFirst++;
         }
       }
@@ -899,39 +922,39 @@ $txt = $txt.' )';
           $txt = $txt." AND";
         }
         if ($v=='anatomie'){
-          $txt = $txt." idMot = 115"; //A regler si en distinct
+          $txt = $txt." idMot = 115"; 
           $testFirst++;
         }
         else if ($v=='chirurgie'){
-          $txt = $txt." idMot = 116"; //A regler si en distinct
+          $txt = $txt." idMot = 116"; 
           $testFirst++;
         }
         else if ($v=='histologie'){
-          $txt = $txt." idMot = 117"; //A CORRIGER !!!!!!!!!!!!!!!!!!!
+          $txt = $txt." idMot = 117"; 
           $testFirst++;
         }
         else if ($v=='homeopathie'){
-          $txt = $txt." idMot = 118"; //A CORRIGER !!!!!!!!!!!!!!!!
+          $txt = $txt." idMot = 118"; 
           $testFirst++;
         }
         else if ($v=='hygiene'){
-          $txt = $txt." idMot = 119"; //A regler si en distinct
+          $txt = $txt." idMot = 119"; 
           $testFirst++;
         }
         else if ($v=='pathologie'){
-          $txt = $txt." idMot = 120"; //A regler si en distinct
+          $txt = $txt." idMot = 120"; 
           $testFirst++;
         }
         else if ($v=='physiologie'){
-          $txt = $txt." idMot = 122"; //A regler si en distinct
+          $txt = $txt." idMot = 122"; 
           $testFirst++;
         }
         else if ($v=='psychologie'){
-          $txt = $txt." idMot = 176"; //A regler si en distinct
+          $txt = $txt." idMot = 176"; 
           $testFirst++;
         }
         else if ($v=='therapeute'){
-          $txt = $txt." idMot = 121"; //A CORRIGER !!!!!!!!
+          $txt = $txt." idMot = 121";
           $testFirst++;
         }
       }
@@ -948,7 +971,7 @@ $txt = $txt.' )';
           $txt = $txt." AND";
         }
         if ($v=='paleon'){
-          $txt = $txt." idMot = 123"; //A regler si en distinct
+          $txt = $txt." idMot = 123"; 
           $testFirst++;
         }
       }
@@ -964,27 +987,27 @@ $txt = $txt.' )';
           $txt = $txt." AND";
         }
         if ($v=='acoustique'){
-          $txt = $txt." idMot = 125"; //A CORRIGER !!!
+          $txt = $txt." idMot = 125";
           $testFirst++;
         }
         else if ($v=='electriciteMagn'){
-          $txt = $txt." idMot = 126"; //A regler si en distinct
+          $txt = $txt." idMot = 126";
           $testFirst++;
         }
         else if ($v=='mecanique'){
-          $txt = $txt." idMot = 127"; //A CORRIGER !!!!!
+          $txt = $txt." idMot = 127";
           $testFirst++;
         }
         else if ($v=='optique'){
-          $txt = $txt." idMot = 128"; //A CORRIGER !!!!!
+          $txt = $txt." idMot = 128";
           $testFirst++;
         }
         else if ($v=='physiqueAtome'){
-          $txt = $txt." idMot = 129"; //A regler si en distinct
+          $txt = $txt." idMot = 129";
           $testFirst++;
         }
         else if ($v=='thermodynamique'){
-          $txt = $txt." idMot = 130"; //A regler si en distinct
+          $txt = $txt." idMot = 130";
           $testFirst++;
         }
       }
@@ -1004,11 +1027,11 @@ $txt = $txt.' )';
           $testFirst++;
         }
         else if ($v=='genetique'){
-          $txt = $txt." idMot = 132"; //A CORRIGER !!!!
+          $txt = $txt." idMot = 132";
           $testFirst++;
         }
         else if ($v=='microbiologie'){
-          $txt = $txt." idMot = 134"; //A CORRIGER
+          $txt = $txt." idMot = 134";
           $testFirst++;
         }
       }
@@ -1034,11 +1057,11 @@ $txt = $txt.' )';
           $testFirst++;
         }
         else if ($v=='mycologie'){
-          $txt = $txt." idMot = 138"; //A CORRIGER !!!!
+          $txt = $txt." idMot = 138";
           $testFirst++;
         }
         else if ($v=='zoologie'){
-          $txt = $txt." idMot = 139"; //A CORRIGER ?????
+          $txt = $txt." idMot = 139";
           $testFirst++;
         }
       }
@@ -1076,7 +1099,7 @@ $txt = $txt.' )';
           $testFirst++;
         }
         else if ($v=='oceanologie'){
-          $txt = $txt." idMot = 145"; //A CORRIGER
+          $txt = $txt." idMot = 145";
           $testFirst++;
         }
       }
@@ -1098,7 +1121,7 @@ $txt = $txt.' )';
           $testFirst++;
         }
         else if ($v=='spectacles'){
-          $txt = $txt." idMot = 148"; //A CORRIGER ???
+          $txt = $txt." idMot = 148";
           $testFirst++;
         }
       }
@@ -1122,11 +1145,11 @@ $txt = $txt.' )';
           $testFirst++;
         }
         else if ($v=='transportSouterrain'){
-          $txt = $txt." idMot = 154"; //A CORRIGER !!!!
+          $txt = $txt." idMot = 154"; 
           $testFirst++;
         }
         else if ($v=='transportTerrestre'){
-          $txt = $txt." idMot = 151"; //A CORRIGER !!!!
+          $txt = $txt." idMot = 151"; 
           $testFirst++;
         }
       }
@@ -1417,6 +1440,12 @@ $txt = $txt.' )';
   }
   return null;
 }
+
+/***********************************************************************************
+ *
+ *  DIVERS FONCTIONS POUR RECUPERER LES INFORMATIONS UTILES POUR LES GRAPHES VOULUS
+ *
+ ***********************************************************************************/
 
 public function infoBarChart($data, $sub_sql, $conn){
   $sql = 
